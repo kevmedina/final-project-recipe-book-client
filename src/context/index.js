@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { withRouter } from "react-router-dom";
 import AUTH_SERVICE from "../services/AuthService";
 export const AuthContext = React.createContext();
 
@@ -8,11 +9,38 @@ class AuthProvider extends Component {
       username: "",
       email: "",
       password: ""
-    }
+    },
+    formLogin: {
+      username: "",
+      password: ""
+    },
+    currentUser: {},
+    isLoggedIn: false,
+    message: null
   };
 
+  componentDidMount() {
+    AUTH_SERVICE.getUser()
+      .then(responseFromServer => {
+        console.log("res: ", responseFromServer);
+        const { user } = responseFromServer.data;
+
+        this.setState(prevState => ({
+          ...prevState,
+          currentUser: user,
+          isLoggedIn: true
+        }));
+      })
+      .catch(err =>
+        console.log("Error while getting the user: ", err.response.data)
+      );
+  }
+
   handleSignupInput = e => {
-    const { name, value } = e.target;
+    const {
+      target: { name, value }
+    } = e;
+
     this.setState(prevState => ({
       ...prevState,
       formSignup: {
@@ -26,20 +54,57 @@ class AuthProvider extends Component {
     e.preventDefault();
     AUTH_SERVICE.signup(this.state.formSignup)
       .then(responseFromServer => {
-        console.log("Response from server: ", responseFromServer);
+        // console.log("Response from server: ", responseFromServer);
+        const {
+          data: { user, message }
+        } = responseFromServer;
+
+        this.setState(prevState => ({
+          ...prevState,
+          formSignup: {
+            username: "",
+            email: "",
+            password: ""
+          },
+          currentUser: user,
+          isLoggedIn: true
+        }));
+        alert(`${message}`);
+        this.props.history.push("/home");
       })
-      .catch(err => console.log("Error while signup user: ", err));
+      .catch(err => {
+        if (err.response && err.response.data) {
+          this.setState(prevState => ({
+            ...prevState,
+            message: err.response.data.message
+          }));
+        }
+      });
+  };
+
+  handleLogout = () => {
+    AUTH_SERVICE.logout()
+      .then(() => {
+        this.setState(prevState => ({
+          ...prevState,
+          currentUser: {},
+          isLoggedIn: false
+        }));
+        this.props.history.push("/");
+      })
+      .catch(err => alert("Error while logging out: ", err));
   };
 
   render() {
-    const { state, handleSignupInput, handleSignupSubmit } = this;
+    const { state, handleSignupInput, handleSignupSubmit, handleLogout } = this;
     return (
       <div>
         <AuthContext.Provider
           value={{
             state,
             handleSignupInput,
-            handleSignupSubmit
+            handleSignupSubmit,
+            handleLogout
           }}
         >
           {this.props.children}
@@ -49,4 +114,4 @@ class AuthProvider extends Component {
   }
 }
 
-export default AuthProvider;
+export default withRouter(AuthProvider);
