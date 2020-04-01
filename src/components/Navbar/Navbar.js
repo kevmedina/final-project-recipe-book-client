@@ -1,7 +1,7 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 import { AuthContext } from "../../context/index";
-import './NavBar.css'
+import "./NavBar.css";
 
 function Navbar() {
   return (
@@ -15,7 +15,10 @@ function Navbar() {
               {isLoggedIn ? (
                 <NavLink to="/private">Private</NavLink>
               ) : (
-                <NavLink to="/signup-page">Sign Up</NavLink>
+                <div>
+                  <NavLink to="/login-page">Login</NavLink>
+                  <NavLink to="/signup-page">Sign Up</NavLink>
+                </div>
               )}
             </nav>
           </div>

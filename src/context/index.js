@@ -70,7 +70,7 @@ class AuthProvider extends Component {
           isLoggedIn: true
         }));
         alert(`${message}`);
-        this.props.history.push("/home");
+        this.props.history.push("/");
       })
       .catch(err => {
         if (err.response && err.response.data) {
