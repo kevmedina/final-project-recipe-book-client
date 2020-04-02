@@ -14,47 +14,54 @@ function Signup() {
         } = context.state;
 
         const { handleSignupInput, handleSignupSubmit } = context;
+
         return (
           <div>
             {isLoggedIn ? (
               <Redirect to="/" />
             ) : (
               <div className="signup">
-                <h2>Signup form</h2>
+                {/* Left div with fruit background image */}
+                <div className="picture-div">&nbsp;</div>
+
+                {/* Right div with the signup form */}
                 <form onSubmit={handleSignupSubmit}>
-                  <div>
-                    <label htmlFor="username">Username:</label>
-                    <input
-                      id="username"
-                      name="username"
-                      type="text"
-                      value={username}
-                      onChange={handleSignupInput}
-                    />
-                  </div>
+                  <h1>Welcome to My CookBook</h1>
+                  <h2>Signup form</h2>
+                  <div className="inner-form-container">
+                    <div>
+                      <label htmlFor="username">Username:</label>
+                      <input
+                        id="username"
+                        name="username"
+                        type="text"
+                        value={username}
+                        onChange={handleSignupInput}
+                      />
+                    </div>
 
-                  <div>
-                    <label htmlFor="email">Email:</label>
-                    <input
-                      id="email"
-                      name="email"
-                      type="email"
-                      value={email}
-                      onChange={handleSignupInput}
-                    />
-                  </div>
+                    <div>
+                      <label htmlFor="email">Email:</label>
+                      <input
+                        id="email"
+                        name="email"
+                        type="email"
+                        value={email}
+                        onChange={handleSignupInput}
+                      />
+                    </div>
 
-                  <div>
-                    <label htmlFor="password">Password:</label>
-                    <input
-                      id="password"
-                      name="password"
-                      type="password"
-                      value={password}
-                      onChange={handleSignupInput}
-                    />
+                    <div>
+                      <label htmlFor="password">Password:</label>
+                      <input
+                        id="password"
+                        name="password"
+                        type="password"
+                        value={password}
+                        onChange={handleSignupInput}
+                      />
+                    </div>
                   </div>
-
                   <button>Signup</button>
                 </form>
                 {message && <div>{message}</div>}

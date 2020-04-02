@@ -19,7 +19,7 @@ function App() {
         <Route exact path="/login-page" component={Login} />
         <Route exact path="/private" component={Private} />
       </Switch>
-      <footer>Made with at Ironhack Miami - PTWD October 2019</footer>
+      {/* <footer>Made with at Ironhack Miami - PTWD October 2019</footer> */}
     </div>
   );
 }
