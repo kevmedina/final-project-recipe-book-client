@@ -7,7 +7,7 @@ function Login() {
     <AuthContext.Consumer>
       {context => {
         const {
-          formSignup: { username, password },
+          formLogin: { username, password },
           message,
           isLoggedIn
         } = context.state;

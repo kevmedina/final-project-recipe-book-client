@@ -82,6 +82,50 @@ class AuthProvider extends Component {
       });
   };
 
+  handleLoginInput = e => {
+    const {
+      target: { name, value }
+    } = e;
+
+    this.setState(prevState => ({
+      ...prevState,
+      formLogin: {
+        ...prevState.formLogin,
+        [name]: value
+      }
+    }));
+  };
+
+  handleLoginSubmit = e => {
+    e.preventDefault();
+    AUTH_SERVICE.login(this.state.formLogin)
+      .then(responseFromServer => {
+        const {
+          data: { user, message }
+        } = responseFromServer;
+
+        this.setState(prevState => ({
+          ...prevState,
+          formLogin: {
+            username: "",
+            password: ""
+          },
+          currentUser: user,
+          isLoggedIn: true
+        }));
+        alert(`${message}`);
+        this.state.history.push("/");
+      })
+      .catch(err => {
+        if (err.response && err.response.data) {
+          this.setState(prevState => ({
+            ...prevState,
+            message: err.response.data.message
+          }));
+        }
+      });
+  };
+
   handleLogout = () => {
     AUTH_SERVICE.logout()
       .then(() => {
@@ -96,7 +140,14 @@ class AuthProvider extends Component {
   };
 
   render() {
-    const { state, handleSignupInput, handleSignupSubmit, handleLogout } = this;
+    const {
+      state,
+      handleSignupInput,
+      handleSignupSubmit,
+      handleLoginInput,
+      handleLoginSubmit,
+      handleLogout
+    } = this;
     return (
       <div>
         <AuthContext.Provider
@@ -104,6 +155,8 @@ class AuthProvider extends Component {
             state,
             handleSignupInput,
             handleSignupSubmit,
+            handleLoginInput,
+            handleLoginSubmit,
             handleLogout
           }}
         >
