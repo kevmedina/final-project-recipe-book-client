@@ -69,8 +69,8 @@ class AuthProvider extends Component {
           currentUser: user,
           isLoggedIn: true
         }));
-        alert(`${message}`);
-        this.props.history.push("/");
+        console.log(`${message}`);
+        this.props.history.push("/login-page");
       })
       .catch(err => {
         if (err.response && err.response.data) {
@@ -113,8 +113,8 @@ class AuthProvider extends Component {
           currentUser: user,
           isLoggedIn: true
         }));
-        alert(`${message}`);
-        this.state.history.push("/");
+        console.log(`${message}`);
+        this.state.history.push("/user-profile");
       })
       .catch(err => {
         if (err.response && err.response.data) {

@@ -8,19 +8,26 @@ function Navbar() {
     <AuthContext.Consumer>
       {context => {
         const { isLoggedIn } = context.state;
+        const { handleLogout } = context;
         return (
           <div className="navbar">
-            <nav>
-              <NavLink to="/">Home</NavLink>
-              {isLoggedIn ? (
-                <NavLink to="/private">Private</NavLink>
-              ) : (
+            {isLoggedIn ? (
+              <button onClick={handleLogout}>Logout</button>
+            ) : (
+              <nav>
                 <div>
-                  <NavLink to="/login-page">Login</NavLink>
-                  <NavLink to="/signup-page">Sign Up</NavLink>
+                  <NavLink className="link" to="/">
+                    Home
+                  </NavLink>
+                  <NavLink className="link" to="/login-page">
+                    Login
+                  </NavLink>
+                  <NavLink className="link" to="/signup-page">
+                    Sign Up
+                  </NavLink>
                 </div>
-              )}
-            </nav>
+              </nav>
+            )}
           </div>
         );
       }}
