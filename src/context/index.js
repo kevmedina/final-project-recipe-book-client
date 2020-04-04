@@ -114,7 +114,7 @@ class AuthProvider extends Component {
           isLoggedIn: true
         }));
         console.log(`${message}`);
-        this.state.history.push("/user-profile");
+        this.props.history.push("/user-profile");
       })
       .catch(err => {
         if (err.response && err.response.data) {
