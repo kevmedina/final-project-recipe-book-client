@@ -16,7 +16,8 @@ class AuthProvider extends Component {
     },
     currentUser: {},
     isLoggedIn: false,
-    message: null
+    message: null,
+    loading: true
   };
 
   componentDidMount() {
@@ -28,7 +29,8 @@ class AuthProvider extends Component {
         this.setState(prevState => ({
           ...prevState,
           currentUser: user,
-          isLoggedIn: true
+          isLoggedIn: user ? true: false,
+          loading: false
         }));
       })
       .catch(err =>
@@ -70,7 +72,7 @@ class AuthProvider extends Component {
           isLoggedIn: true
         }));
         console.log(`${message}`);
-        this.props.history.push("/login-page");
+        this.props.history.push("/user-profile");
       })
       .catch(err => {
         if (err.response && err.response.data) {
