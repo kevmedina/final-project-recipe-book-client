@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { AuthContext } from "../../context/index";
 import "./UserProfile.css";
+import Search from "../Search/Search";
 
 export default class UserProfile extends Component {
   componentDidMount() {
@@ -11,22 +12,27 @@ export default class UserProfile extends Component {
   }
 
   render() {
-    const { username } = this.context.state.currentUser;
-    const { handleLogout } = this.context;
+    // const { username } = this.context.state.currentUser;
     return (
-      <div className="profile">
-        <div className="container">
-          <div>
-            <div>
-              <button onClick={handleLogout}>Logout</button>
+      <AuthContext.Consumer>
+        {(context) => {
+          const { handleLogout } = context;
+          return (
+            <div className="profile">
+              <div className="container">
+                <div>
+                  <div>
+                    <button onClick={handleLogout}>Logout</button>
+                  </div>
+                </div>
+                <div>
+                  <Search />
+                </div>
+              </div>
             </div>
-          </div>
-          <div>
-            <h3>Welcome to the Private Page!</h3>
-            <p>User in session: {username}</p>
-          </div>
-        </div>
-      </div>
+          );
+        }}
+      </AuthContext.Consumer>
     );
   }
 }

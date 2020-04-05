@@ -1,4 +1,4 @@
-.signup {
+.login {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -9,13 +9,13 @@
   background-size: cover;
 }
 
-.signup form {
+.login form {
   background-color: #ffffff;
   width: 400px;
   height: 400px;
 }
 
-.signup input {
+.login input {
   width: 280px;
   height: 25px;
   border-radius: 20px;
@@ -24,7 +24,7 @@
   font-size: 14px;
 }
 
-.signup button {
+.login button {
     width: 280px;
     height: 40px;
     border-radius: 20px;
