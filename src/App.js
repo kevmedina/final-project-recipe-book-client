@@ -6,6 +6,7 @@ import Login from "./components/Authentication/Login/Login";
 import Home from "./components/Home/Home";
 import UserProfile from "./components/UserProfile/UserProfile";
 import { AuthContext } from "./context/index";
+import Navbar from "./components/Navbar/Navbar";
 
 function App() {
   return (
@@ -17,12 +18,17 @@ function App() {
             {loading ? (
               <h1>Hello</h1>
             ) : (
-              <Switch>
-                <Route exact path="/" component={Home} />
-                <Route exact path="/signup-page" component={Signup} />
-                <Route exact path="/login-page" component={Login} />
-                <Route exact path="/user-profile" component={UserProfile} />
-              </Switch>
+              <div>
+                <header>
+                  <Navbar />
+                </header>
+                <Switch>
+                  <Route exact path="/" component={Home} />
+                  <Route exact path="/signup-page" component={Signup} />
+                  <Route exact path="/login-page" component={Login} />
+                  <Route exact path="/user-profile" component={UserProfile} />
+                </Switch>
+              </div>
             )}
           </div>
         );

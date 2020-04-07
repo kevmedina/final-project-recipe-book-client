@@ -6,7 +6,7 @@ import "./NavBar.css";
 function Navbar() {
   return (
     <AuthContext.Consumer>
-      {context => {
+      {(context) => {
         const { isLoggedIn } = context.state;
         const { handleLogout } = context;
         return (

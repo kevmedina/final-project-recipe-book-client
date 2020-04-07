@@ -1,7 +1,10 @@
 import React, { Component } from "react";
 import { AuthContext } from "../../context/index";
+import { Switch, Route } from "react-router-dom";
 import "./UserProfile.css";
+import ProfileNavbar from "../ProfileNavbar/ProfileNavbar";
 import Search from "../Search/Search";
+import NewRecipe from "../NewRecipe/NewRecipe";
 
 export default class UserProfile extends Component {
   componentDidMount() {
@@ -16,18 +19,20 @@ export default class UserProfile extends Component {
     return (
       <AuthContext.Consumer>
         {(context) => {
-          const { handleLogout } = context;
+          // const { currentUser } = context.state;
+          // const { handleLogout } = context;
           return (
             <div className="profile">
-              <div className="container">
-                <div>
-                  <div>
-                    <button onClick={handleLogout}>Logout</button>
-                  </div>
-                </div>
-                <div>
+              {/* Left div */}
+              <ProfileNavbar />
+
+              {/* Right Div */}
+              <div className="right-panel">
+                <Switch>
                   <Search />
-                </div>
+                  <Route exact path="/new-recipe" component={NewRecipe} />
+                  <Route exact path="/search" component={Search} />
+                </Switch>
               </div>
             </div>
           );

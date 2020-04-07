@@ -25,7 +25,7 @@ class AuthProvider extends Component {
       .then(responseFromServer => {
         console.log("res: ", responseFromServer);
         const { user } = responseFromServer.data;
-
+        console.log('User: ', user)
         this.setState(prevState => ({
           ...prevState,
           currentUser: user,

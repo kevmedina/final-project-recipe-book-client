@@ -1,13 +1,17 @@
 import React from "react";
-import NavBar from "../Navbar/Navbar";
+import { Switch, Route } from "react-router-dom";
+import Landing from "../Home/Landing";
+import Login from "../Authentication/Login/Login";
+import Signup from "../Authentication/Signup/Signup";
 
 const Home = () => {
   return (
     <div>
-      <header>
-        <NavBar />
-      </header>
-      <h1>Build Your Own Recipe Book!</h1>
+      <Switch>
+        <Route exact path="/" component={Landing} />
+        <Route exact path="/login-page" component={Login} />
+        <Route exact path="/signup-page" component={Signup} />
+      </Switch>
     </div>
   );
 };
