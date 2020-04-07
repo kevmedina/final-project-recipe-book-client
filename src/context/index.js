@@ -8,121 +8,120 @@ class AuthProvider extends Component {
     formSignup: {
       username: "",
       email: "",
-      password: ""
+      password: "",
     },
     formLogin: {
       username: "",
-      password: ""
+      password: "",
     },
     currentUser: {},
     isLoggedIn: false,
     message: null,
-    loading: true
+    loading: true,
   };
 
   componentDidMount() {
     AUTH_SERVICE.getUser()
-      .then(responseFromServer => {
+      .then((responseFromServer) => {
         console.log("res: ", responseFromServer);
         const { user } = responseFromServer.data;
-        console.log('User: ', user)
-        this.setState(prevState => ({
+        this.setState((prevState) => ({
           ...prevState,
           currentUser: user,
-          isLoggedIn: user ? true: false,
-          loading: false
+          isLoggedIn: user ? true : false,
+          loading: false,
         }));
       })
-      .catch(err =>
+      .catch((err) =>
         console.log("Error while getting the user: ", err.response.data)
       );
   }
 
-  handleSignupInput = e => {
+  handleSignupInput = (e) => {
     const {
-      target: { name, value }
+      target: { name, value },
     } = e;
 
-    this.setState(prevState => ({
+    this.setState((prevState) => ({
       ...prevState,
       formSignup: {
         ...prevState.formSignup,
-        [name]: value
-      }
+        [name]: value,
+      },
     }));
   };
 
-  handleSignupSubmit = e => {
+  handleSignupSubmit = (e) => {
     e.preventDefault();
     AUTH_SERVICE.signup(this.state.formSignup)
-      .then(responseFromServer => {
+      .then((responseFromServer) => {
         // console.log("Response from server: ", responseFromServer);
         const {
-          data: { user, message }
+          data: { user, message },
         } = responseFromServer;
 
-        this.setState(prevState => ({
+        this.setState((prevState) => ({
           ...prevState,
           formSignup: {
             username: "",
             email: "",
-            password: ""
+            password: "",
           },
           currentUser: user,
-          isLoggedIn: true
+          isLoggedIn: true,
         }));
         console.log(`${message}`);
         this.props.history.push("/user-profile");
       })
-      .catch(err => {
+      .catch((err) => {
         if (err.response && err.response.data) {
-          this.setState(prevState => ({
+          this.setState((prevState) => ({
             ...prevState,
-            message: err.response.data.message
+            message: err.response.data.message,
           }));
         }
       });
   };
 
-  handleLoginInput = e => {
+  handleLoginInput = (e) => {
     const {
-      target: { name, value }
+      target: { name, value },
     } = e;
 
-    this.setState(prevState => ({
+    this.setState((prevState) => ({
       ...prevState,
       formLogin: {
         ...prevState.formLogin,
-        [name]: value
-      }
+        [name]: value,
+      },
     }));
   };
 
-  handleLoginSubmit = e => {
+  handleLoginSubmit = (e) => {
     e.preventDefault();
     AUTH_SERVICE.login(this.state.formLogin)
-      .then(responseFromServer => {
+      .then((responseFromServer) => {
         const {
-          data: { user, message }
+          data: { user, message },
         } = responseFromServer;
 
-        this.setState(prevState => ({
+        this.setState((prevState) => ({
           ...prevState,
           formLogin: {
             username: "",
-            password: ""
+            password: "",
           },
           currentUser: user,
-          isLoggedIn: true
+          isLoggedIn: true,
         }));
         console.log(`${message}`);
         this.props.history.push("/user-profile");
       })
-      .catch(err => {
+      .catch((err) => {
         if (err.response && err.response.data) {
-          this.setState(prevState => ({
+          this.setState((prevState) => ({
             ...prevState,
-            message: err.response.data.message
+            message: err.response.data.message,
           }));
         }
       });
@@ -131,14 +130,14 @@ class AuthProvider extends Component {
   handleLogout = () => {
     AUTH_SERVICE.logout()
       .then(() => {
-        this.setState(prevState => ({
+        this.setState((prevState) => ({
           ...prevState,
           currentUser: {},
-          isLoggedIn: false
+          isLoggedIn: false,
         }));
         this.props.history.push("/");
       })
-      .catch(err => alert("Error while logging out: ", err));
+      .catch((err) => alert("Error while logging out: ", err));
   };
 
   render() {
@@ -148,7 +147,7 @@ class AuthProvider extends Component {
       handleSignupSubmit,
       handleLoginInput,
       handleLoginSubmit,
-      handleLogout
+      handleLogout,
     } = this;
     return (
       <div>
@@ -159,7 +158,7 @@ class AuthProvider extends Component {
             handleSignupSubmit,
             handleLoginInput,
             handleLoginSubmit,
-            handleLogout
+            handleLogout,
           }}
         >
           {this.props.children}
