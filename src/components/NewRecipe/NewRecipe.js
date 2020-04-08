@@ -4,7 +4,6 @@ function NewRecipe() {
   return (
     <div className="new-recipe">
       <form>
-        <h1>Add New Recipe</h1>
         <div className="inner-form-container">
           <div>
             {/* <label htmlFor="username">Username:</label> */}

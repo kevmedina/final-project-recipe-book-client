@@ -18,7 +18,7 @@ export default class UserProfile extends Component {
           const { currentUser } = context.state;
           const { handleLogout } = context;
           return (
-            <div className="left-panel">
+            <div className="side-navbar">
               <div>
                 <button onClick={handleLogout}>Logout</button>
                 <h1>{currentUser.username}</h1>

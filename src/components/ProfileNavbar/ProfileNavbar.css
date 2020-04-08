@@ -1,15 +1,17 @@
-.left-panel {
+.side-navbar {
   width: 20%;
+  height: 100vh;
+  float: left;
   background-color: lightgray;
 }
 
-.left-panel ul {
+.side-navbar ul {
   list-style: none;
   margin: 0;
   padding: 0;
 }
 
-.left-panel li {
+.side-navbar li {
   margin: 10px 0 10px 10px;
   font-size: 20px;
   text-align: left;
