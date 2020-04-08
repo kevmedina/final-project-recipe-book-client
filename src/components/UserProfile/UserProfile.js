@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import { AuthContext } from "../../context/index";
 import "./UserProfile.css";
-import Search from "../Search/Search";
 
 export default class UserProfile extends Component {
   componentDidMount() {
@@ -16,12 +15,12 @@ export default class UserProfile extends Component {
     return (
       <AuthContext.Consumer>
         {(context) => {
-          // const { currentUser } = context.state;
-          // const { handleLogout } = context;
+          const { username } = context.state.currentUser;
           return (
-              <div className="right-panel">
-                <Search />
-              </div>
+            <div className="user-profile">
+              <h1>Welcome {username} to MY CookBook.</h1>
+              <p>Build your own personal cookbooks to </p>
+            </div>
           );
         }}
       </AuthContext.Consumer>

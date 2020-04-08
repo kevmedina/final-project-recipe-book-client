@@ -10,6 +10,7 @@ import Navbar from "./components/Navbar/Navbar";
 import ProfileNavbar from "./components/ProfileNavbar/ProfileNavbar";
 import NewRecipe from "./components/NewRecipe/NewRecipe";
 import Search from "./components/Search/Search";
+import NewCookBook from "./components/NewCookBook/NewCookBook";
 
 function App() {
   return (
@@ -30,6 +31,7 @@ function App() {
                   <Route exact path="/user-profile" component={UserProfile} />
                   <Route exact path="/new-recipe" component={NewRecipe} />
                   <Route exact path="/search" component={Search} />
+                  <Route exact path="/new-cookbook" component={NewCookBook} />
                 </Switch>
               </div>
             )}
