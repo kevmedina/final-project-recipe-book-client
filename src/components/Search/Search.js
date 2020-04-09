@@ -4,16 +4,16 @@ import RecipeList from "../RecipeList/RecipeList";
 
 class Search extends Component {
   state = {
-    search: '',
+    search: "",
   };
 
   handleSubmit = (event) => {
-    event.preventDefault()
+    event.preventDefault();
 
-    console.log({props: this.props})
+    console.log({ props: this.props });
 
     this.props.searchRecipes(this.state.search);
-  }
+  };
 
   handleSearch = (e) => {
     // here we set the search term to the state
@@ -26,7 +26,7 @@ class Search extends Component {
   render() {
     const { search } = this.state;
     return (
-      <div className="container">
+      <div className="search">
         <div className="search-bar">
           <form onSubmit={(event) => this.handleSubmit(event)}>
             <input
@@ -40,8 +40,15 @@ class Search extends Component {
             <button>Submit</button>
           </form>
         </div>
-      
-        {this.props.recipes && <RecipeList recipes={this.props.recipes} searchRecipes={this.state.search}/>}
+
+        <div className="recipes">
+          {this.props.recipes && (
+            <RecipeList
+              recipes={this.props.recipes}
+              searchRecipes={this.state.search}
+            />
+          )}
+        </div>
       </div>
     );
   }

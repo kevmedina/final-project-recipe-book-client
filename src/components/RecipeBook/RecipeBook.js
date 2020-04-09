@@ -1,9 +1,9 @@
 import React from "react";
-import "./NewCookBook.css";
+import "./RecipeBook.css";
 
-function NewCookBook() {
+function NewRecipeBook() {
   return (
-    <div className="container">
+    <div>
       <div className="inner-container">
         <div>
           <h2>Name of Book</h2>
@@ -30,4 +30,4 @@ function NewCookBook() {
   );
 }
 
-export default NewCookBook;
+export default NewRecipeBook;

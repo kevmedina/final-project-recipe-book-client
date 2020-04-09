@@ -10,12 +10,13 @@ import UserProfile from "./components/UserProfile/UserProfile";
 import ProfileNavbar from "./components/ProfileNavbar/ProfileNavbar";
 import NewRecipe from "./components/NewRecipe/NewRecipe";
 import Search from "./components/Search/Search";
-import NewCookBook from "./components/NewCookBook/NewCookBook";
+import RecipeBook from "./components/RecipeBook/RecipeBook";
 import axios from "axios";
 
 class App extends Component {
   state = {
     recipes: null,
+    recipeBooks: null
   };
 
   searchRecipes = async (param) => {
@@ -32,6 +33,10 @@ class App extends Component {
       console.log("Error while getting the recipes: ", {err: err.response})
     }
   };
+
+  getRecipeBooks = () => {
+
+  }
 
   render() {
     return (
@@ -56,7 +61,7 @@ class App extends Component {
                       path="/search"
                       render={props => (<Search {...props} recipes={this.state.recipes} searchRecipes={this.searchRecipes} />)}
                     />
-                    <Route exact path="/new-cookbook" component={NewCookBook} />
+                    <Route exact path="/new-cookbook" component={RecipeBook} />
                   </Switch>
                 </div>
               )}
