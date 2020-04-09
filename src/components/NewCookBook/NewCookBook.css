@@ -1,8 +1,6 @@
-.container {
-  position: relative;
+ .container {
   width: 80%;
   height: 100vh;
-  float: right;
 }
 
 .container > div {

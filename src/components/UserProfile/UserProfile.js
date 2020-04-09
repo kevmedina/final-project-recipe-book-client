@@ -19,7 +19,7 @@ export default class UserProfile extends Component {
           return (
             <div className="user-profile">
               <h1>Welcome {username} to MY CookBook.</h1>
-              <p>Build your own personal cookbooks to </p>
+              <p>Build your own personal cookbooks to make the best meals.</p>
             </div>
           );
         }}

@@ -1,5 +1,6 @@
 .side-navbar {
   width: 20%;
+  min-width: 260px;
   height: 100vh;
   float: left;
   background-color: lightgray;
@@ -13,11 +14,11 @@
 
 .side-navbar > div:nth-child(2) {
   height: 10%;
-  background-color: honeydew;
+  background-color: lightgray;
 }
 
 .side-navbar > div:nth-child(3) {
-  height: 50%;
+  height: 70%;
   background-color: lightblue;
 }
 
@@ -29,7 +30,7 @@
 .side-navbar ul {
   list-style: none;
   margin: 0;
-  padding: 0;
+  padding: 20px 35px;
 }
 
 .side-navbar li {
@@ -50,10 +51,6 @@
   font-size: 14px;
   letter-spacing: 0.8px;
   cursor: pointer;
-}
-
-.side-navbar ul {
-  padding: 20px;
 }
 
 .navlink {

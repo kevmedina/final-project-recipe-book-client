@@ -1,12 +1,19 @@
 import React, { Component } from "react";
 import "./Search.css";
-import RecipeList from '../RecipeList/RecipeList'
+import RecipeList from "../RecipeList/RecipeList";
 
 class Search extends Component {
   state = {
-    search: "",
-    recipes: ""
+    search: '',
   };
+
+  handleSubmit = (event) => {
+    event.preventDefault()
+
+    console.log({props: this.props})
+
+    this.props.searchRecipes(this.state.search);
+  }
 
   handleSearch = (e) => {
     // here we set the search term to the state
@@ -16,21 +23,25 @@ class Search extends Component {
     });
   };
 
-
   render() {
+    const { search } = this.state;
     return (
-      <div className="search-bar">
-        <form>
-          <input
-            name="search"
-            type="text"
-            placeholder="Search for a recipe"
-            onChange={this.handleSearch}
-            value={this.state.search}
-          />
-        </form>
+      <div className="container">
+        <div className="search-bar">
+          <form onSubmit={(event) => this.handleSubmit(event)}>
+            <input
+              name="search"
+              type="text"
+              placeholder="Search for a recipe"
+              onChange={this.handleSearch}
+              value={search}
+            />
 
-        <RecipeList search={this.state.search}/>
+            <button>Submit</button>
+          </form>
+        </div>
+      
+        {this.props.recipes && <RecipeList recipes={this.props.recipes} searchRecipes={this.state.search}/>}
       </div>
     );
   }

@@ -1,22 +1,23 @@
 import React from "react";
 
-const RecipeList = () => {
-  // const filteredRecipes = products.filter((product) => {
-  //   if (checked) {
-  //     return (
-  //       product.name.toLowerCase().includes(search.toLowerCase()) &&
-  //       product.stocked === true
-  //     );
-  //   }
-
-  //   return product.name.toLowerCase().includes(search.toLowerCase());
-  // });
+const RecipeList = (props) => {
+  // console.log({ props });
+  console.log(props);
+  const filteredRecipes = props.recipes.filter((recipe) => {
+    return recipe.recipe.label
+      .toLowerCase()
+      .includes(props.searchRecipes.toLowerCase());
+  });
 
   return (
-    <div className="product-table">
-      {/* {filteredProducts.map((product, id) => {
-        return <Recipe key={id} product={product} />;
-      })} */}
+    <div>
+      {filteredRecipes.map((recipe, index) => {
+        return (
+          <div key={index}>
+            <h3>{recipe.recipe.label}</h3>
+          </div>
+        );
+      })}
     </div>
   );
 };

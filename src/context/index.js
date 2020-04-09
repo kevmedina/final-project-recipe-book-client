@@ -21,9 +21,10 @@ class AuthProvider extends Component {
   };
 
   componentDidMount() {
+    console.log("context component did mount")
     AUTH_SERVICE.getUser()
       .then((responseFromServer) => {
-        console.log("res: ", responseFromServer);
+        console.log("res from is user logged in: ", responseFromServer);
         const { user } = responseFromServer.data;
         this.setState((prevState) => ({
           ...prevState,
@@ -33,7 +34,7 @@ class AuthProvider extends Component {
         }));
       })
       .catch((err) =>
-        console.log("Error while getting the user: ", err.response.data)
+        console.log("Error while getting the user: ", err)
       );
   }
 
