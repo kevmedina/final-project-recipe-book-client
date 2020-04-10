@@ -1,12 +1,13 @@
 .search {
-    width: 100%;
+    width: 80%;
     height: 100vh;
-    background-color: lightgreen;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
 .search-bar {
     height: 15%;
-    background-color: red;
     padding-top: 30px;
 }
 

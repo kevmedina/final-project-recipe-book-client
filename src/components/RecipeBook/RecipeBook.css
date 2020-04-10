@@ -1,4 +1,5 @@
 .new-recipebook {
+  width: 80%;
   display: flex;
   justify-content: center;
   padding-top: 100px;

@@ -1,12 +1,11 @@
 import React from "react";
+import "./NewRecipe.css";
 
 function NewRecipe() {
   return (
-    <div className="new-recipe">
+    <div className="recipe">
       <form>
-        <div className="inner-form-container">
           <div>
-            {/* <label htmlFor="username">Username:</label> */}
             <input
               name="title"
               type="text"
@@ -17,7 +16,6 @@ function NewRecipe() {
           </div>
 
           <div>
-            {/* <label htmlFor="email">Email:</label> */}
             <input
               name="ingredients"
               type="text"
@@ -28,16 +26,10 @@ function NewRecipe() {
           </div>
 
           <div>
-            {/* <label htmlFor="password">Password:</label> */}
-            <input
-              name="cookTime"
-              type="text"
-              placeholder="Cook Time"
-              // value={password}
-              // onChange={handleSignupInput}
-            />
+            <select>
+              <option></option>
+            </select>
           </div>
-        </div>
 
         {/* {message && <div>{message}</div>} */}
         <button>Create Recipe</button>

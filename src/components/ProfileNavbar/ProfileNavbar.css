@@ -1,24 +1,21 @@
 .side-navbar {
-  width: 15rem;
+  width: 20%;
   height: 100vh;
-  float: left;
+  /* float: left; */
   background-color: lightgray;
 }
 
 .side-navbar > div:nth-child(1) {
   height: 15%;
   padding-top: 5px;
-  background-color: grey;
 }
 
 .side-navbar > div:nth-child(2) {
   height: 15%;
-  background-color: lightgray;
 }
 
 .side-navbar > div:nth-child(3) {
   height: 70%;
-  background-color: lightblue;
 }
 
 .side-navbar h1 {

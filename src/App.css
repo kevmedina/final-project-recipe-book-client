@@ -5,6 +5,12 @@
 }
 
 .App {
+  width: 100%;
   text-align: center;
 }
 
+.App > div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
