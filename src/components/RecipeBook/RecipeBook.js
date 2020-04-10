@@ -1,33 +1,37 @@
-import React from "react";
+import React, { Component } from "react";
 import "./RecipeBook.css";
 
-function NewRecipeBook() {
-  return (
-    <div>
-      <div className="inner-container">
-        <div>
-          <h2>Name of Book</h2>
-          <form>
-            <div>
-              <input
-                name="cookbook"
-                type="text"
-                placeholder="Name of Cook Book"
-                // value={password}
-                // onChange={handleSignupInput}
-              />
-            </div>
-            {/* {message && <div>{message}</div>} */}
-            <button>Create Cook Book</button>
-          </form>
-        </div>
+class RecipeBook extends Component {
+  state = {
+    title: ''
+  }
 
-        <div>
-          <h1>Hello</h1>
-        </div>
+  handleSubmit = (e) => {
+    e.preventDefault();
+    console.log('Title: ', this.state.title);
+
+    this.props.createNewRecipeBook(this.state.title);
+  };
+
+  handleInputChange = (e) => {
+    // here we set the search term to the state
+    const { name, value } = e.target;
+    this.setState({
+      [name]: value,
+    });
+  };
+
+  render() {
+    return (
+      <div className="new-recipebook">
+        <form onSubmit={(e) => this.handleSubmit(e)}>
+          <div>Recipe Book</div>
+          <input name="title" type="text" placeholder="Name of Cook Book" onChange={this.handleInputChange} />
+          <button>Create Cook Book</button>
+        </form>
       </div>
-    </div>
-  );
+    );
+  }
 }
 
-export default NewRecipeBook;
+export default RecipeBook;

@@ -1,27 +1,20 @@
- .container {
-  width: 80%;
-  height: 100vh;
-}
-
-.container > div {
-  position: absolute;
-  width: 400px;
-  height: 350px;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  border-radius: 20px;
-}
-
-.inner-container > div:nth-child(1) {
-  background-color: lightblue;
-}
-
-.inner-container > div:nth-child(2) {
-  background-color: lightgray;
-  height: 100%;
-}
-
-.container form {
+.new-recipebook {
   display: flex;
+  justify-content: center;
+  padding-top: 100px;
+}
+
+.new-recipebook form > div {
+  width: 400px;
+  height: 400px;
+  border-radius: 10px;
+  background-color: red;  
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.new-recipebook input {
+  margin: 10px 0
 }

@@ -10,33 +10,50 @@ import UserProfile from "./components/UserProfile/UserProfile";
 import ProfileNavbar from "./components/ProfileNavbar/ProfileNavbar";
 import NewRecipe from "./components/NewRecipe/NewRecipe";
 import Search from "./components/Search/Search";
-import RecipeBook from "./components/RecipeBook/RecipeBook";
 import axios from "axios";
+import RecipeBook from "./components/RecipeBook/RecipeBook";
+import RecipeBooks from "./components/RecipeBooks/RecipeBooks";
 
 class App extends Component {
   state = {
     recipes: null,
-    recipeBooks: null
+    recipeBooks: null,
   };
 
   searchRecipes = async (param) => {
-    // const { value } = e.target;
     try {
-      const recipes = await axios.post(`http://localhost:3001/searchExternalAPI`, {param}, {withCredentials: true})
-      console.log({recipes});
+      const recipes = await axios.post(
+        `http://localhost:3001/searchExternalAPI`,
+        { param },
+        { withCredentials: true }
+      );
+      console.log({ recipes });
 
       this.setState({
         recipes: recipes.data,
       });
-
-    } catch(err) {
-      console.log("Error while getting the recipes: ", {err: err.response})
+    } catch (err) {
+      console.log("Error while getting the recipes: ", { err: err.response });
     }
   };
 
-  getRecipeBooks = () => {
+  createNewRecipeBook = async (param) => {
+    try {
+      const newRecipeBook = await axios.post(
+        "http://localhost:3001/new-recipebook",
+        { param },
+        { withCredentials: true }
+      );
 
-  }
+      this.setState({
+        recipeBooks: newRecipeBook.data,
+      });
+    } catch (err) {
+      console.log("Error while creating a new Recipe Book: ", {
+        err: err.response,
+      });
+    }
+  };
 
   render() {
     return (
@@ -59,9 +76,34 @@ class App extends Component {
                     <Route
                       exact
                       path="/search"
-                      render={props => (<Search {...props} recipes={this.state.recipes} searchRecipes={this.searchRecipes} />)}
+                      render={(props) => (
+                        <Search
+                          {...props}
+                          recipes={this.state.recipes}
+                          searchRecipes={this.searchRecipes}
+                        />
+                      )}
                     />
-                    <Route exact path="/new-cookbook" component={RecipeBook} />
+                    <Route
+                      exact
+                      path="/new-recipebook"
+                      render={(props) => (
+                        <RecipeBook
+                          {...props}
+                          createNewRecipeBook={this.createNewRecipeBook}
+                        />
+                      )}
+                    />
+                    <Route
+                      exact
+                      path="/recipebooks"
+                      render={(props) => (
+                        <RecipeBooks
+                          {...props}
+                          recipeBooks={this.state.recipeBooks}
+                        />
+                      )}
+                    />
                   </Switch>
                 </div>
               )}
