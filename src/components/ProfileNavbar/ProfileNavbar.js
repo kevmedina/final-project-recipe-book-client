@@ -46,11 +46,6 @@ export default class UserProfile extends Component {
                       <i className="fas fa-book-open fa-fw"></i> Recipe Books
                     </NavLink>
                   </li>
-                  {/* <li>
-                    <NavLink className="navlink" to="/recipebooks">
-                      <i className="fas fa-book-open fa-fw"></i> My Cookbooks
-                    </NavLink>
-                  </li> */}
                 </ul>
               </div>
 

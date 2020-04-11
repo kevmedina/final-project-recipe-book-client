@@ -11,14 +11,14 @@
 
 .new-recipe form {
   width: 40vw;
-  height: 300px;
-  margin: 160px 0px 120px 20px;
+  height: 450px;
   background-color: #FFFFFF;
   border: 1px solid lightgray;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  opacity: 0.8;
 }
 
 .new-recipe input {
@@ -26,12 +26,20 @@
   width: 32vw;
   height: 30px;
   padding: 4px 6px;
+  color: green;
+}
+
+.new-recipe input::placeholder {
+  color: green;
+  font-size: 14px;
 }
 
 .new-recipe select {
   width: 32vw;
   height: 30px;
   margin: 10px 0px 20px 0px;
+  color: green;
+  font-size: 14px;
 }
 
 .new-recipe button {

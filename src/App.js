@@ -12,13 +12,16 @@ import NewRecipe from "./components/NewRecipe/NewRecipe";
 import Search from "./components/Search/Search";
 import axios from "axios";
 import RecipeBook from "./components/RecipeBook/RecipeBook";
-import RecipeBooks from "./components/RecipeBooks/RecipeBooks";
 
 class App extends Component {
   state = {
     recipes: null,
-    recipeBooks: null,
+    recipeBooks: [],
   };
+
+  componentDidMount() {
+    this.getRecipeBooks();
+  }
 
   searchRecipes = async (param) => {
     try {
@@ -37,23 +40,48 @@ class App extends Component {
     }
   };
 
-  createNewRecipeBook = async (param) => {
-    try {
-      const newRecipeBook = await axios.post(
+  createNewRecipeBook = (param) => {
+    axios
+      .post(
         "http://localhost:3001/new-recipebook",
         { param },
         { withCredentials: true }
+      )
+      .then((response) => {
+        this.setState({
+          recipeBooks: response.data,
+        });
+      })
+      .catch((err) =>
+        console.log("Error while creating a new Recipe Book: ", {
+          err: err.response,
+        })
       );
-      console.log("New Book: ", newRecipeBook.data.RecipeBook);
-      this.setState({
-        recipeBooks: newRecipeBook.data.RecipeBook,
-      });
-      console.log("Recipe books in state: ", this.state.recipeBooks);
-    } catch (err) {
-      console.log("Error while creating a new Recipe Book: ", {
-        err: err.response,
-      });
-    }
+  };
+
+  getRecipeBooks = () => {
+    axios
+      .get("http://localhost:3001/recipe-books")
+      .then((allRecipeBooks) => {
+        this.setState({
+          recipeBooks: allRecipeBooks.data,
+        });
+        console.log("Recipe books from DB: ", allRecipeBooks);
+      })
+      .catch((err) =>
+        console.log("Error while getting all recipe books from DB: ", err)
+      );
+  };
+
+  deleteRecipeBook = (recipeBookId) => {
+    axios
+      .post(`http://localhost:3001/recipe-books/${recipeBookId}/delete`)
+      .then((response) => {
+        this.setState({
+          recipeBooks: response.data,
+        });
+      })
+      .catch((err) => console.log("Error while deleting recipe book: ", err));
   };
 
   // createNewRecipe = async (param) => {
@@ -87,7 +115,12 @@ class App extends Component {
                     <Route exact path="/signup-page" component={Signup} />
                     <Route exact path="/login-page" component={Login} />
                     <Route exact path="/user-profile" component={UserProfile} />
-                    <Route exact path="/new-recipe" component={NewRecipe} />
+                    <Route
+                      exact
+                      path="/new-recipe"
+                      component={NewRecipe}
+                      recipeBooks={this.state.recipeBooks}
+                    />
                     <Route
                       exact
                       path="/search"
@@ -105,17 +138,9 @@ class App extends Component {
                       render={(props) => (
                         <RecipeBook
                           {...props}
-                          createNewRecipeBook={this.createNewRecipeBook}
-                        />
-                      )}
-                    />
-                    <Route
-                      exact
-                      path="/recipebooks"
-                      render={(props) => (
-                        <RecipeBooks
-                          {...props}
                           recipeBooks={this.state.recipeBooks}
+                          createNewRecipeBook={this.createNewRecipeBook}
+                          deleteRecipeBook={this.deleteRecipeBook}
                         />
                       )}
                     />
