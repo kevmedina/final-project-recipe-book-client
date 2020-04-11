@@ -1,9 +1,9 @@
 import React from "react";
 import "./NewRecipe.css";
 
-function NewRecipe() {
+const NewRecipe = () => {
   return (
-    <div className="recipe">
+    <div className="new-recipe">
       <form>
           <div>
             <input

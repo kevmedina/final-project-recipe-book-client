@@ -23,11 +23,12 @@ class RecipeBook extends Component {
 
   render() {
     return (
-      <div className="new-recipebook">
+      <div className="recipebook">
+        <h1>My Cook Books</h1>
         <form onSubmit={(e) => this.handleSubmit(e)}>
-          <div>Recipe Book</div>
+          {/* <div>Recipe Book</div> */}
           <input name="title" type="text" placeholder="Name of Cook Book" onChange={this.handleInputChange} />
-          <button>Create Cook Book</button>
+          <button>Create</button>
         </form>
       </div>
     );

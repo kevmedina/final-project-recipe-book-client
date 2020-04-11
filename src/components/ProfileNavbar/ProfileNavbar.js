@@ -15,17 +15,13 @@ export default class UserProfile extends Component {
     return (
       <AuthContext.Consumer>
         {(context) => {
-          const { currentUser } = context.state;
+          const { currentUser: { username, image} } = context.state;
           const { handleLogout } = context;
           return (
             <div className="side-navbar">
               <div>
-                <button onClick={handleLogout}>Logout</button>
-                <button>Update Profile</button>
-              </div>
-
-              <div>
-                <h1>{currentUser.username}</h1>
+                <img src={image} alt='cook' />
+                <h1>{username}</h1>
               </div>
 
               <div>
@@ -47,15 +43,20 @@ export default class UserProfile extends Component {
                   </li>
                   <li>
                     <NavLink className="navlink" to="/new-recipebook">
-                      <i className="fas fa-book-open fa-fw"></i> New Cookbook
+                      <i className="fas fa-book-open fa-fw"></i> Recipe Books
                     </NavLink>
                   </li>
-                  <li>
+                  {/* <li>
                     <NavLink className="navlink" to="/recipebooks">
                       <i className="fas fa-book-open fa-fw"></i> My Cookbooks
                     </NavLink>
-                  </li>
+                  </li> */}
                 </ul>
+              </div>
+
+              <div>
+                <button onClick={handleLogout}>Logout</button>
+                {/* <button>Update Profile</button> */}
               </div>
             </div>
           );

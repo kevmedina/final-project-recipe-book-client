@@ -1,7 +1,47 @@
-.recipe {
-  width: 80%;
+.new-recipe {
+  width: calc(100vw - 250px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: url("../../new-recipe.jpg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
 }
 
-.recipe input {
+.new-recipe form {
+  width: 40vw;
+  height: 300px;
+  margin: 160px 0px 120px 20px;
+  background-color: #FFFFFF;
+  border: 1px solid lightgray;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.new-recipe input {
   margin: 10px 0;
+  width: 32vw;
+  height: 30px;
+  padding: 4px 6px;
+}
+
+.new-recipe select {
+  width: 32vw;
+  height: 30px;
+  margin: 10px 0px 20px 0px;
+}
+
+.new-recipe button {
+  width: 20vw;
+  height: 30px;
+  border: 5px;
+  background-color: green;
+  color: #FFFFFF;
+  text-transform: uppercase;
+  font-weight: bold;
+  font-size: 14px;
+  cursor: pointer;
 }

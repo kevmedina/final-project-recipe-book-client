@@ -44,16 +44,31 @@ class App extends Component {
         { param },
         { withCredentials: true }
       );
-
+      console.log("New Book: ", newRecipeBook.data.RecipeBook);
       this.setState({
-        recipeBooks: newRecipeBook.data,
+        recipeBooks: newRecipeBook.data.RecipeBook,
       });
+      console.log("Recipe books in state: ", this.state.recipeBooks);
     } catch (err) {
       console.log("Error while creating a new Recipe Book: ", {
         err: err.response,
       });
     }
   };
+
+  // createNewRecipe = async (param) => {
+  //   try {
+  //     const newRecipe = await axios.post(
+  //       "http://localhost:3001/new-recipe",
+  //       { param },
+  //       { withCredentials: true }
+  //     );
+  //   } catch (err) {
+  //     console.log("Error while creating a new recipe: ", {
+  //       err: err.response,
+  //     });
+  //   }
+  // };
 
   render() {
     return (
