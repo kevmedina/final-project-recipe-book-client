@@ -1,7 +1,8 @@
 import React from "react";
 import "./NewRecipe.css";
 
-const NewRecipe = () => {
+const NewRecipe = ({ recipeBooks }) => {
+  console.log("recipe books: ", recipeBooks);
   return (
     <div className="new-recipe">
       <form>
@@ -41,14 +42,17 @@ const NewRecipe = () => {
         </div>
 
         <div>
-          <select>
-            <option disabled selected>
+          <select defaultValue="default">
+            <option disabled value="default">
               Select Recipe Book
             </option>
-            <option>Deserts</option>
-            <option>Appetizers</option>
-            <option>Plant Based</option>
-            <option>Sea Food</option>
+            {recipeBooks.length !== 0 ? (
+              recipeBooks.map((recipeBook, index) => {
+                return <option key={index}>{recipeBook.title}</option>;
+              })
+            ) : (
+              <option>Create New</option>
+            )}
           </select>
         </div>
 

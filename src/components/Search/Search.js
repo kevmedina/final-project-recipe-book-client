@@ -10,8 +10,6 @@ class Search extends Component {
   handleSubmit = (event) => {
     event.preventDefault();
 
-    console.log({ props: this.props });
-
     this.props.searchRecipes(this.state.search);
   };
 

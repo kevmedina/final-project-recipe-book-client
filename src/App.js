@@ -11,7 +11,7 @@ import ProfileNavbar from "./components/ProfileNavbar/ProfileNavbar";
 import NewRecipe from "./components/NewRecipe/NewRecipe";
 import Search from "./components/Search/Search";
 import axios from "axios";
-import RecipeBook from "./components/RecipeBook/RecipeBook";
+import RecipeBook from "./components/RecipeBooks/RecipeBooks";
 
 class App extends Component {
   state = {
@@ -25,16 +25,15 @@ class App extends Component {
 
   searchRecipes = async (param) => {
     try {
-      const recipes = await axios.post(
+      const recipeSearch = await axios.post(
         `http://localhost:3001/searchExternalAPI`,
         { param },
         { withCredentials: true }
       );
-      console.log({ recipes });
-
       this.setState({
-        recipes: recipes.data,
+        recipes: recipeSearch.data,
       });
+      console.log("Recipes from state: ", this.state.recipes);
     } catch (err) {
       console.log("Error while getting the recipes: ", { err: err.response });
     }
@@ -118,8 +117,12 @@ class App extends Component {
                     <Route
                       exact
                       path="/new-recipe"
-                      component={NewRecipe}
-                      recipeBooks={this.state.recipeBooks}
+                      render={(props) => (
+                        <NewRecipe
+                          {...props}
+                          recipeBooks={this.state.recipeBooks}
+                        />
+                      )}
                     />
                     <Route
                       exact

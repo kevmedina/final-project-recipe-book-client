@@ -2,13 +2,13 @@ import React from "react";
 import "./RecipeList.css";
 
 const RecipeList = (props) => {
-  // console.log({ props });
   console.log(props);
   const filteredRecipes = props.recipes.filter((recipe) => {
-    return recipe.recipe.label
+    return recipe.title
       .toLowerCase()
       .includes(props.searchRecipes.toLowerCase());
   });
+  console.log("Filtered Recipes: ", filteredRecipes);
 
   return (
     <div className="recipe-list">
@@ -16,11 +16,13 @@ const RecipeList = (props) => {
         return (
           <div key={index} className="recipe">
             <div>
-              <img src={recipe.recipe.image} alt="recipe" />
+              <img src={recipe.image} alt="recipe" />
             </div>
             <div>
-              <h3>{recipe.recipe.label}</h3>
-              <button><i className="fas fa-plus fa-fw"></i></button>
+              <h3>{recipe.title}</h3>
+              <button>
+                <i className="fas fa-plus fa-fw"></i>
+              </button>
             </div>
           </div>
         );
