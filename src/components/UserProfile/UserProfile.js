@@ -16,10 +16,23 @@ export default class UserProfile extends Component {
       <AuthContext.Consumer>
         {(context) => {
           const { username } = context.state.currentUser;
+          const { recipeBooks } = this.props;
           return (
             <div className="user-profile">
-              <h1>Welcome {username} to MY CookBook.</h1>
-              <p>Build your own personal cookbooks to make the best meals.</p>
+              <div className="user-header">
+                <h1>Welcome {username} to MY CookBook.</h1>
+                <p>Build your own personal cookbooks to make the best meals.</p>
+              </div>
+
+              <div className="user-info">
+                <div>
+                  <h3>Recipe Books: {recipeBooks.length}</h3>
+                  <h3>Recipes: </h3>
+                </div>
+                <div>
+                  <h1>Top 5 Favorite Recipes</h1>
+                </div>
+              </div>
             </div>
           );
         }}

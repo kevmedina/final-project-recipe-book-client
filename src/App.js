@@ -107,13 +107,22 @@ class App extends Component {
               {loading ? (
                 <h1>Hello</h1>
               ) : (
-                <div>
+                <div className={`${isLoggedIn ? "user-logged-in" : ""}`}>
                   {isLoggedIn ? <ProfileNavbar /> : <Navbar />}
                   <Switch>
                     <Route exact path="/" component={Home} />
                     <Route exact path="/signup-page" component={Signup} />
                     <Route exact path="/login-page" component={Login} />
-                    <Route exact path="/user-profile" component={UserProfile} />
+                    <Route
+                      exact
+                      path="/user-profile"
+                      render={(props) => (
+                        <UserProfile
+                          {...props}
+                          recipeBooks={this.state.recipeBooks}
+                        />
+                      )}
+                    />
                     <Route
                       exact
                       path="/new-recipe"

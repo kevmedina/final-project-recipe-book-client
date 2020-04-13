@@ -16,7 +16,10 @@ const RecipeList = (props) => {
         return (
           <div key={index} className="recipe">
             <div>
-              <img src={recipe.image} alt="recipe" />
+              <img
+                src={`https://spoonacular.com/recipeImages/${recipe.image}`}
+                alt="recipe"
+              />
             </div>
             <div>
               <h3>{recipe.title}</h3>

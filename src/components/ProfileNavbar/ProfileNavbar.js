@@ -51,7 +51,7 @@ export default class UserProfile extends Component {
 
               <div>
                 <button onClick={handleLogout}>Logout</button>
-                {/* <button>Update Profile</button> */}
+                <button>Update Profile</button>
               </div>
             </div>
           );

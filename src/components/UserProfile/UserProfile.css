@@ -1,4 +1,27 @@
 .user-profile {
   width: calc(100vw - 250px);
-  height: 100vh;
 }
+
+.user-profile > div:first-child {
+  margin: 10px;
+  background-color: lightgrey;
+  border-radius: 10px;
+}
+
+.user-header {
+  height: 40%;
+}
+
+.user-info {
+  height: 55%;
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.user-info > div {
+  width: 50%;
+  margin: 10px;
+  background-color: lightgrey;
+  border-radius: 10px;
+}
+
