@@ -21,10 +21,10 @@ class AuthProvider extends Component {
   };
 
   componentDidMount() {
-    console.log("context component did mount")
+    // console.log("context component did mount")
     AUTH_SERVICE.getUser()
       .then((responseFromServer) => {
-        console.log("res from is user logged in: ", responseFromServer);
+        // console.log("res from is user logged in: ", responseFromServer);
         const { user } = responseFromServer.data;
         this.setState((prevState) => ({
           ...prevState,

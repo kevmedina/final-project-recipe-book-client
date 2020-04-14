@@ -5,7 +5,7 @@ import "./ProfileNavbar.css";
 
 export default class UserProfile extends Component {
   componentDidMount() {
-    console.log("------------", this.context.state.currentUser);
+    // console.log("------------", this.context.state.currentUser);
     if (!this.context.state.isLoggedIn) {
       return this.props.history.push("/signup-page");
     }

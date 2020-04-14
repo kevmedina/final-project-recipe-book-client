@@ -1,0 +1,15 @@
+.recipe-details {
+    width: 80%;
+    display: flex;
+    justify-content: center;
+    align-items: center;   
+}
+
+.recipe-details > div {
+    border: 1px solid black;
+}
+
+.recipe-details > div > div:nth-child(2) {
+    background-color: lightgray;
+    height: 100px;
+}

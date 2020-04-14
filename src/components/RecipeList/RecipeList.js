@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import "./RecipeList.css";
 
 const RecipeList = (props) => {
@@ -22,9 +23,21 @@ const RecipeList = (props) => {
               />
             </div>
             <div>
-              <h3>{recipe.title}</h3>
+              <Link
+                to={{
+                  pathname: `/recipe-details`,
+                  state: {
+                    recipe
+                  }
+                }}
+              >
+                <h3>{recipe.title}</h3>
+              </Link>
               <button>
                 <i className="fas fa-plus fa-fw"></i>
+              </button>
+              <button>
+                <i className="far fa-star fa-fw"></i>
               </button>
             </div>
           </div>

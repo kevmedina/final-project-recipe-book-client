@@ -12,6 +12,7 @@ import NewRecipe from "./components/NewRecipe/NewRecipe";
 import Search from "./components/Search/Search";
 import axios from "axios";
 import RecipeBook from "./components/RecipeBooks/RecipeBooks";
+import RecipeDetails from "./components/RecipeDetails/RecipeDetails";
 
 class App extends Component {
   state = {
@@ -33,7 +34,6 @@ class App extends Component {
       this.setState({
         recipes: recipeSearch.data,
       });
-      console.log("Recipes from state: ", this.state.recipes);
     } catch (err) {
       console.log("Error while getting the recipes: ", { err: err.response });
     }
@@ -65,7 +65,6 @@ class App extends Component {
         this.setState({
           recipeBooks: allRecipeBooks.data,
         });
-        console.log("Recipe books from DB: ", allRecipeBooks);
       })
       .catch((err) =>
         console.log("Error while getting all recipe books from DB: ", err)
@@ -155,6 +154,11 @@ class App extends Component {
                           deleteRecipeBook={this.deleteRecipeBook}
                         />
                       )}
+                    />
+                    <Route
+                      exact
+                      path="/recipe-details"
+                      render={(props) => <RecipeDetails {...props} />}
                     />
                   </Switch>
                 </div>
