@@ -16,7 +16,7 @@ export default class UserProfile extends Component {
       <AuthContext.Consumer>
         {(context) => {
           const { username } = context.state.currentUser;
-          const { recipeBooks } = this.props;
+          const { recipeBooks, favorites } = this.props;
           return (
             <div className="user-profile">
               <div className="user-header">
@@ -31,6 +31,29 @@ export default class UserProfile extends Component {
                 </div>
                 <div>
                   <h1>Top 5 Favorite Recipes</h1>
+                  <div className="favorites">
+                    {favorites.length !== 0 ? (
+                      favorites.map((recipe) => {
+                        return (
+                          <div>
+                            <div>
+                              <img
+                                src={`https://spoonacular.com/recipeImages/${recipe.image}`}
+                                alt={recipe.title}
+                              />
+                            </div>
+                            <div>
+                              <h4>{recipe.title}</h4>
+                            </div>
+                          </div>
+                        );
+                      })
+                    ) : (
+                      <div>
+                        Click the star icon on a recipe to add a favorite
+                      </div>
+                    )}
+                  </div>
                 </div>
               </div>
             </div>

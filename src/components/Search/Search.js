@@ -46,6 +46,7 @@ class Search extends Component {
               recipeBooks={this.props.recipeBooks}
               searchRecipes={this.state.search}
               addRecipe={this.props.addRecipe}
+              addFavorite={this.props.addFavorite}
             />
           )}
         </div>

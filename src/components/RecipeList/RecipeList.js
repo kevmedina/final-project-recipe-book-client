@@ -2,7 +2,13 @@ import React from "react";
 import { Link } from "react-router-dom";
 import "./RecipeList.css";
 
-const RecipeList = ({ recipes, recipeBooks, searchRecipes, addRecipe }) => {
+const RecipeList = ({
+  recipes,
+  // recipeBooks,
+  searchRecipes,
+  addRecipe,
+  addFavorite,
+}) => {
   // console.log(props);
   const filteredRecipes = recipes.filter((recipe) => {
     return recipe.title.toLowerCase().includes(searchRecipes.toLowerCase());
@@ -32,23 +38,14 @@ const RecipeList = ({ recipes, recipeBooks, searchRecipes, addRecipe }) => {
                 <h3>{recipe.title}</h3>
               </Link>
               <div>
-                {/* <select defaultValue="default">
-                  <option disabled value="default">
-                    Select Recipe Book
-                  </option>
-                  {recipeBooks.length !== 0 ? (
-                    recipeBooks.map((recipeBook, index) => {
-                      return <option key={index}>{recipeBook.title}</option>;
-                    })
-                  ) : (
-                    <option>Create New</option>
-                  )}
-                </select> */}
                 <i
                   onClick={() => addRecipe(recipe.id)}
                   className="fas fa-plus fa-fw"
                 ></i>
-                <i className="far fa-star fa-fw"></i>
+                <i
+                  onClick={() => addFavorite(recipe.id)}
+                  className="far fa-star fa-fw"
+                ></i>
               </div>
             </div>
           </div>

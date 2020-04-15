@@ -18,6 +18,7 @@ class App extends Component {
   state = {
     recipes: null,
     recipeBooks: [],
+    favorites: [],
   };
 
   componentDidMount() {
@@ -94,6 +95,18 @@ class App extends Component {
       .catch((err) => console.log("Error while adding a recipe: ", err));
   };
 
+  addFavorite = (recipeId) => {
+    const favorite = this.state.recipes.find(
+      (recipe) => recipe.id === recipeId
+    );
+
+    console.log("Favorite: ", favorite);
+
+    // this.setState({
+    //   favorites: favorite,
+    // });
+  };
+
   render() {
     return (
       <AuthContext.Consumer>
@@ -117,6 +130,7 @@ class App extends Component {
                         <UserProfile
                           {...props}
                           recipeBooks={this.state.recipeBooks}
+                          favorites={this.state.favorites}
                         />
                       )}
                     />
@@ -140,6 +154,7 @@ class App extends Component {
                           recipeBooks={this.state.recipeBooks}
                           searchRecipes={this.searchRecipes}
                           addRecipe={this.addRecipe}
+                          addFavorite={this.addFavorite}
                         />
                       )}
                     />
