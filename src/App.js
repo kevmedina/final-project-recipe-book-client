@@ -82,19 +82,17 @@ class App extends Component {
       .catch((err) => console.log("Error while deleting recipe book: ", err));
   };
 
-  // createNewRecipe = async (param) => {
-  //   try {
-  //     const newRecipe = await axios.post(
-  //       "http://localhost:3001/new-recipe",
-  //       { param },
-  //       { withCredentials: true }
-  //     );
-  //   } catch (err) {
-  //     console.log("Error while creating a new recipe: ", {
-  //       err: err.response,
-  //     });
-  //   }
-  // };
+  addRecipe = (recipeId) => {
+    const newRecipe = this.state.recipes.find(
+      (recipe) => recipe.id === recipeId
+    );
+    axios
+      .post("http://localhost:3001/add-recipe", newRecipe)
+      .then((recipe) => {
+        console.log("New Recipe: ", recipe);
+      })
+      .catch((err) => console.log("Error while adding a recipe: ", err));
+  };
 
   render() {
     return (
@@ -139,7 +137,9 @@ class App extends Component {
                         <Search
                           {...props}
                           recipes={this.state.recipes}
+                          recipeBooks={this.state.recipeBooks}
                           searchRecipes={this.searchRecipes}
+                          addRecipe={this.addRecipe}
                         />
                       )}
                     />

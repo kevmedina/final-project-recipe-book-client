@@ -6,10 +6,19 @@
 }
 
 .recipe-details > div {
-    border: 1px solid black;
+    border: 1px solid #3bbeac;
+    /* padding: 5px; */
 }
 
 .recipe-details > div > div:nth-child(2) {
-    background-color: lightgray;
-    height: 100px;
+    background-color: #e2e2e2;
+    height: 130px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.recipe-details img {
+    width: 35vw;
+    height: 40vh;
 }

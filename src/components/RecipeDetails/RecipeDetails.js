@@ -2,12 +2,8 @@ import React, { Component } from "react";
 import "./RecipeDetails.css";
 
 class RecipeDetails extends Component {
-  componentDidMount() {
-    console.log(this.props.location.state);
-  }
   render() {
     const { recipe } = this.props.location.state;
-    console.log("Recipe details: ", recipe);
     return (
       <div className="recipe-details">
         <div>

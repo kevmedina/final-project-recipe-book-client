@@ -29,7 +29,7 @@
   height: 25px;
   border: none;
   border-radius: 4px;
-  background-color: green;
+  background-color: #3bbeac;
   color: #ffffff;
   font-weight: bold;
   text-transform: uppercase;
@@ -51,11 +51,12 @@
 }
 
 .recipe-book {
-  width: 200px;
-  height: 200px;
-  background-color: green;
-  margin: 10px;
+  width: 150px;
+  height: 150px;
+  background-color: #3bbeac;
+  margin: 20px;
   display: flex;
+  font-size: 14px;
   flex-direction: column;
   justify-content: space-evenly;
   align-items: center;

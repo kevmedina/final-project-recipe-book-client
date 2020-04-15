@@ -43,7 +43,9 @@ class Search extends Component {
           {this.props.recipes && (
             <RecipeList
               recipes={this.props.recipes}
+              recipeBooks={this.props.recipeBooks}
               searchRecipes={this.state.search}
+              addRecipe={this.props.addRecipe}
             />
           )}
         </div>
