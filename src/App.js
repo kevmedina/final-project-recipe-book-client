@@ -83,10 +83,11 @@ class App extends Component {
       .catch((err) => console.log("Error while deleting recipe book: ", err));
   };
 
-  addRecipe = (recipeId) => {
+  addRecipe = (recipeId, recipeBookId) => {
     const newRecipe = this.state.recipes.find(
       (recipe) => recipe.id === recipeId
     );
+    newRecipe.bookId = recipeBookId;
     axios
       .post("http://localhost:3001/add-recipe", newRecipe)
       .then((recipe) => {
@@ -102,9 +103,9 @@ class App extends Component {
 
     console.log("Favorite: ", favorite);
 
-    // this.setState({
-    //   favorites: favorite,
-    // });
+    this.setState({
+      favorites: favorite,
+    });
   };
 
   render() {

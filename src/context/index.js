@@ -33,9 +33,7 @@ class AuthProvider extends Component {
           loading: false,
         }));
       })
-      .catch((err) =>
-        console.log("Error while getting the user: ", err)
-      );
+      .catch((err) => console.log("Error while getting the user: ", err));
   }
 
   handleSignupInput = (e) => {
