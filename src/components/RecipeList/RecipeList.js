@@ -43,6 +43,7 @@ class RecipeList extends Component {
               </div>
               <div>
                 <Link
+                className="link"
                   to={{
                     pathname: `/recipe-details`,
                     state: {
@@ -52,7 +53,7 @@ class RecipeList extends Component {
                 >
                   <h3>{recipe.title}</h3>
                 </Link>
-                <div>
+                <div className="recipe-info">
                   <div>
                     <select
                       defaultValue="default"

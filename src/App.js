@@ -43,7 +43,7 @@ class App extends Component {
   createNewRecipeBook = (param) => {
     axios
       .post(
-        "http://localhost:3001/new-recipebook",
+        "http://localhost:3001/add-recipebook",
         { param },
         { withCredentials: true }
       )
