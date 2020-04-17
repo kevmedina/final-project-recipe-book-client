@@ -1,7 +1,8 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
 import "./RecipeBooks.css";
 
-class RecipeBook extends Component {
+class RecipeBooks extends Component {
   state = {
     title: "",
   };
@@ -23,7 +24,7 @@ class RecipeBook extends Component {
   };
 
   render() {
-    const { deleteRecipeBook } = this.props;
+    const { deleteRecipeBook, getRecipesFromBook } = this.props;
     return (
       <div className="recipebook">
         <div>
@@ -43,8 +44,18 @@ class RecipeBook extends Component {
         <div>
           {this.props.recipeBooks.map((recipeBook, index) => {
             return (
-              <div key={index} className="recipe-book">
-                <h3>{recipeBook.title}</h3>
+              <div
+                key={index}
+                className="recipe-book"
+                onClick={() => getRecipesFromBook(recipeBook._id)}
+              >
+                <Link
+                  key={index}
+                  to="/recipes-from-book"
+                  onClick={() => getRecipesFromBook(recipeBook._id)}
+                >
+                  <h3>{recipeBook.title}</h3>
+                </Link>
                 <i
                   onClick={() => deleteRecipeBook(recipeBook._id)}
                   className="fas fa-trash fa-fw"
@@ -58,4 +69,4 @@ class RecipeBook extends Component {
   }
 }
 
-export default RecipeBook;
+export default RecipeBooks;

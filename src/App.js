@@ -11,14 +11,16 @@ import ProfileNavbar from "./components/ProfileNavbar/ProfileNavbar";
 import NewRecipe from "./components/NewRecipe/NewRecipe";
 import Search from "./components/Search/Search";
 import axios from "axios";
-import RecipeBook from "./components/RecipeBooks/RecipeBooks";
+import RecipeBooks from "./components/RecipeBooks/RecipeBooks";
 import RecipeDetails from "./components/RecipeDetails/RecipeDetails";
+import RecipesFromBook from "./components/RecipesFromBook/RecipesFromBook";
 
 class App extends Component {
   state = {
     recipes: null,
     recipeBooks: [],
     favorites: [],
+    recipesPerBook: [],
   };
 
   componentDidMount() {
@@ -38,6 +40,20 @@ class App extends Component {
     } catch (err) {
       console.log("Error while getting the recipes: ", { err: err.response });
     }
+  };
+
+  getRecipesFromBook = (recipeBookId) => {
+    axios
+      .get(`http://localhost:3001/recipe-books/${recipeBookId}`)
+      .then((response) => {
+        console.log("Response: ", response.data);
+        this.setState({
+          recipesPerBook: [...this.state.recipesPerBook, response.data],
+        });
+      })
+      .catch((err) =>
+        console.log("Error while getting recipes from book: ", err)
+      );
   };
 
   createNewRecipeBook = (param) => {
@@ -104,7 +120,7 @@ class App extends Component {
     console.log("Favorite: ", favorite);
 
     this.setState({
-      favorites: [...this.state.favorites, favorite]
+      favorites: [...this.state.favorites, favorite],
     });
     console.log("Favorites from the state: ", this.state.favorites);
   };
@@ -164,11 +180,13 @@ class App extends Component {
                       exact
                       path="/new-recipebook"
                       render={(props) => (
-                        <RecipeBook
+                        <RecipeBooks
                           {...props}
                           recipeBooks={this.state.recipeBooks}
+                          recipesPerBook={this.state.recipesPerBook}
                           createNewRecipeBook={this.createNewRecipeBook}
                           deleteRecipeBook={this.deleteRecipeBook}
+                          getRecipesFromBook={this.getRecipesFromBook}
                         />
                       )}
                     />
@@ -176,6 +194,16 @@ class App extends Component {
                       exact
                       path="/recipe-details"
                       render={(props) => <RecipeDetails {...props} />}
+                    />
+                    <Route
+                      exact
+                      path="/recipes-from-book"
+                      render={(props) => (
+                        <RecipesFromBook
+                          {...props}
+                          recipesPerBook={this.state.recipesPerBook}
+                        />
+                      )}
                     />
                   </Switch>
                 </div>
