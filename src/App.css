@@ -13,3 +13,7 @@
 .user-logged-in {
   display: flex;
 }
+
+.link:hover {
+  text-decoration: none;
+}

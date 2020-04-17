@@ -89,14 +89,17 @@ class App extends Component {
   };
 
   deleteRecipeBook = (recipeBookId) => {
-    axios
-      .post(`http://localhost:3001/recipe-books/${recipeBookId}/delete`)
-      .then((response) => {
-        this.setState({
-          recipeBooks: response.data,
-        });
-      })
-      .catch((err) => console.log("Error while deleting recipe book: ", err));
+    const result = window.confirm("Click OK to permanently delete this recipe book.");
+    if (result) {
+      axios
+        .post(`http://localhost:3001/recipe-books/${recipeBookId}/delete`)
+        .then((response) => {
+          this.setState({
+            recipeBooks: response.data,
+          });
+        })
+        .catch((err) => console.log("Error while deleting recipe book: ", err));
+    } 
   };
 
   addRecipe = (recipeId, recipeBookId) => {

@@ -44,22 +44,21 @@ class RecipeBooks extends Component {
         <div>
           {this.props.recipeBooks.map((recipeBook, index) => {
             return (
-              <div
-                key={index}
-                className="recipe-book"
-                onClick={() => getRecipesFromBook(recipeBook._id)}
-              >
+              <div key={index} className="recipe-book">
                 <Link
+                  className="link"
                   key={index}
                   to="/recipes-from-book"
                   onClick={() => getRecipesFromBook(recipeBook._id)}
                 >
                   <h3>{recipeBook.title}</h3>
                 </Link>
-                <i
-                  onClick={() => deleteRecipeBook(recipeBook._id)}
-                  className="fas fa-trash fa-fw"
-                ></i>
+                <div>
+                  <i
+                    onClick={() => deleteRecipeBook(recipeBook._id)}
+                    className="fas fa-trash fa-fw"
+                  ></i>
+                </div>
               </div>
             );
           })}
