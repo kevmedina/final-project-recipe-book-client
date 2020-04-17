@@ -33,9 +33,9 @@ export default class UserProfile extends Component {
                   <h1>Top 5 Favorite Recipes</h1>
                   <div className="favorites">
                     {favorites.length !== 0 ? (
-                      favorites.map((recipe) => {
+                      favorites.map((recipe, index) => {
                         return (
-                          <div>
+                          <div key={index}>
                             <div>
                               <img
                                 src={`https://spoonacular.com/recipeImages/${recipe.image}`}

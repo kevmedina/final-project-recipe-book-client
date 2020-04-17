@@ -28,7 +28,6 @@ class RecipeList extends Component {
     const filteredRecipes = recipes.filter((recipe) => {
       return recipe.title.toLowerCase().includes(searchRecipes.toLowerCase());
     });
-    console.log("Filtered Recipes: ", filteredRecipes);
 
     return (
       <div className="recipe-list">

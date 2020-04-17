@@ -104,8 +104,9 @@ class App extends Component {
     console.log("Favorite: ", favorite);
 
     this.setState({
-      favorites: favorite,
+      favorites: [...this.state.favorites, favorite]
     });
+    console.log("Favorites from the state: ", this.state.favorites);
   };
 
   render() {

@@ -30,3 +30,9 @@
   height: 30px;
 }
 
+.favorites > div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
