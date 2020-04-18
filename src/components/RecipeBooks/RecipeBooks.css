@@ -25,10 +25,11 @@
 }
 
 .recipebook button {
-  width: 60px;
+  width: 80px;
   height: 25px;
   border: none;
   border-radius: 4px;
+  font-size: 12px;
   background-color: #3bbeac;
   color: #ffffff;
   font-weight: bold;

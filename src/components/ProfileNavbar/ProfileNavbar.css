@@ -14,7 +14,7 @@
 .side-navbar > div:nth-child(1) {
   height: 30%;
   padding-top: 5px;
-  background-color: #3bbeac;
+  background-color: lightseagreen;
   color: #ffffff;
 }
 
@@ -47,7 +47,7 @@
   height: 30px;
   border-radius: 20px;
   margin: 5px 20px;
-  background-color: #3bbeac;
+  background-color: lightseagreen;
   color: #ffffff;
   text-transform: uppercase;
   font-weight: bold;
@@ -65,7 +65,7 @@
 
 .navlink {
   text-decoration: none;
-  color: #3bbeac;
+  color: lightseagreen;
 }
 
 .navlink i {

@@ -20,7 +20,7 @@ class App extends Component {
     recipes: null,
     recipeBooks: [],
     favorites: [],
-    recipesPerBook: [],
+    currentRecipeBook: '',
   };
 
   componentDidMount() {
@@ -48,7 +48,7 @@ class App extends Component {
       .then((response) => {
         console.log("Response: ", response.data);
         this.setState({
-          recipesPerBook: [...this.state.recipesPerBook, response.data],
+          currentRecipeBook: response.data,
         });
       })
       .catch((err) =>
@@ -89,7 +89,9 @@ class App extends Component {
   };
 
   deleteRecipeBook = (recipeBookId) => {
-    const result = window.confirm("Click OK to permanently delete this recipe book.");
+    const result = window.confirm(
+      "Click OK to permanently delete this recipe book."
+    );
     if (result) {
       axios
         .post(`http://localhost:3001/recipe-books/${recipeBookId}/delete`)
@@ -99,7 +101,7 @@ class App extends Component {
           });
         })
         .catch((err) => console.log("Error while deleting recipe book: ", err));
-    } 
+    }
   };
 
   addRecipe = (recipeId, recipeBookId) => {
@@ -186,7 +188,6 @@ class App extends Component {
                         <RecipeBooks
                           {...props}
                           recipeBooks={this.state.recipeBooks}
-                          recipesPerBook={this.state.recipesPerBook}
                           createNewRecipeBook={this.createNewRecipeBook}
                           deleteRecipeBook={this.deleteRecipeBook}
                           getRecipesFromBook={this.getRecipesFromBook}
@@ -204,7 +205,7 @@ class App extends Component {
                       render={(props) => (
                         <RecipesFromBook
                           {...props}
-                          recipesPerBook={this.state.recipesPerBook}
+                          recipeBook={this.state.currentRecipeBook}
                         />
                       )}
                     />

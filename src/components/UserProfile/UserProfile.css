@@ -26,13 +26,15 @@
 }
 
 .favorites img {
-  width: 30px;
-  height: 30px;
+  width: 40px;
+  height: 40px;
 }
 
 .favorites > div {
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
+  padding: 10px 20px;
+  overflow: scroll;
 }
 
