@@ -17,16 +17,18 @@ import RecipesFromBook from "./components/RecipesFromBook/RecipesFromBook";
 
 class App extends Component {
   state = {
-    recipes: null,
+    recipes: [],
     recipeBooks: [],
     favorites: [],
-    currentRecipeBook: '',
+    currentRecipeBook: "",
   };
 
+  // When the component mounts it calls the getRecipeBooks function to retrieve all the books
   componentDidMount() {
     this.getRecipeBooks();
   }
 
+  // search for recipes from the API
   searchRecipes = async (param) => {
     try {
       const recipeSearch = await axios.post(
@@ -42,6 +44,37 @@ class App extends Component {
     }
   };
 
+  // Add a recipe from the API to the selected recipe book
+  addRecipe = (recipeId, recipeBookId) => {
+    const newRecipe = this.state.recipes.find(
+      (recipe) => recipe.id === recipeId
+    );
+    newRecipe.bookId = recipeBookId;
+    axios
+      .post("http://localhost:3001/add-recipe", newRecipe)
+      .then((recipe) => {
+        console.log("New Recipe: ", recipe.data);
+        console.log("Recipes in state: ", this.state.recipes);
+      })
+      .catch((err) => console.log("Error while adding a recipe: ", err));
+  };
+
+  // Delete a recipe from its recipe book
+  deleteRecipe = (recipeId, recipeBookId) => {
+    axios
+      .post("http://localhost:3001/recipe/delete", {
+        recipeId,
+        recipeBookId,
+      })
+      .then((response) => {
+        console.log("Deleted recipe: ", response.data)
+      })
+      .catch((err) =>
+        console.log("Error while deleting a recipe from its book: ", err)
+      );
+  };
+
+  // Get all recipes for each book the user clicks on
   getRecipesFromBook = (recipeBookId) => {
     axios
       .get(`http://localhost:3001/recipe-books/${recipeBookId}`)
@@ -56,6 +89,7 @@ class App extends Component {
       );
   };
 
+  // Create a new recipe book
   createNewRecipeBook = (param) => {
     axios
       .post(
@@ -75,6 +109,7 @@ class App extends Component {
       );
   };
 
+  // Get all the recipe books from DB
   getRecipeBooks = () => {
     axios
       .get("http://localhost:3001/recipe-books")
@@ -88,6 +123,7 @@ class App extends Component {
       );
   };
 
+  // Delete a recipe book
   deleteRecipeBook = (recipeBookId) => {
     const result = window.confirm(
       "Click OK to permanently delete this recipe book."
@@ -104,24 +140,11 @@ class App extends Component {
     }
   };
 
-  addRecipe = (recipeId, recipeBookId) => {
-    const newRecipe = this.state.recipes.find(
-      (recipe) => recipe.id === recipeId
-    );
-    newRecipe.bookId = recipeBookId;
-    axios
-      .post("http://localhost:3001/add-recipe", newRecipe)
-      .then((recipe) => {
-        console.log("New Recipe: ", recipe);
-      })
-      .catch((err) => console.log("Error while adding a recipe: ", err));
-  };
-
+  // Update a recipe to be a favorite
   addFavorite = (recipeId) => {
     const favorite = this.state.recipes.find(
       (recipe) => recipe.id === recipeId
     );
-
     console.log("Favorite: ", favorite);
 
     this.setState({
@@ -206,6 +229,7 @@ class App extends Component {
                         <RecipesFromBook
                           {...props}
                           recipeBook={this.state.currentRecipeBook}
+                          deleteRecipe={this.deleteRecipe}
                         />
                       )}
                     />
