@@ -15,9 +15,9 @@ const RECIPE_BOOK_SERVICE = {
   getRecipeBooks() {
     return service.post("/recipe-books");
   },
-  deleteRecipeBook(recipeBookId) {
+  deleteRecipeBook(recipeBookID) {
     return service.post(
-      `/recipe-books/${recipeBookId}/delete`
+      `/recipe-books/${recipeBookID}/delete`
     );
   },
 };

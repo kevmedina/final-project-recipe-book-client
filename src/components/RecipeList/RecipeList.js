@@ -4,7 +4,7 @@ import "./RecipeList.css";
 
 class RecipeList extends Component {
   state = {
-    bookId: "",
+    bookID: "",
   };
 
   handleSelectChange = (e) => {
@@ -12,18 +12,12 @@ class RecipeList extends Component {
     console.log("Value: ", value);
 
     this.setState({
-      bookId: value,
+      bookID: value,
     });
   };
 
   render() {
-    const {
-      recipes,
-      recipeBooks,
-      searchRecipes,
-      addRecipe,
-      addFavorite,
-    } = this.props;
+    const { recipes, recipeBooks, searchRecipes, addRecipe } = this.props;
 
     const filteredRecipes = recipes.filter((recipe) => {
       return recipe.title.toLowerCase().includes(searchRecipes.toLowerCase());
@@ -42,7 +36,7 @@ class RecipeList extends Component {
               </div>
               <div>
                 <Link
-                className="link"
+                  className="link"
                   to={{
                     pathname: `/recipe-details`,
                     state: {
@@ -75,12 +69,8 @@ class RecipeList extends Component {
                     </select>
                   </div>
                   <i
-                    onClick={() => addRecipe(recipe.id, this.state.bookId)}
+                    onClick={() => addRecipe(recipe.id, this.state.bookID)}
                     className="fas fa-plus fa-fw"
-                  ></i>
-                  <i
-                    onClick={() => addFavorite(recipe.id)}
-                    className="far fa-star fa-fw"
                   ></i>
                 </div>
               </div>

@@ -26,11 +26,11 @@
   width: 32vw;
   height: 30px;
   padding: 4px 6px;
-  color: green;
+  color: lightseagreen;
 }
 
 .new-recipe input::placeholder {
-  color: green;
+  color: lightseagreen;
   font-size: 14px;
 }
 
@@ -38,7 +38,7 @@
   width: 32vw;
   height: 30px;
   margin: 10px 0px 20px 0px;
-  color: green;
+  color: lightseagreen;
   font-size: 14px;
 }
 
@@ -46,7 +46,7 @@
   width: 20vw;
   height: 30px;
   border: 5px;
-  background-color: green;
+  background-color: lightseagreen;
   color: #FFFFFF;
   text-transform: uppercase;
   font-weight: bold;

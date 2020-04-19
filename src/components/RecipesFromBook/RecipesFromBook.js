@@ -5,7 +5,7 @@ import "./RecipesFromBook.css";
 class RecipesFromBook extends Component {
   render() {
     const { recipes } = this.props.recipeBook;
-    const { recipeBook, deleteRecipe } = this.props;
+    const { recipeBook, deleteRecipe, addFavorite } = this.props;
     console.log("Books with recipes:", recipes);
 
     return (
@@ -43,6 +43,10 @@ class RecipesFromBook extends Component {
                             deleteRecipe(recipe._id, recipeBook._id)
                           }
                           className="fas fa-trash fa-fw"
+                        ></i>
+                        <i
+                          onClick={() => addFavorite(recipe._id)}
+                          className="far fa-star fa-fw"
                         ></i>
                       </div>
                     </div>
