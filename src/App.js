@@ -18,6 +18,7 @@ import RecipesFromBook from "./components/RecipesFromBook/RecipesFromBook";
 class App extends Component {
   state = {
     recipes: [],
+    recipesFromDB: [],
     recipeBooks: [],
     favorites: [],
     currentRecipeBook: "",
@@ -26,6 +27,7 @@ class App extends Component {
   // When the component mounts it calls the getRecipeBooks function to retrieve all the books
   componentDidMount() {
     this.getRecipeBooks();
+    this.getRecipes();
     this.getFavorites();
   }
 
@@ -45,6 +47,20 @@ class App extends Component {
     }
   };
 
+  // Get all recipes from the DB
+  getRecipes = () => {
+    axios
+      .get("http://localhost:3001/recipes")
+      .then((recipes) => {
+        this.setState({
+          recipesFromDB: recipes.data,
+        });
+      })
+      .catch((err) =>
+        console.log("Error while getting the favorite recipes: ", err)
+      );
+  };
+
   // Add a recipe from the API to the selected recipe book
   addRecipe = (recipeID, recipeBookID) => {
     const newRecipe = this.state.recipes.find(
@@ -55,7 +71,6 @@ class App extends Component {
       .post("http://localhost:3001/add-recipe", newRecipe)
       .then((recipe) => {
         console.log("New Recipe: ", recipe.data);
-        console.log("Recipes in state: ", this.state.recipes);
       })
       .catch((err) => console.log("Error while adding a recipe: ", err));
   };
@@ -80,7 +95,6 @@ class App extends Component {
     axios
       .get(`http://localhost:3001/recipe-books/${recipeBookID}`)
       .then((response) => {
-        console.log("Response: ", response.data);
         this.setState({
           currentRecipeBook: response.data,
         });
@@ -158,9 +172,8 @@ class App extends Component {
     axios
       .get("http://localhost:3001/favorite-recipes")
       .then((favoriteRecipes) => {
-        console.log("Favorites: ", favoriteRecipes.data);
         this.setState({
-          favorites: [...this.state.favorites, favoriteRecipes.data],
+          favorites: favoriteRecipes.data,
         });
         console.log("Favorite from state: ", this.state.favorites);
       })
@@ -192,6 +205,7 @@ class App extends Component {
                         <UserProfile
                           {...props}
                           recipeBooks={this.state.recipeBooks}
+                          recipesFromDB={this.state.recipesFromDB}
                           favorites={this.state.favorites}
                         />
                       )}
@@ -216,7 +230,6 @@ class App extends Component {
                           recipeBooks={this.state.recipeBooks}
                           searchRecipes={this.searchRecipes}
                           addRecipe={this.addRecipe}
-                          addFavorite={this.addFavorite}
                         />
                       )}
                     />

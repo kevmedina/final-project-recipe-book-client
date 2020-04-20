@@ -4,7 +4,7 @@ import "./UserProfile.css";
 
 export default class UserProfile extends Component {
   componentDidMount() {
-    console.log("------------", this.context.state.currentUser);
+    // console.log("------------", this.context.state.currentUser);
     if (!this.context.state.isLoggedIn) {
       return this.props.history.push("/signup-page");
     }
@@ -16,7 +16,12 @@ export default class UserProfile extends Component {
       <AuthContext.Consumer>
         {(context) => {
           const { username } = context.state.currentUser;
-          const { recipeBooks, favorites } = this.props;
+          const {
+            recipeBooks,
+            recipesFromDB: { recipes },
+            favorites,
+          } = this.props;
+          console.log("Favorites: ", favorites);
           return (
             <div className="user-profile">
               <div className="user-header">
@@ -26,8 +31,9 @@ export default class UserProfile extends Component {
 
               <div className="user-info">
                 <div>
+                  <h3>Recipes: {recipes.length}</h3>
                   <h3>Recipe Books: {recipeBooks.length}</h3>
-                  <h3>Recipes: </h3>
+                  <h3>Favorite Recipes: {favorites.length}</h3>
                 </div>
                 <div>
                   <h1>Top 5 Favorite Recipes</h1>
