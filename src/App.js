@@ -26,10 +26,15 @@ class App extends Component {
 
   // When the component mounts it calls the getRecipeBooks function to retrieve all the books
   componentDidMount() {
+    this.updateState();
+  }
+
+  // Update the state once the component loads
+  updateState = () => {
     this.getRecipeBooks();
     this.getRecipes();
     this.getFavorites();
-  }
+  };
 
   // search for recipes from the API
   searchRecipes = async (param) => {
@@ -84,6 +89,7 @@ class App extends Component {
       })
       .then((response) => {
         console.log("Deleted recipe: ", response.data);
+        this.updateState();
       })
       .catch((err) =>
         console.log("Error while deleting a recipe from its book: ", err)
@@ -158,7 +164,7 @@ class App extends Component {
   // Update a recipe to be a favorite
   addFavorite = (recipeID) => {
     axios
-      .get(`http://localhost:3001/recipe/${recipeID}/update`)
+      .post(`http://localhost:3001/recipe/${recipeID}/update`)
       .then((updatedRecipe) => {
         console.log("Updated recipe: ", updatedRecipe);
       })
@@ -207,6 +213,7 @@ class App extends Component {
                           recipeBooks={this.state.recipeBooks}
                           recipesFromDB={this.state.recipesFromDB}
                           favorites={this.state.favorites}
+                          updateState={this.updateState}
                         />
                       )}
                     />
@@ -260,6 +267,7 @@ class App extends Component {
                           recipeBook={this.state.currentRecipeBook}
                           deleteRecipe={this.deleteRecipe}
                           addFavorite={this.addFavorite}
+                          updateState={this.updateState}
                         />
                       )}
                     />

@@ -10,6 +10,9 @@
     margin-bottom: 20px;
 }
 
-.all-recipes-in-book > div {
+.recipes {
     display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    overflow: scroll;
 }

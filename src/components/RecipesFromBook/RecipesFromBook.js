@@ -3,6 +3,10 @@ import { Link } from "react-router-dom";
 import "./RecipesFromBook.css";
 
 class RecipesFromBook extends Component {
+  componentDidMount() {
+    this.props.updateState();
+  }
+
   render() {
     const { recipes } = this.props.recipeBook;
     const { recipeBook, deleteRecipe, addFavorite } = this.props;
@@ -14,7 +18,7 @@ class RecipesFromBook extends Component {
           <h1>{this.props.recipeBook.title}</h1>
           <button onClick={() => this.props.history.goBack()}>Back</button>
         </header>
-        <div>
+        <div className="recipes">
           {recipes !== undefined
             ? recipes.map((recipe, index) => {
                 return (
