@@ -3,7 +3,6 @@ import { AuthContext } from "../../context/index";
 import "./UserProfile.css";
 
 export default class UserProfile extends Component {
-  
   componentDidMount() {
     // console.log("------------", this.context.state.currentUser);
     if (!this.context.state.isLoggedIn) {
@@ -32,10 +31,19 @@ export default class UserProfile extends Component {
               </div>
 
               <div className="user-info">
-                <div>
-                  <h3>Recipes: {recipes.length}</h3>
-                  <h3>Recipe Books: {recipeBooks.length}</h3>
-                  <h3>Favorite Recipes: {favorites.length}</h3>
+                <div className="boxes">
+                  <div>
+                    <h3>Recipes: {recipes.length}</h3>
+                    <i class="fas fa-utensils"></i>
+                  </div>
+                  <div>
+                    <h3>Recipe Books: {recipeBooks.length}</h3>
+                    <i class="fas fa-book"></i>
+                  </div>
+                  <div>
+                    <h3>Favorite Recipes: {favorites.length}</h3>
+                    <i class="far fa-star"></i>
+                  </div>
                 </div>
                 <div>
                   <header>

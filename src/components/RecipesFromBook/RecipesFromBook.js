@@ -39,7 +39,10 @@ class RecipesFromBook extends Component {
                           },
                         }}
                       >
-                        <h3>{recipe.title}</h3>
+                        <h3>
+                          {recipe.title.slice(0, 25)}
+                          {recipe.title.length > 25 ? "..." : null}
+                        </h3>
                       </Link>
                       <div className="recipe-info">
                         <i

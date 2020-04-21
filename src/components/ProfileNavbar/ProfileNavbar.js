@@ -43,7 +43,7 @@ export default class UserProfile extends Component {
                   </li>
                   <li>
                     <NavLink className="navlink" to="/new-recipebook">
-                      <i className="fas fa-book-open fa-fw"></i> Recipe Books
+                      <i className="fas fa-book fa-fw"></i> Recipe Books
                     </NavLink>
                   </li>
                 </ul>

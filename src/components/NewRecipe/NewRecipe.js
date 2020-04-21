@@ -23,20 +23,21 @@ const NewRecipe = ({ recipeBooks }) => {
             // onChange={handleSignupInput}
           />
         </div>
+
         <div>
           <input
-            name="directions"
-            type="text"
-            placeholder="Directions"
+            name="readyInMinutes"
+            type="number"
+            placeholder="Cook Time (mins)"
             // onChange={handleSignupInput}
           />
         </div>
 
         <div>
           <input
-            name="cookTime"
-            type="text"
-            placeholder="Cook Time (mins)"
+            name="servings"
+            type="number"
+            placeholder="Servings"
             // onChange={handleSignupInput}
           />
         </div>

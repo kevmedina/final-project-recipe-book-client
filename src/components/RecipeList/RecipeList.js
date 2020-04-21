@@ -18,6 +18,7 @@ class RecipeList extends Component {
 
   render() {
     const { recipes, recipeBooks, searchRecipes, addRecipe } = this.props;
+    console.log(this.props.recipes);
 
     const filteredRecipes = recipes.filter((recipe) => {
       return recipe.title.toLowerCase().includes(searchRecipes.toLowerCase());

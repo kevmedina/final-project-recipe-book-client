@@ -7,6 +7,9 @@ class RecipeDetails extends Component {
     return (
       <div className="recipe-details">
         <div>
+          <button onClick={() => this.props.history.goBack()}>Back</button>
+        </div>
+        <div>
           <div>
             <img
               src={`https://spoonacular.com/recipeImages/${recipe.image}`}
