@@ -1,5 +1,6 @@
 .user-profile {
   width: calc(100vw - 250px);
+  height: auto;
 }
 
 .user-profile > div:first-child {
@@ -9,17 +10,17 @@
 }
 
 .user-header {
-  height: 40%;
+  height: 35vh;
 }
 
 .user-info {
-  height: 55%;
+  height: 60vh;
   display: flex;
   justify-content: space-evenly;
 }
 
 .user-info > div {
-  width: 50%;
+  width: 40vw;
   height: auto;
   margin: 10px;
   background-color: lightgrey;
