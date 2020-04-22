@@ -15,12 +15,14 @@ export default class UserProfile extends Component {
     return (
       <AuthContext.Consumer>
         {(context) => {
-          const { currentUser: { username, image} } = context.state;
+          const {
+            currentUser: { username, image },
+          } = context.state;
           const { handleLogout } = context;
           return (
             <div className="side-navbar">
               <div>
-                <img src={image} alt='cook' />
+                <img src={image} alt="cook" />
                 <h1>{username}</h1>
               </div>
 
