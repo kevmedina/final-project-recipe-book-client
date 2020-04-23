@@ -28,7 +28,7 @@ class RecipeBooks extends Component {
     return (
       <div className="recipebook">
         <div>
-          <h1>My Cook Books</h1>
+          <h1>Recipe Books</h1>
           <form onSubmit={(e) => this.handleSubmit(e)}>
             <input
               name="title"

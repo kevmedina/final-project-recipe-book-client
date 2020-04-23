@@ -2,6 +2,7 @@
   width: calc(100vw - 250px);
   display: flex;
   flex-direction: column;
+  background-color: lightgray;
 }
 
 .all-recipes-in-book header {
@@ -19,5 +20,6 @@
 }
 
 .fa-star {
-  color: yellow;
+  color: #f5f513;
+  font-size: 2em;
 }

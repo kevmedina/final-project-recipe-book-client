@@ -42,7 +42,7 @@ export default class UserProfile extends Component {
                   </div>
                   <div>
                     <h3>Favorite Recipes: {favorites.length}</h3>
-                    <i className="far fa-star"></i>
+                    <i className="fas fa-star"></i>
                   </div>
                 </div>
                 <div>

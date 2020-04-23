@@ -25,17 +25,21 @@ class Search extends Component {
     const { search } = this.state;
     return (
       <div className="search">
+        <h2>Recipe Search</h2>
         <div className="search-bar">
           <form onSubmit={(event) => this.handleSubmit(event)}>
-            <input
-              name="search"
-              type="text"
-              placeholder="Search for a recipe"
-              onChange={this.handleSearch}
-              value={search}
-            />
-
-            <button>Submit</button>
+            <div>
+              <input
+                name="search"
+                type="text"
+                placeholder="Search for a recipe"
+                onChange={this.handleSearch}
+                value={search}
+              />
+              <button>
+                <i className="fas fa-search"></i>
+              </button>
+            </div>
           </form>
         </div>
 

@@ -21,7 +21,7 @@ class RecipesFromBook extends Component {
       <div className="all-recipes-in-book">
         <header>
           <h1>{recipeBook.title}</h1>
-          <button onClick={() => this.props.history.goBack()}>Back</button>
+          <button className="back-btn" onClick={() => this.props.history.goBack()}>Back</button>
         </header>
         <div className="recipes">
           {recipes !== undefined
@@ -58,7 +58,7 @@ class RecipesFromBook extends Component {
                         ></i>
                         <i
                           onClick={() => addFavorite(recipe._id)}
-                          className="far fa-star fa-fw"
+                          className="fas fa-star fa-fw"
                         ></i>
                       </div>
                     </div>

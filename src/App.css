@@ -17,3 +17,16 @@
 .link:hover {
   text-decoration: none;
 }
+
+.back-btn {
+  width: 80px;
+  height: 40px;
+  background-color: lightseagreen;
+  border: none;
+  border-radius: 20px;
+  color: #ffffff;
+  text-transform: uppercase;
+  font-size: 18px;
+  font-weight: bold;
+  outline: none
+}

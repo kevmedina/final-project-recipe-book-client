@@ -18,7 +18,7 @@
 .recipe > div:nth-child(2) {
   height: 150px;
   width: 100%;
-  background-color: lightgrey;
+  background-color: #ffffff;
 }
 
 .recipe > div:nth-child(2) h3 {
