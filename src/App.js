@@ -82,18 +82,27 @@ class App extends Component {
 
   // Delete a recipe from its recipe book
   deleteRecipe = (recipeID, recipeBookID) => {
-    axios
-      .post("http://localhost:3001/recipe/delete", {
-        recipeID,
-        recipeBookID,
-      })
-      .then((response) => {
-        console.log("Deleted recipe: ", response.data);
-        this.updateState();
-      })
-      .catch((err) =>
-        console.log("Error while deleting a recipe from its book: ", err)
-      );
+    const result = window.confirm(
+      "Click OK to permanently delete this recipe."
+    );
+    if (result) {
+      axios
+        .post("http://localhost:3001/recipe/delete", {
+          recipeID,
+          recipeBookID,
+        })
+        .then((response) => {
+          console.log("Deleted recipe: ", response.data);
+          this.setState({
+            recipesFromDB: this.state.recipesFromDB.recipes.filter(
+              (recipe) => recipe._id !== response.data._id
+            ),
+          });
+        })
+        .catch((err) =>
+          console.log("Error while deleting a recipe from its book: ", err)
+        );
+    }
   };
 
   // Get all recipes for each book the user clicks on

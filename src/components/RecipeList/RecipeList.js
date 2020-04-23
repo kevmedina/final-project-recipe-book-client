@@ -72,10 +72,13 @@ class RecipeList extends Component {
                       )}
                     </select>
                   </div>
-                  <i
-                    onClick={() => addRecipe(recipe.id, this.state.bookID)}
-                    className="fas fa-plus fa-fw"
-                  ></i>
+                  <div className="add-button">
+                    <i
+                      onClick={() => addRecipe(recipe.id, this.state.bookID)}
+                      className="fas fa-plus fa-fw"
+                    ></i>
+                    {/* {message && <div>{message}</div>} */}
+                  </div>
                 </div>
               </div>
             </div>

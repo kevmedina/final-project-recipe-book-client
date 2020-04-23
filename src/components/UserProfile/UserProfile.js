@@ -34,15 +34,15 @@ export default class UserProfile extends Component {
                 <div className="boxes">
                   <div>
                     <h3>Recipes: {recipes.length}</h3>
-                    <i class="fas fa-utensils"></i>
+                    <i className="fas fa-utensils"></i>
                   </div>
                   <div>
                     <h3>Recipe Books: {recipeBooks.length}</h3>
-                    <i class="fas fa-book"></i>
+                    <i className="fas fa-book"></i>
                   </div>
                   <div>
                     <h3>Favorite Recipes: {favorites.length}</h3>
-                    <i class="far fa-star"></i>
+                    <i className="far fa-star"></i>
                   </div>
                 </div>
                 <div>

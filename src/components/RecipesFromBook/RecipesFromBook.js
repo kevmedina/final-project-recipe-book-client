@@ -3,19 +3,24 @@ import { Link } from "react-router-dom";
 import "./RecipesFromBook.css";
 
 class RecipesFromBook extends Component {
+
   componentDidMount() {
     this.props.updateState();
   }
 
   render() {
-    const { recipes } = this.props.recipeBook;
-    const { recipeBook, deleteRecipe, addFavorite } = this.props;
-    console.log("Books with recipes:", recipes);
+    // const { recipes } = this.props.recipeBook;
+    const {
+      recipeBook,
+      recipeBook: { recipes },
+      deleteRecipe,
+      addFavorite,
+    } = this.props;
 
     return (
       <div className="all-recipes-in-book">
         <header>
-          <h1>{this.props.recipeBook.title}</h1>
+          <h1>{recipeBook.title}</h1>
           <button onClick={() => this.props.history.goBack()}>Back</button>
         </header>
         <div className="recipes">
