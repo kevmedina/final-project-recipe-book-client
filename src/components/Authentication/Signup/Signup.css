@@ -2,7 +2,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  height: calc(100vh - 60px);
+  height: 88vh;
   background-image: url("../../../signup_form_background.jpeg");
   background-position: center;
   background-repeat: no-repeat;
@@ -10,8 +10,12 @@
 }
 
 .signup form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   background-color: #ffffff;
-  width: 400px;
+  width: 450px;
   height: 400px;
   padding-top: 20px;
 }

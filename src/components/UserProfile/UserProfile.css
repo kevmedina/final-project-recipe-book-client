@@ -1,6 +1,6 @@
 .user-profile {
   width: calc(100vw - 250px);
-  height: auto;
+  height: 100vh;
 }
 
 .user-profile > div:first-child {
@@ -21,7 +21,6 @@
 
 .user-info > div {
   width: 40vw;
-  height: auto;
   margin: 10px;
   background-color: lightgrey;
   border-radius: 10px;

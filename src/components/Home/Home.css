@@ -1,3 +1,26 @@
-.home {
-    margin-top: 50px;
+.home > div:first-child {
+    height: 76vh;
+    background: url('../../main-background.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    display: flex;
+    align-items: center;
+}
+
+.home > div:nth-child(2) {
+    background-color: lightgrey;
+    height: 12vh;
+}
+
+.home h1 { 
+    margin: 0;
+}
+
+.box {
+    padding: 20px;
+    width: 450px;
+    height: 240px;
+    margin-left: 100px;
+    color: #ffffff;
 }
