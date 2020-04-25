@@ -3,13 +3,12 @@ import { Link } from "react-router-dom";
 import "./RecipesFromBook.css";
 
 class RecipesFromBook extends Component {
-
   componentDidMount() {
-    this.props.updateState();
+    this.props.getRecipesFromBook(this.props.match.params.recipeBookID);
   }
 
   render() {
-    // const { recipes } = this.props.recipeBook;
+    console.log("Props ", this.props);
     const {
       recipeBook,
       recipeBook: { recipes },
@@ -21,7 +20,12 @@ class RecipesFromBook extends Component {
       <div className="all-recipes-in-book">
         <header>
           <h1>{recipeBook.title}</h1>
-          <button className="back-btn" onClick={() => this.props.history.goBack()}>Back</button>
+          <button
+            className="back-btn"
+            onClick={() => this.props.history.goBack()}
+          >
+            Back
+          </button>
         </header>
         <div className="recipes">
           {recipes !== undefined

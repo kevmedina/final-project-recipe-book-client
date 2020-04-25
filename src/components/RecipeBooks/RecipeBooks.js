@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
 import "./RecipeBooks.css";
 
 class RecipeBooks extends Component {
@@ -22,8 +21,8 @@ class RecipeBooks extends Component {
       [name]: value,
     });
   };
-
   render() {
+    console.log(this.props);
     const { deleteRecipeBook, getRecipesFromBook } = this.props;
     return (
       <div className="recipebook">
@@ -45,14 +44,16 @@ class RecipeBooks extends Component {
           {this.props.recipeBooks.map((recipeBook, index) => {
             return (
               <div key={index} className="recipe-book">
-                <Link
-                  className="link"
-                  key={index}
-                  to="/recipes-from-book"
-                  onClick={() => getRecipesFromBook(recipeBook._id)}
+                <h3
+                  onClick={async () => {
+                    let getRecipes = await getRecipesFromBook(recipeBook._id);
+                    this.props.history.push(
+                      `/recipes-from-book/${recipeBook._id}`
+                    );
+                  }}
                 >
-                  <h3>{recipeBook.title}</h3>
-                </Link>
+                  {recipeBook.title}
+                </h3>
                 <div>
                   <i
                     onClick={() => deleteRecipeBook(recipeBook._id)}

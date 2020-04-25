@@ -109,10 +109,12 @@ class App extends Component {
   getRecipesFromBook = (recipeBookID) => {
     axios
       .get(`http://localhost:3001/recipe-books/${recipeBookID}`)
-      .then((response) => {
-        this.setState({
+      .then( async (response) => {
+        await this.setState({
           currentRecipeBook: response.data,
         });
+        console.log("Current Recipe Book: ", this.state.currentRecipeBook);
+        return true;
       })
       .catch((err) =>
         console.log("Error while getting recipes from book: ", err)
@@ -269,14 +271,14 @@ class App extends Component {
                     />
                     <Route
                       exact
-                      path="/recipes-from-book"
+                      path="/recipes-from-book/:recipeBookID"
                       render={(props) => (
                         <RecipesFromBook
                           {...props}
                           recipeBook={this.state.currentRecipeBook}
                           deleteRecipe={this.deleteRecipe}
                           addFavorite={this.addFavorite}
-                          updateState={this.updateState}
+                          getRecipesFromBook={this.getRecipesFromBook}
                         />
                       )}
                     />
