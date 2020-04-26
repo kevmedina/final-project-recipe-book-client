@@ -92,12 +92,15 @@ class App extends Component {
           recipeBookID,
         })
         .then((response) => {
-          console.log("Deleted recipe: ", response.data);
-          this.setState({
-            recipesFromDB: this.state.recipesFromDB.recipes.filter(
-              (recipe) => recipe._id !== response.data._id
-            ),
-          });
+          let updatedRecipes = this.state.recipesFromDB.recipes.filter(
+            (recipe) => recipe._id !== response.data._id
+          );
+          console.log("Before deletion: ", this.state.recipesFromDB);
+          this.setState((prevState) => ({
+            ...prevState,
+            recipesFromDB: updatedRecipes,
+          }));
+          console.log("After deletion: ", this.state.recipesFromDB);
         })
         .catch((err) =>
           console.log("Error while deleting a recipe from its book: ", err)
@@ -109,7 +112,7 @@ class App extends Component {
   getRecipesFromBook = (recipeBookID) => {
     axios
       .get(`http://localhost:3001/recipe-books/${recipeBookID}`)
-      .then( async (response) => {
+      .then(async (response) => {
         await this.setState({
           currentRecipeBook: response.data,
         });
@@ -192,7 +195,6 @@ class App extends Component {
         this.setState({
           favorites: favoriteRecipes.data,
         });
-        console.log("Favorite from state: ", this.state.favorites);
       })
       .catch((err) =>
         console.log("Error while getting the favorite recipes: ", err)

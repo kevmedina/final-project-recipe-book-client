@@ -9,17 +9,17 @@ class RecipeDetails extends Component {
         <div>
           <button className="back-btn" onClick={() => this.props.history.goBack()}>Back</button>
         </div>
-        <div>
+        <div className="recipe-info-container">
           <div>
             <img
               src={`https://spoonacular.com/recipeImages/${recipe.image}`}
               alt="recipe details"
             />
           </div>
-          <div>
-            <h2>{recipe.title}</h2>
-            <p>Cook time: {recipe.readyInMinutes} mins</p>
-            <p>Servings: {recipe.servings}</p>
+          <div className="recipe-info">
+            <h4>{recipe.title}</h4>
+            <p><b>Cook time:</b> {recipe.readyInMinutes} mins</p>
+            <p><b>Servings:</b> {recipe.servings}</p>
           </div>
         </div>
       </div>

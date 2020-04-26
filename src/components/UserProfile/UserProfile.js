@@ -61,7 +61,10 @@ export default class UserProfile extends Component {
                               />
                             </div>
                             <div>
-                              <h4>{recipe.title}</h4>
+                              <h4>
+                                {recipe.title.slice(0, 30)}
+                                {recipe.title.length > 25 ? "..." : null}
+                              </h4>
                             </div>
                           </div>
                         );

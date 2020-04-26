@@ -1,8 +1,10 @@
 .all-recipes-in-book {
   width: calc(100vw - 250px);
+  height: 100vh;
   display: flex;
   flex-direction: column;
   background-color: lightgray;
+  padding-top: 20px;
 }
 
 .all-recipes-in-book header {
@@ -19,7 +21,17 @@
   overflow: scroll;
 }
 
+.recipe-icons {
+  font-size: 2em;
+  display: flex;
+  justify-content: space-evenly;
+  cursor: pointer;
+}
+
 .fa-star {
   color: #f5f513;
-  font-size: 2em;
+}
+
+.fa-trash {
+  color: red;
 }

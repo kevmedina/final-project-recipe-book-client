@@ -50,7 +50,7 @@ class RecipeList extends Component {
                     {recipe.title.length > 25 ? "..." : null}
                   </h3>
                 </Link>
-                <div className="recipe-info">
+                <div className="select-recipe-book">
                   <div>
                     <select
                       defaultValue="default"
@@ -77,7 +77,6 @@ class RecipeList extends Component {
                       onClick={() => addRecipe(recipe.id, this.state.bookID)}
                       className="fas fa-plus fa-fw"
                     ></i>
-                    {/* {message && <div>{message}</div>} */}
                   </div>
                 </div>
               </div>

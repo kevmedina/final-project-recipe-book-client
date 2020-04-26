@@ -53,8 +53,8 @@
 }
 
 .recipe-book {
-  width: 150px;
-  height: 150px;
+  width: 180px;
+  height: 180px;
   background-color: #3bbeac;
   margin: 20px;
   display: flex;
@@ -71,7 +71,6 @@
   display: none;
   font-size: 1.5em;
   margin: 0;
-  color: red;
 }
 
 .recipe-book:hover {
@@ -80,4 +79,14 @@
 
 .recipe-book:hover i {
   display: block;
+}
+
+.book-icons {
+  width: 100%;
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.fa-edit {
+  color: green;
 }

@@ -26,13 +26,13 @@
   color: lightseagreen;
 }
 
-.recipe-info {
+.select-recipe-book {
   display: flex;
   justify-content: space-evenly;
   align-items: center;
 }
 
-.recipe-info i {
+.select-recipe-book i {
   font-size: 20px;
   cursor: pointer;
 }

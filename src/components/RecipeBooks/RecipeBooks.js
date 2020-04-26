@@ -21,8 +21,8 @@ class RecipeBooks extends Component {
       [name]: value,
     });
   };
+
   render() {
-    console.log(this.props);
     const { deleteRecipeBook, getRecipesFromBook } = this.props;
     return (
       <div className="recipebook">
@@ -32,7 +32,7 @@ class RecipeBooks extends Component {
             <input
               name="title"
               type="text"
-              placeholder="Name of Cook Book"
+              placeholder="Name of Recipe Book"
               onChange={this.handleInputChange}
               value={this.state.title}
             />
@@ -46,7 +46,7 @@ class RecipeBooks extends Component {
               <div key={index} className="recipe-book">
                 <h3
                   onClick={async () => {
-                    let getRecipes = await getRecipesFromBook(recipeBook._id);
+                    await getRecipesFromBook(recipeBook._id);
                     this.props.history.push(
                       `/recipes-from-book/${recipeBook._id}`
                     );
@@ -54,10 +54,14 @@ class RecipeBooks extends Component {
                 >
                   {recipeBook.title}
                 </h3>
-                <div>
+                <div className="book-icons">
                   <i
                     onClick={() => deleteRecipeBook(recipeBook._id)}
                     className="fas fa-trash fa-fw"
+                  ></i>
+                  <i
+                    onClick={() => deleteRecipeBook(recipeBook._id)}
+                    className="fas fa-edit fa-fw"
                   ></i>
                 </div>
               </div>

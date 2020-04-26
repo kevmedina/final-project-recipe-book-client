@@ -8,7 +8,6 @@ class RecipesFromBook extends Component {
   }
 
   render() {
-    console.log("Props ", this.props);
     const {
       recipeBook,
       recipeBook: { recipes },
@@ -19,13 +18,13 @@ class RecipesFromBook extends Component {
     return (
       <div className="all-recipes-in-book">
         <header>
-          <h1>{recipeBook.title}</h1>
           <button
             className="back-btn"
             onClick={() => this.props.history.goBack()}
           >
             Back
           </button>
+          <h1>{recipeBook.title}</h1>
         </header>
         <div className="recipes">
           {recipes !== undefined
@@ -53,7 +52,7 @@ class RecipesFromBook extends Component {
                           {recipe.title.length > 25 ? "..." : null}
                         </h3>
                       </Link>
-                      <div className="recipe-info">
+                      <div className="recipe-icons">
                         <i
                           onClick={() =>
                             deleteRecipe(recipe._id, recipeBook._id)
