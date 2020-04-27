@@ -1,20 +1,16 @@
 .navbar {
   width: 100vw;
   height: 12vh;
-  background-color: rgb(8, 173, 44);
+  background-color: lightseagreen;
   font-size: 1.2em;
   margin: 0;
-}
-
-.navbar > nav {
   display: flex;
+  align-items: center;
   justify-content: flex-end;
 }
 
-.link {
-  color: #ffffff;
-  text-decoration: none;
-  margin: 20px;
+.navbar > nav {
+  margin-right: 20px;
 }
 
 .navbar button {
@@ -29,4 +25,10 @@
   font-weight: bold;
   font-size: 14px;
   cursor: pointer;
+}
+
+.link {
+  color: #ffffff;
+  text-decoration: none;
+  margin: 0 20px;
 }

@@ -5,20 +5,35 @@ import "./Home.css";
 const Home = () => {
   return (
     <div className="home">
-      <div>
+      <section className="hero">
         <div className="box">
           <h1>Welcome to Recipe Box.</h1>
           <p>
             Sign up for free to search through more than 330,000 recipes from
-            across the web.
+            across the web. Create your profile to build your own personal recipe books.
           </p>
           <div>
-            <Link to="/signup-page">Sign Up Now</Link>
+            <Link className="hero-link" to="/signup-page">Sign Up Now</Link>
           </div>
         </div>
-      </div>
+      </section>
 
-      <div></div>
+      <footer className="footer">
+        <div>
+          <div>
+            <i className="fas fa-utensils"></i>
+            <p>More than 330,000 recipes</p>
+          </div>
+          <div>
+            <i className="fas fa-book"></i>
+            <p>Customize recipe books</p>
+          </div>
+          <div>
+            <i class="fas fa-star"></i>
+            <p>Choose your favorites</p>
+          </div>
+        </div>
+      </footer>
     </div>
   );
 };

@@ -1,26 +1,100 @@
-.home > div:first-child {
-    height: 76vh;
-    background: url('../../main-background.jpg');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    display: flex;
-    align-items: center;
+.hero {
+  height: 66vh;
+  background: url("../../main-background.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  display: flex;
+  align-items: center;
 }
 
-.home > div:nth-child(2) {
-    background-color: lightgrey;
-    height: 12vh;
+.home h1 {
+  margin: 0;
 }
 
-.home h1 { 
-    margin: 0;
+.footer {
+  background-color: rgb(189, 187, 187);
+  height: 22vh;
+}
+
+.footer > div {
+  height: 100%;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.footer i {
+  font-size: 3em;
+  margin-bottom: 5px;
+  color: lightseagreen;
+}
+
+.footer p {
+  font-size: 2rem;
+  font-weight: bold;
 }
 
 .box {
-    padding: 20px;
-    width: 450px;
+  padding: 20px;
+  width: 500px;
+  height: 280px;
+  margin-left: 100px;
+  display: flex;
+  text-align: justify;
+  flex-direction: column;
+  background-color: #ffffff;
+}
+
+.box p {
+  margin-top: 25px;
+  font-size: 1.8rem;
+}
+
+.box > div {
+  width: 200px;
+  padding: 10px 20px;
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: lightseagreen;
+  font-size: 2rem;
+}
+
+.hero-link {
+  color: #ffffff;
+}
+
+@media screen and (max-width: 840px) {
+  .hero {
+    justify-content: center;
+  }
+
+  .box {
+    margin: 20px;
+    width: 300px;
     height: 240px;
-    margin-left: 100px;
-    color: #ffffff;
+  }
+
+  .box h1 {
+    font-size: 24px;
+  }
+
+  .box p {
+    font-size: 14px;
+  }
+
+  .footer {
+    height: auto;
+  }
+
+  .footer > div {
+    display: block;
+    padding: 40px 0;
+  }
+
+  .footer i {
+    margin: 40px 0;
+  }
 }
