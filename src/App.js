@@ -5,6 +5,7 @@ import "./App.css";
 import Home from "./components/Home/Home";
 import Signup from "./components/Authentication/Signup/Signup";
 import Login from "./components/Authentication/Login/Login";
+import UpdateProfile from "./components/UpdateProfile/UpdateProfile";
 import Navbar from "./components/Navbar/Navbar";
 import UserProfile from "./components/UserProfile/UserProfile";
 import ProfileNavbar from "./components/ProfileNavbar/ProfileNavbar";
@@ -14,6 +15,7 @@ import axios from "axios";
 import RecipeBooks from "./components/RecipeBooks/RecipeBooks";
 import RecipeDetails from "./components/RecipeDetails/RecipeDetails";
 import RecipesFromBook from "./components/RecipesFromBook/RecipesFromBook";
+import Loader from "react-loading";
 
 class App extends Component {
   state = {
@@ -209,7 +211,7 @@ class App extends Component {
           return (
             <div className="App">
               {loading ? (
-                <h1>Hello</h1>
+                <Loader className="loader" type="bars" color="lightseagreen" />
               ) : (
                 <div className={`${isLoggedIn ? "user-logged-in" : ""}`}>
                   {isLoggedIn ? <ProfileNavbar /> : <Navbar />}
@@ -217,6 +219,11 @@ class App extends Component {
                     <Route exact path="/" component={Home} />
                     <Route exact path="/signup-page" component={Signup} />
                     <Route exact path="/login-page" component={Login} />
+                    <Route
+                      exact
+                      path="/update-profile"
+                      component={UpdateProfile}
+                    />
                     <Route
                       exact
                       path="/user-profile"

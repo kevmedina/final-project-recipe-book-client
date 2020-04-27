@@ -23,7 +23,6 @@ class AuthProvider extends Component {
   componentDidMount() {
     AUTH_SERVICE.getUser()
       .then((responseFromServer) => {
-        // console.log("res from is user logged in: ", responseFromServer);
         const { user } = responseFromServer.data;
         this.setState((prevState) => ({
           ...prevState,
@@ -53,7 +52,6 @@ class AuthProvider extends Component {
     e.preventDefault();
     AUTH_SERVICE.signup(this.state.formSignup)
       .then((responseFromServer) => {
-        // console.log("Response from server: ", responseFromServer);
         const {
           data: { user, message },
         } = responseFromServer;
@@ -137,6 +135,15 @@ class AuthProvider extends Component {
       })
       .catch((err) => alert("Error while logging out: ", err));
   };
+
+  // handleProfileUpdate = (e) => {
+  //   e.preventDefault();
+  //   AUTH_SERVICE.updateProfile()
+  //     .then((user) => {
+  //       console.log("User: ", user);
+  //     })
+  //     .catch((err) => console.log("Error while updating profile", err));
+  // };
 
   render() {
     const {

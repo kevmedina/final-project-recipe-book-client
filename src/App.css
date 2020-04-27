@@ -30,3 +30,7 @@
   font-weight: bold;
   outline: none;
 }
+
+.loader {
+  margin: 0 auto;
+}

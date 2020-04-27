@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { AuthContext } from "../../context/index";
-import { NavLink } from "react-router-dom";
+import { NavLink, Link } from "react-router-dom";
 import "./ProfileNavbar.css";
 
 export default class UserProfile extends Component {
@@ -53,7 +53,9 @@ export default class UserProfile extends Component {
 
               <div>
                 <button onClick={handleLogout}>Logout</button>
-                <button>Update Profile</button>
+                <Link to="/update-profile">
+                  <button>Update Profile</button>
+                </Link>
               </div>
             </div>
           );
