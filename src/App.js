@@ -82,6 +82,18 @@ class App extends Component {
       .catch((err) => console.log("Error while adding a recipe: ", err));
   };
 
+  // Add a new recipe from your own computer
+  addNewRecipe = (recipe) => {
+    console.log("New Recipe: ", recipe);
+
+    // axios
+    //   .post("http://localhost:3001/add-new-recipe", newRecipe)
+    //   .then((recipe) => {
+    //     console.log("New Recipe: ", recipe.data);
+    //   })
+    //   .catch((err) => console.log("Error while adding a new recipe: ", err));
+  };
+
   // Delete a recipe from its recipe book
   deleteRecipe = (recipeID, recipeBookID) => {
     const result = window.confirm(
@@ -118,7 +130,6 @@ class App extends Component {
         await this.setState({
           currentRecipeBook: response.data,
         });
-        console.log("Current Recipe Book: ", this.state.currentRecipeBook);
         return true;
       })
       .catch((err) =>
@@ -244,6 +255,7 @@ class App extends Component {
                         <NewRecipe
                           {...props}
                           recipeBooks={this.state.recipeBooks}
+                          addNewRecipe={this.addNewRecipe}
                         />
                       )}
                     />

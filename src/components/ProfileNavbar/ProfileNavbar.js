@@ -30,7 +30,7 @@ export default class UserProfile extends Component {
                 <ul>
                   <li>
                     <NavLink className="navlink" to="/user-profile">
-                      <i className="fas fa-user fa-fw"></i> Profile
+                      <i className="fas fa-user fa-fw"></i> Dashboard
                     </NavLink>
                   </li>
                   <li>

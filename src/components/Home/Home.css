@@ -43,7 +43,8 @@
   display: flex;
   text-align: justify;
   flex-direction: column;
-  background-color: #ffffff;
+  color: white;
+  font-weight: bold;
 }
 
 .box p {

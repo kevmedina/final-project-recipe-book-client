@@ -15,7 +15,9 @@ class NewRecipe extends Component {
   handleInput = (e) => {
     const { name, value } = e.target;
     this.setState({
-      [name]: value,
+      recipeForm: {
+        [name]: value,
+      },
     });
   };
 
@@ -28,10 +30,10 @@ class NewRecipe extends Component {
   };
 
   render() {
-    const { recipeBooks } = this.props;
+    const { recipeBooks, addNewRecipe } = this.props;
     return (
       <div className="new-recipe">
-        <form>
+        <form onSubmit={addNewRecipe(this.state.recipeForm)}>
           <div>
             <input
               name="title"
@@ -69,7 +71,11 @@ class NewRecipe extends Component {
           </div>
 
           <div>
-            <select onChange={this.handleSelectChange} defaultValue="default" name="bookID">
+            <select
+              onChange={this.handleSelectChange}
+              defaultValue="default"
+              name="bookID"
+            >
               <option disabled value="default">
                 Select Recipe Book
               </option>
@@ -91,7 +97,6 @@ class NewRecipe extends Component {
             <input name="image" type="file" />
           </div>
 
-          {/* {message && <div>{message}</div>} */}
           <button>Create Recipe</button>
         </form>
       </div>

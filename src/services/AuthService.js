@@ -26,9 +26,9 @@ const AUTH_SERVICE = {
     return service.get("/api/isLoggedIn");
   },
 
-  // updateProfile(userData) {
-  //   return service.post("/api/update-profile", userData);
-  // },
+  updateProfile(userData) {
+    return service.post("/api/update-profile", userData);
+  },
 };
 
 export default AUTH_SERVICE;

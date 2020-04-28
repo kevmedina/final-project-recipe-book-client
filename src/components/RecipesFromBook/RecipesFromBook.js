@@ -7,6 +7,14 @@ class RecipesFromBook extends Component {
     this.props.getRecipesFromBook(this.props.match.params.recipeBookID);
   }
 
+  componentDidUpdate(prevProps) {
+    console.log("prevProps: ", prevProps);
+    console.log("props: ", this.props);
+    // if (this.props !== prevProps) {
+    //   this.props.getRecipesFromBook(this.props.match.params.recipeBookID);
+    // }
+  }
+
   render() {
     const {
       recipeBook,

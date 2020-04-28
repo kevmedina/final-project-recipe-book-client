@@ -14,6 +14,10 @@ class AuthProvider extends Component {
       username: "",
       password: "",
     },
+    formUpdate: {
+      username: "",
+      email: "",
+    },
     currentUser: {},
     isLoggedIn: false,
     message: null,
@@ -136,14 +140,36 @@ class AuthProvider extends Component {
       .catch((err) => alert("Error while logging out: ", err));
   };
 
-  // handleProfileUpdate = (e) => {
-  //   e.preventDefault();
-  //   AUTH_SERVICE.updateProfile()
-  //     .then((user) => {
-  //       console.log("User: ", user);
-  //     })
-  //     .catch((err) => console.log("Error while updating profile", err));
-  // };
+  handleUpdateInput = (e) => {
+    const {
+      target: { name, value },
+    } = e;
+
+    this.setState((prevState) => ({
+      ...prevState,
+      formUpdate: {
+        ...prevState.formUpdate,
+        [name]: value,
+      },
+    }));
+  };
+
+  handleProfileUpdate = (e) => {
+    e.preventDefault();
+    AUTH_SERVICE.updateProfile(this.state.formUpdate)
+      .then((user) => {
+        console.log("User: ", user);
+        this.setState((prevState) => ({
+          ...prevState,
+          formUpdate: {
+            username: "",
+            email: "",
+          },
+        }));
+        this.props.history.push("/user-profile");
+      })
+      .catch((err) => console.log("Error while updating profile", err));
+  };
 
   render() {
     const {
@@ -153,6 +179,8 @@ class AuthProvider extends Component {
       handleLoginInput,
       handleLoginSubmit,
       handleLogout,
+      handleUpdateInput,
+      handleProfileUpdate,
     } = this;
     return (
       <div>
@@ -164,6 +192,8 @@ class AuthProvider extends Component {
             handleLoginInput,
             handleLoginSubmit,
             handleLogout,
+            handleUpdateInput,
+            handleProfileUpdate,
           }}
         >
           {this.props.children}
