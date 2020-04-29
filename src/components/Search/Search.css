@@ -15,7 +15,7 @@
 }
 
 .search h2 {
-  color: lightseagreen;
+  color: var(--green-color);
   text-transform: uppercase;
   font-size: 3em;
   text-align: center;
@@ -45,7 +45,7 @@
   top: 2px;
   width: 35px;
   height: 35px;
-  background-color: lightseagreen;
+  background-color: var(--green-color);
   color: #ffffff;
   border-radius: 20px;
   border: none;
@@ -62,4 +62,10 @@
   height: 85%;
   height: calc(100vh - 60px);
   overflow: scroll;
+}
+
+@media screen and (max-width: 1024px) {
+  .search {
+    width: 100%;
+  }
 }

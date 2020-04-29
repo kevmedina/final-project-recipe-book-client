@@ -1,7 +1,7 @@
 .side-navbar {
   width: 250px;
   height: 100vh;
-  background-color: #e2e2e2;
+  background-color: var(--grey-color);
 }
 
 .side-navbar > div {
@@ -14,7 +14,7 @@
 .side-navbar > div:nth-child(1) {
   height: 30%;
   padding-top: 5px;
-  background-color: lightseagreen;
+  background-color: var(--green-color);
   color: #ffffff;
 }
 
@@ -47,7 +47,7 @@
   height: 30px;
   border-radius: 20px;
   margin: 5px 20px;
-  background-color: lightseagreen;
+  background-color: var(--green-color);
   color: #ffffff;
   text-transform: uppercase;
   font-weight: bold;
@@ -65,14 +65,14 @@
 
 .navlink {
   text-decoration: none;
-  color: lightseagreen;
+  color: var(--green-color);
 }
 
 .navlink i {
   margin-right: 8px;
 }
 
-@media screen and (max-width: 900px) {
+@media screen and (max-width: 1024px) {
   .side-navbar {
     display: none;
   }

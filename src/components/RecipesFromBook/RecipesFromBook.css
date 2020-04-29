@@ -29,9 +29,9 @@
 }
 
 .fa-star {
-  color: #f5f513;
+  color: var(--yellow-color);
 }
 
 .fa-trash {
-  color: red;
+  color: var(--red-color);
 }

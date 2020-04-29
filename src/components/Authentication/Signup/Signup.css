@@ -3,20 +3,20 @@
   justify-content: center;
   align-items: center;
   height: 88vh;
-  background-image: url("../../../signup_form_background.jpeg");
+  background-color: lightgray;
+  /* background-image: url("../../../signup_form_background.jpeg");
   background-position: center;
   background-repeat: no-repeat;
-  background-size: cover;
+  background-size: cover; */
 }
 
 .signup form {
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
   background-color: #ffffff;
   width: 450px;
-  height: 400px;
+  height: 420px;
   padding-top: 20px;
 }
 

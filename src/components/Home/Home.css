@@ -27,7 +27,7 @@
 .footer i {
   font-size: 3em;
   margin-bottom: 5px;
-  color: lightseagreen;
+  color: var(--green-color);
 }
 
 .footer p {
@@ -59,7 +59,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: lightseagreen;
+  background-color: var(--green-color);
   font-size: 2rem;
 }
 

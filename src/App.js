@@ -222,7 +222,7 @@ class App extends Component {
           return (
             <div className="App">
               {loading ? (
-                <Loader className="loader" type="bars" color="lightseagreen" />
+                <Loader className="loader" type="bars" color="var(--green-color)" />
               ) : (
                 <div className={`${isLoggedIn ? "user-logged-in" : ""}`}>
                   {isLoggedIn ? <ProfileNavbar /> : <Navbar />}

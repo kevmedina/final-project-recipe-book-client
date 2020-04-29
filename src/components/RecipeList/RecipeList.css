@@ -23,7 +23,7 @@
 
 .recipe > div:nth-child(2) h3 {
   font-size: 16px;
-  color: lightseagreen;
+  color: var(--green-color);
 }
 
 .select-recipe-book {
@@ -41,7 +41,7 @@
   width: 30px;
   height: 30px;
   border-radius: 50%;
-  background-color: green;
+  background-color: var(--green-color);
   display: flex;
   justify-content: center;
   align-items: center;

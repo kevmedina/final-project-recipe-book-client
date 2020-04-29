@@ -1,5 +1,6 @@
 .new-recipe {
   width: calc(100vw - 250px);
+  height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -12,7 +13,7 @@
 .new-recipe form {
   width: 40vw;
   height: 450px;
-  background-color: #FFFFFF;
+  background-color: #ffffff;
   border: 1px solid lightgray;
   display: flex;
   flex-direction: column;
@@ -26,11 +27,11 @@
   width: 32vw;
   height: 30px;
   padding: 4px 6px;
-  color: lightseagreen;
+  color: var(--green-color);
 }
 
 .new-recipe input::placeholder {
-  color: lightseagreen;
+  color: var(--green-color);
   font-size: 14px;
 }
 
@@ -38,7 +39,7 @@
   width: 32vw;
   height: 30px;
   margin: 10px 0px 20px 0px;
-  color: lightseagreen;
+  color: var(--green-color);
   font-size: 14px;
 }
 
@@ -46,8 +47,8 @@
   width: 20vw;
   height: 30px;
   border: 5px;
-  background-color: lightseagreen;
-  color: #FFFFFF;
+  background-color: var(--green-color);
+  color: #ffffff;
   text-transform: uppercase;
   font-weight: bold;
   font-size: 14px;
@@ -56,4 +57,10 @@
 
 .recipe-book-menu {
   width: 100%;
+}
+
+@media screen and (max-width: 1024px) {
+  .new-recipe {
+    width: 100%;
+  }
 }
