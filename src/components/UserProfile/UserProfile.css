@@ -1,51 +1,96 @@
 .user-profile {
   width: calc(100vw - 250px);
   height: 100vh;
-}
-
-.user-profile > div:first-child {
-  margin: 10px;
-  background-color: lightgrey;
-  border-radius: 10px;
-}
-
-.user-header {
-  height: 35vh;
-}
-
-.user-info {
-  height: 60vh;
-  display: flex;
-  justify-content: space-evenly;
-}
-
-.user-info > div {
-  width: 40vw;
-  margin: 10px;
-  background-color: lightgrey;
-  border-radius: 10px;
+  background-color: lightgray;
+  padding: 20px;
   overflow: scroll;
 }
 
-.boxes {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+/* Header Sectio */
+.create-btn {
+  margin: 10px 5px 0 0;
+  padding: 15px 20px;
+  background-color: lightseagreen;
+  color: #ffffff;
+  font-size: 1em;
+  text-transform: uppercase;
+  font-weight: bold;
 }
 
-.boxes > div {
-  height: 30%;
+.greeting {
+  font-size: 3.5em;
+}
+
+.user-profile header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0 20px;
+  height: 100px;
+}
+
+.user-header {
+  margin: 10px;
+  border-radius: 10px;
+  text-align: left;
   display: flex;
   justify-content: space-evenly;
   align-items: center;
 }
 
-.boxes i {
+.user-header > div {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.item {
+  display: flex;
+  height: 150px;
+  width: 300px;
+  border-radius: 15px;
+  margin: 10px;
+  font-size: 1.6rem;
+}
+
+.item > div:first-child {
+  background-color: lightseagreen;
+  width: 30%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.item > div:last-child {
+  background-color: #ffffff;
+  width: 70%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.item h3 {
+  margin: 0;
+}
+
+.user-header i {
   font-size: 2.5em;
 }
 
-.fa-book {
-  color: lightseagreen;
+/* Favorites Section */
+.favorites-section {
+  display: flex;
+  height: 60%;
+  width: 100%;
+}
+
+.favorites-section > div {
+  width: 450px;
+  height: 350px;
+  margin: 20px;
+  background-color: #ffffff;
+  border-radius: 15px;
+  overflow: scroll;
 }
 
 .favorites img {
@@ -58,4 +103,26 @@
   justify-content: space-between;
   align-items: center;
   padding: 10px 20px;
+}
+
+@media screen and (max-width: 1024px) {
+  .user-profile {
+    width: 100%;
+  }
+  main {
+    display: flex;
+  }
+  .user-header {
+    display: block;
+    height: auto;
+    width: 50%;
+  }
+  .favorites-section {
+    display: block;
+    width: 50%;
+  }
+  .favorites-section > div {
+    width: 100%;
+    margin: 20px auto;
+  }
 }

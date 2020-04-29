@@ -71,3 +71,9 @@
 .navlink i {
   margin-right: 8px;
 }
+
+@media screen and (max-width: 900px) {
+  .side-navbar {
+    display: none;
+  }
+}
