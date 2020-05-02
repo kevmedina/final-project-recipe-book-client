@@ -3,10 +3,6 @@ import { Link } from "react-router-dom";
 import "./RecipesFromBook.css";
 
 class RecipesFromBook extends Component {
-  componentDidMount() {
-    this.props.getRecipesFromBook(this.props.match.params.recipeBookID);
-  }
-
   render() {
     const {
       recipeBook,

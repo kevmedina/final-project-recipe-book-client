@@ -23,7 +23,9 @@ class App extends Component {
     recipesFromDB: [],
     recipeBooks: [],
     favorites: [],
-    currentRecipeBook: "",
+    currentRecipeBook: {
+      recipes: [],
+    },
   };
 
   // When the component mounts it calls the getRecipeBooks function to retrieve all the books
@@ -73,13 +75,12 @@ class App extends Component {
       (recipe) => recipe.id === recipeID
     );
     newRecipe.bookID = recipeBookID;
-    console.log("New Recipe: ", newRecipe);
     axios
       .post("http://localhost:3001/add-recipe", newRecipe, {
         withCredentials: true,
       })
       .then((recipe) => {
-        console.log("New Recipe: ", recipe.data);
+        // console.log("New Recipe: ", recipe.data);
       })
       .catch((err) => console.log("Error while adding a recipe: ", err));
   };
@@ -110,14 +111,15 @@ class App extends Component {
             withCredentials: true,
           }
         )
-        .then(async (response) => {
-          let updatedRecipes = this.state.recipesFromDB.recipes.filter(
+        .then((response) => {
+          let updatedRecipes = this.state.currentRecipeBook.recipes.filter(
             (recipe) => recipe._id !== recipeID
           );
-          await this.setState((prevState) => ({
-            ...prevState,
-            recipesFromDB: updatedRecipes,
-          }));
+          this.setState({
+            currentRecipeBook: {
+              recipes: updatedRecipes,
+            },
+          });
         })
         .catch((err) =>
           console.log("Error while deleting a recipe from its book: ", err)

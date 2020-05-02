@@ -41,7 +41,7 @@ export default class UserProfile extends Component {
                       </div>
                       <div>
                         <h3>Recipes </h3>
-                        <span>0</span>
+                        {/* <span>{recipes.length}</span> */}
                       </div>
                     </div>
 
@@ -79,6 +79,7 @@ export default class UserProfile extends Component {
                         favorites.map((recipe, index) => {
                           return (
                             <Link
+                              key={index}
                               className="link"
                               to={{
                                 pathname: `/recipe-details`,
@@ -87,7 +88,7 @@ export default class UserProfile extends Component {
                                 },
                               }}
                             >
-                              <div key={index}>
+                              <div>
                                 <div>
                                   <img
                                     src={`https://spoonacular.com/recipeImages/${recipe.image}`}

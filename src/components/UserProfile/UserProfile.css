@@ -6,15 +6,20 @@
   overflow: scroll;
 }
 
-/* Header Sectio */
+/* Header Section */
 .create-btn {
   margin: 10px 5px 0 0;
   padding: 15px 20px;
+  border-radius: 5px;
   background-color: var(--green-color);
   color: #ffffff;
   font-size: 1em;
   text-transform: uppercase;
   font-weight: bold;
+}
+
+.create-btn i {
+  margin-right: 4px;
 }
 
 .greeting {
@@ -32,7 +37,6 @@
 
 .user-header {
   margin: 10px;
-  border-radius: 10px;
 }
 
 .user-header i {
@@ -44,7 +48,6 @@
   display: flex;
   height: 150px;
   width: 80%;
-  border-radius: 15px;
   margin: 10px auto;
   font-size: 1.6rem;
 }
