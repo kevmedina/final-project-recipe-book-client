@@ -19,6 +19,7 @@
 
 .greeting {
   font-size: 3.5em;
+  text-transform: capitalize;
 }
 
 .user-profile header {
@@ -46,6 +47,10 @@
   border-radius: 15px;
   margin: 10px auto;
   font-size: 1.6rem;
+}
+
+.item > div {
+  border-radius: 5px;
 }
 
 .item > div:first-child {
@@ -76,10 +81,10 @@
 }
 
 .favorites-section > div {
-  height: 400px;
+  height: 375px;
   margin: 20px;
   background-color: #ffffff;
-  border-radius: 15px;
+  border-radius: 5px;
   overflow: scroll;
 }
 
@@ -88,11 +93,12 @@
   height: 50px;
 }
 
-.favorites > div {
+.link > div {
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 10px 20px;
+  color: var(--green-color);
 }
 
 @media screen and (min-width: 768px) {
@@ -115,8 +121,8 @@
     width: 100%;
   }
   .favorites-section > div {
-    width: 50%;
-    margin: 20px;
+    width: 100%;
+    margin: 0 10px;
   }
 }
 

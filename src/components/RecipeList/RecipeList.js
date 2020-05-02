@@ -9,7 +9,6 @@ class RecipeList extends Component {
 
   handleSelectChange = (e) => {
     const { value } = e.target;
-    console.log("Value: ", value);
 
     this.setState({
       bookID: value,
@@ -18,7 +17,6 @@ class RecipeList extends Component {
 
   render() {
     const { recipes, recipeBooks, searchRecipes, addRecipe } = this.props;
-    console.log(this.props.recipes);
 
     const filteredRecipes = recipes.filter((recipe) => {
       return recipe.title.toLowerCase().includes(searchRecipes.toLowerCase());

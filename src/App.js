@@ -31,7 +31,7 @@ class App extends Component {
     this.updateState();
   }
 
-  // Update the state once the component loads
+  // // Update the state once the component loads
   updateState = () => {
     this.getRecipeBooks();
     this.getRecipes();
@@ -57,15 +57,14 @@ class App extends Component {
   // Get all recipes from the DB
   getRecipes = () => {
     axios
-      .get("http://localhost:3001/recipes")
+      .get("http://localhost:3001/recipes", { withCredentials: true })
       .then((recipes) => {
+        // console.log("recipes: ", recipes.data);
         this.setState({
           recipesFromDB: recipes.data,
         });
       })
-      .catch((err) =>
-        console.log("Error while getting the favorite recipes: ", err)
-      );
+      .catch((err) => console.log("Error while getting the recipes: ", err));
   };
 
   // Add a recipe from the API to the selected recipe book
@@ -74,8 +73,11 @@ class App extends Component {
       (recipe) => recipe.id === recipeID
     );
     newRecipe.bookID = recipeBookID;
+    console.log("New Recipe: ", newRecipe);
     axios
-      .post("http://localhost:3001/add-recipe", newRecipe)
+      .post("http://localhost:3001/add-recipe", newRecipe, {
+        withCredentials: true,
+      })
       .then((recipe) => {
         console.log("New Recipe: ", recipe.data);
       })
@@ -87,7 +89,7 @@ class App extends Component {
     console.log("New Recipe: ", recipe);
 
     // axios
-    //   .post("http://localhost:3001/add-new-recipe", newRecipe)
+    //   .post("http://localhost:3001/add-new-recipe", recipe, {withCredentials: true})
     //   .then((recipe) => {
     //     console.log("New Recipe: ", recipe.data);
     //   })
@@ -101,20 +103,21 @@ class App extends Component {
     );
     if (result) {
       axios
-        .post("http://localhost:3001/recipe/delete", {
-          recipeID,
-          recipeBookID,
-        })
-        .then((response) => {
+        .post(
+          "http://localhost:3001/recipe/delete",
+          { recipeID, recipeBookID },
+          {
+            withCredentials: true,
+          }
+        )
+        .then(async (response) => {
           let updatedRecipes = this.state.recipesFromDB.recipes.filter(
-            (recipe) => recipe._id !== response.data._id
+            (recipe) => recipe._id !== recipeID
           );
-          console.log("Before deletion: ", this.state.recipesFromDB);
-          this.setState((prevState) => ({
+          await this.setState((prevState) => ({
             ...prevState,
             recipesFromDB: updatedRecipes,
           }));
-          console.log("After deletion: ", this.state.recipesFromDB);
         })
         .catch((err) =>
           console.log("Error while deleting a recipe from its book: ", err)
@@ -138,11 +141,11 @@ class App extends Component {
   };
 
   // Create a new recipe book
-  createNewRecipeBook = (param) => {
+  createNewRecipeBook = (title) => {
     axios
       .post(
         "http://localhost:3001/add-recipebook",
-        { param },
+        { title },
         { withCredentials: true }
       )
       .then((response) => {
@@ -160,11 +163,12 @@ class App extends Component {
   // Get all the recipe books from DB
   getRecipeBooks = () => {
     axios
-      .get("http://localhost:3001/recipe-books")
+      .get("http://localhost:3001/recipe-books", { withCredentials: true })
       .then((allRecipeBooks) => {
         this.setState({
           recipeBooks: allRecipeBooks.data,
         });
+        // console.log("Books: ", this.state.recipeBooks);
       })
       .catch((err) =>
         console.log("Error while getting all recipe books from DB: ", err)
@@ -178,11 +182,17 @@ class App extends Component {
     );
     if (result) {
       axios
-        .post(`http://localhost:3001/recipe-books/${recipeBookID}/delete`)
-        .then((response) => {
-          this.setState({
-            recipeBooks: response.data,
-          });
+        .post(`http://localhost:3001/recipe-books/${recipeBookID}/delete`, {
+          withCredentials: true,
+        })
+        .then(async (response) => {
+          let updatedRecipeBooks = this.state.recipeBooks.filter(
+            (recipeBook) => recipeBook._id !== recipeBookID
+          );
+          await this.setState((prevState) => ({
+            ...prevState,
+            recipeBooks: updatedRecipeBooks,
+          }));
         })
         .catch((err) => console.log("Error while deleting recipe book: ", err));
     }
@@ -222,7 +232,11 @@ class App extends Component {
           return (
             <div className="App">
               {loading ? (
-                <Loader className="loader" type="bars" color="var(--green-color)" />
+                <Loader
+                  className="loader"
+                  type="bars"
+                  color="var(--green-color)"
+                />
               ) : (
                 <div className={`${isLoggedIn ? "user-logged-in" : ""}`}>
                   {isLoggedIn ? <ProfileNavbar /> : <Navbar />}

@@ -13,7 +13,7 @@
   height: 450px;
   margin-top: 60px;
   display: flex;
-  flex-direction: column; 
+  flex-direction: column;
 }
 
 .recipe-info-container img {
@@ -22,7 +22,7 @@
 }
 
 .recipe-info {
-  background-color: #e2e2e2;
+  background-color: var(--grey-color);
   height: 225px;
   width: 100%;
   display: flex;

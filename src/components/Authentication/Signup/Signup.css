@@ -3,11 +3,10 @@
   justify-content: center;
   align-items: center;
   height: 88vh;
-  background-color: lightgray;
-  /* background-image: url("../../../signup_form_background.jpeg");
+  background-image: url("../../../recipe-background.jpeg");
   background-position: center;
   background-repeat: no-repeat;
-  background-size: cover; */
+  background-size: cover;
 }
 
 .signup form {
@@ -35,7 +34,7 @@
   font-size: 14px;
   font-weight: bold;
   letter-spacing: 0.1em;
-  background-color: lightcoral;
+  background-color: var(--red-color);
   color: #ffffff;
   text-transform: uppercase;
 }
