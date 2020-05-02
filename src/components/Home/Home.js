@@ -29,7 +29,7 @@ const Home = () => {
             <p>Customize recipe books</p>
           </div>
           <div>
-            <i class="fas fa-star"></i>
+            <i className="fas fa-star"></i>
             <p>Choose your favorites</p>
           </div>
         </div>

@@ -20,7 +20,7 @@ export default class UserProfile extends Component {
           const { username } = context.state.currentUser;
           const {
             recipeBooks,
-            recipesFromDB: { recipes },
+            recipesFromDB,
             favorites,
           } = this.props;
 
@@ -41,7 +41,7 @@ export default class UserProfile extends Component {
                       </div>
                       <div>
                         <h3>Recipes </h3>
-                        {/* <span>{recipes.length}</span> */}
+                        <span>{recipesFromDB.length}</span>
                       </div>
                     </div>
 

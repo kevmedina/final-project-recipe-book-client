@@ -8,7 +8,7 @@ class UpdateProfile extends Component {
       <AuthContext.Consumer>
         {(context) => {
           const {
-            formUpdate: { username, email },
+            formUpdate: {username, email}
           } = context.state;
 
           const { handleUpdateInput, handleProfileUpdate } = context;

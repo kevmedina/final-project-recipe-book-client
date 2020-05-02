@@ -3,21 +3,17 @@ import "./NewRecipe.css";
 
 class NewRecipe extends Component {
   state = {
-    recipeForm: {
-      title: "",
-      ingredients: "",
-      readyInMinutes: "",
-      servings: "",
-      bookID: "",
-    },
+    title: "",
+    ingredients: "",
+    readyInMinutes: "",
+    servings: "",
+    bookID: "",
   };
 
   handleInput = (e) => {
     const { name, value } = e.target;
     this.setState({
-      recipeForm: {
         [name]: value,
-      },
     });
   };
 
@@ -29,16 +25,22 @@ class NewRecipe extends Component {
     });
   };
 
+  createRecipe = e => {
+    e.preventDefault()
+    this.props.addNewRecipe(this.state)
+  }
+
   render() {
-    const { recipeBooks, addNewRecipe } = this.props;
+    const { recipeBooks } = this.props;
     return (
       <div className="new-recipe">
-        <form onSubmit={addNewRecipe(this.state.recipeForm)}>
+        <form onSubmit={(e) => this.createRecipe(e)}>
           <div>
             <input
               name="title"
               type="text"
               placeholder="Recipe Name"
+              value={this.state.title}
               onChange={this.handleInput}
             />
           </div>
@@ -48,6 +50,7 @@ class NewRecipe extends Component {
               name="ingredients"
               type="text"
               placeholder="Ingredients"
+              value={this.state.ingredients}
               onChange={this.handleInput}
             />
           </div>
@@ -57,6 +60,7 @@ class NewRecipe extends Component {
               name="readyInMinutes"
               type="number"
               placeholder="Cook Time (mins)"
+              value={this.state.readyInMinutes}
               onChange={this.handleInput}
             />
           </div>
@@ -66,6 +70,7 @@ class NewRecipe extends Component {
               name="servings"
               type="number"
               placeholder="Servings"
+              value={this.state.servings}
               onChange={this.handleInput}
             />
           </div>
@@ -93,9 +98,9 @@ class NewRecipe extends Component {
             </select>
           </div>
 
-          <div>
+          {/* <div>
             <input name="image" type="file" />
-          </div>
+          </div> */}
 
           <button>Create Recipe</button>
         </form>

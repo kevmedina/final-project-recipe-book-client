@@ -23,7 +23,7 @@ class RecipeBooks extends Component {
   };
 
   render() {
-    const { deleteRecipeBook, getRecipesFromBook } = this.props;
+    const { recipeBooks, deleteRecipeBook, getRecipesFromBook } = this.props;
     return (
       <div className="recipebook">
         <div>
@@ -41,7 +41,7 @@ class RecipeBooks extends Component {
         </div>
 
         <div>
-          {this.props.recipeBooks.map((recipeBook, index) => {
+          {recipeBooks.map((recipeBook, index) => {
             return (
               <div key={index} className="recipe-book">
                 <h3

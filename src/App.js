@@ -61,7 +61,6 @@ class App extends Component {
     axios
       .get("http://localhost:3001/recipes", { withCredentials: true })
       .then((recipes) => {
-        // console.log("recipes: ", recipes.data);
         this.setState({
           recipesFromDB: recipes.data,
         });
@@ -80,12 +79,12 @@ class App extends Component {
         withCredentials: true,
       })
       .then((recipe) => {
-        // console.log("New Recipe: ", recipe.data);
+        console.log("New Recipe: ", recipe.data);
       })
       .catch((err) => console.log("Error while adding a recipe: ", err));
   };
 
-  // Add a new recipe from your own computer
+  // Add a new recipe of your own
   addNewRecipe = (recipe) => {
     console.log("New Recipe: ", recipe);
 
@@ -93,38 +92,9 @@ class App extends Component {
     //   .post("http://localhost:3001/add-new-recipe", recipe, {withCredentials: true})
     //   .then((recipe) => {
     //     console.log("New Recipe: ", recipe.data);
+    //     this.props.history.push("/user-profile");
     //   })
     //   .catch((err) => console.log("Error while adding a new recipe: ", err));
-  };
-
-  // Delete a recipe from its recipe book
-  deleteRecipe = (recipeID, recipeBookID) => {
-    const result = window.confirm(
-      "Click OK to permanently delete this recipe."
-    );
-    if (result) {
-      axios
-        .post(
-          "http://localhost:3001/recipe/delete",
-          { recipeID, recipeBookID },
-          {
-            withCredentials: true,
-          }
-        )
-        .then((response) => {
-          let updatedRecipes = this.state.currentRecipeBook.recipes.filter(
-            (recipe) => recipe._id !== recipeID
-          );
-          this.setState({
-            currentRecipeBook: {
-              recipes: updatedRecipes,
-            },
-          });
-        })
-        .catch((err) =>
-          console.log("Error while deleting a recipe from its book: ", err)
-        );
-    }
   };
 
   // Get all recipes for each book the user clicks on
@@ -170,7 +140,6 @@ class App extends Component {
         this.setState({
           recipeBooks: allRecipeBooks.data,
         });
-        // console.log("Books: ", this.state.recipeBooks);
       })
       .catch((err) =>
         console.log("Error while getting all recipe books from DB: ", err)
@@ -187,14 +156,14 @@ class App extends Component {
         .post(`http://localhost:3001/recipe-books/${recipeBookID}/delete`, {
           withCredentials: true,
         })
-        .then(async (response) => {
+        .then((response) => {
           let updatedRecipeBooks = this.state.recipeBooks.filter(
             (recipeBook) => recipeBook._id !== recipeBookID
           );
-          await this.setState((prevState) => ({
-            ...prevState,
-            recipeBooks: updatedRecipeBooks,
-          }));
+          console.loading("Update Books: ", updatedRecipeBooks);
+          // this.setState({
+          //   recipeBooks: updatedRecipeBooks,
+          // });
         })
         .catch((err) => console.log("Error while deleting recipe book: ", err));
     }
@@ -203,9 +172,11 @@ class App extends Component {
   // Update a recipe to be a favorite
   addFavorite = (recipeID) => {
     axios
-      .post(`http://localhost:3001/recipe/${recipeID}/update`)
+      .post(`http://localhost:3001/recipe/${recipeID}/update`, {
+        withCredentials: true,
+      })
       .then((updatedRecipe) => {
-        console.log("Updated recipe: ", updatedRecipe);
+        console.log("Updated favorite for recipe: ", updatedRecipe);
       })
       .catch((err) =>
         console.log("Error while updating the recipe to a favorite: ", err)
@@ -215,7 +186,7 @@ class App extends Component {
   // Get all favorite recipes from DB
   getFavorites = () => {
     axios
-      .get("http://localhost:3001/favorite-recipes")
+      .get("http://localhost:3001/favorite-recipes", { withCredentials: true })
       .then((favoriteRecipes) => {
         this.setState({
           favorites: favoriteRecipes.data,
@@ -249,7 +220,7 @@ class App extends Component {
                     <Route
                       exact
                       path="/update-profile"
-                      component={UpdateProfile}
+                      render={(props) => <UpdateProfile {...props} />}
                     />
                     <Route
                       exact
@@ -315,7 +286,6 @@ class App extends Component {
                           recipeBook={this.state.currentRecipeBook}
                           deleteRecipe={this.deleteRecipe}
                           addFavorite={this.addFavorite}
-                          getRecipesFromBook={this.getRecipesFromBook}
                         />
                       )}
                     />

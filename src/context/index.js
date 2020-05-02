@@ -33,6 +33,10 @@ class AuthProvider extends Component {
           currentUser: user,
           isLoggedIn: user ? true : false,
           loading: false,
+          formUpdate: {
+            username: user.username,
+            email: user.email,
+          },
         }));
       })
       .catch((err) => console.log("Error while getting the user: ", err));
@@ -161,9 +165,10 @@ class AuthProvider extends Component {
         console.log("User: ", user);
         this.setState((prevState) => ({
           ...prevState,
+          currentUser: user.data,
           formUpdate: {
-            username: "",
-            email: "",
+            username: user.username,
+            email: user.email,
           },
         }));
         this.props.history.push("/user-profile");
