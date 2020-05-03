@@ -13,7 +13,7 @@ class NewRecipe extends Component {
   handleInput = (e) => {
     const { name, value } = e.target;
     this.setState({
-        [name]: value,
+      [name]: value,
     });
   };
 
@@ -25,10 +25,10 @@ class NewRecipe extends Component {
     });
   };
 
-  createRecipe = e => {
-    e.preventDefault()
-    this.props.addNewRecipe(this.state)
-  }
+  createRecipe = (e) => {
+    e.preventDefault();
+    this.props.addNewRecipe(this.state);
+  };
 
   render() {
     const { recipeBooks } = this.props;

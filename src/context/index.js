@@ -162,7 +162,6 @@ class AuthProvider extends Component {
     e.preventDefault();
     AUTH_SERVICE.updateProfile(this.state.formUpdate)
       .then((user) => {
-        console.log("User: ", user);
         this.setState((prevState) => ({
           ...prevState,
           currentUser: user.data,

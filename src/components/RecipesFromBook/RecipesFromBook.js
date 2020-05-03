@@ -7,13 +7,28 @@ class RecipesFromBook extends Component {
   state = {
     recipeBook: null,
     recipes: null,
-    deleteRecipe: null,
     addFavorite: null,
   };
 
   componentDidMount() {
     this.getRecipesFromBook(this.props.match.params.recipeBookID);
   }
+
+  // Get all recipes for each book the user clicks on
+  getRecipesFromBook = (recipeBookID) => {
+    axios
+      .get(`http://localhost:3001/recipe-books/${recipeBookID}`)
+      .then((response) => {
+        this.setState({
+          recipeBook: response.data,
+          recipes: response.data.recipes,
+          addFavorite: this.props.addFavorite,
+        });
+      })
+      .catch((err) =>
+        console.log("Error while getting recipes from book: ", err)
+      );
+  };
 
   // Delete a recipe from its recipe book
   deleteRecipe = (recipeID, recipeBookID) => {
@@ -41,23 +56,6 @@ class RecipesFromBook extends Component {
           console.log("Error while deleting a recipe from its book: ", err)
         );
     }
-  };
-
-  // Get all recipes for each book the user clicks on
-  getRecipesFromBook = (recipeBookID) => {
-    axios
-      .get(`http://localhost:3001/recipe-books/${recipeBookID}`)
-      .then((response) => {
-        this.setState({
-          recipeBook: response.data,
-          recipes: response.data.recipes,
-          deleteRecipe: this.props.deleteRecipe,
-          addFavorite: this.props.addFavorite,
-        });
-      })
-      .catch((err) =>
-        console.log("Error while getting recipes from book: ", err)
-      );
   };
 
   render() {

@@ -23,9 +23,9 @@ class App extends Component {
     recipesFromDB: [],
     recipeBooks: [],
     favorites: [],
-    currentRecipeBook: {
-      recipes: [],
-    },
+    // currentRecipeBook: {
+    //   recipes: [],
+    // },
   };
 
   // When the component mounts it calls the getRecipeBooks function to retrieve all the books
@@ -88,13 +88,13 @@ class App extends Component {
   addNewRecipe = (recipe) => {
     console.log("New Recipe: ", recipe);
 
-    // axios
-    //   .post("http://localhost:3001/add-new-recipe", recipe, {withCredentials: true})
-    //   .then((recipe) => {
-    //     console.log("New Recipe: ", recipe.data);
-    //     this.props.history.push("/user-profile");
-    //   })
-    //   .catch((err) => console.log("Error while adding a new recipe: ", err));
+    axios
+      .post("http://localhost:3001/add-recipe", recipe, {withCredentials: true})
+      .then((recipe) => {
+        console.log("New Recipe: ", recipe.data);
+        // this.props.history.push("/user-profile");
+      })
+      .catch((err) => console.log("Error while adding a new recipe: ", err));
   };
 
   // Get all recipes for each book the user clicks on
@@ -153,17 +153,14 @@ class App extends Component {
     );
     if (result) {
       axios
-        .post(`http://localhost:3001/recipe-books/${recipeBookID}/delete`, {
-          withCredentials: true,
-        })
-        .then((response) => {
+        .post(`http://localhost:3001/recipe-books/${recipeBookID}/delete`)
+        .then(() => {
           let updatedRecipeBooks = this.state.recipeBooks.filter(
             (recipeBook) => recipeBook._id !== recipeBookID
           );
-          console.loading("Update Books: ", updatedRecipeBooks);
-          // this.setState({
-          //   recipeBooks: updatedRecipeBooks,
-          // });
+          this.setState({
+            recipeBooks: updatedRecipeBooks,
+          });
         })
         .catch((err) => console.log("Error while deleting recipe book: ", err));
     }
@@ -283,8 +280,6 @@ class App extends Component {
                       render={(props) => (
                         <RecipesFromBook
                           {...props}
-                          recipeBook={this.state.currentRecipeBook}
-                          deleteRecipe={this.deleteRecipe}
                           addFavorite={this.addFavorite}
                         />
                       )}
