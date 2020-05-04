@@ -7,7 +7,12 @@ class RecipeDetails extends Component {
     return (
       <div className="recipe-details">
         <div>
-          <button className="back-btn" onClick={() => this.props.history.goBack()}>Back</button>
+          <button
+            className="back-btn"
+            onClick={() => this.props.history.goBack()}
+          >
+            Back
+          </button>
         </div>
         <div className="recipe-info-container">
           <div>
@@ -18,8 +23,13 @@ class RecipeDetails extends Component {
           </div>
           <div className="recipe-info">
             <h4>{recipe.title}</h4>
-            <p><b>Cook time:</b> {recipe.readyInMinutes} mins</p>
-            <p><b>Servings:</b> {recipe.servings}</p>
+            <p>{recipe.ingredients}</p>
+            <p>
+              <b>Cook time:</b> {recipe.readyInMinutes} mins
+            </p>
+            <p>
+              <b>Servings:</b> {recipe.servings}
+            </p>
           </div>
         </div>
       </div>

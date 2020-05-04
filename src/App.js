@@ -23,9 +23,7 @@ class App extends Component {
     recipesFromDB: [],
     recipeBooks: [],
     favorites: [],
-    // currentRecipeBook: {
-    //   recipes: [],
-    // },
+    trivia: {},
   };
 
   // When the component mounts it calls the getRecipeBooks function to retrieve all the books
@@ -89,7 +87,9 @@ class App extends Component {
     console.log("New Recipe: ", recipe);
 
     axios
-      .post("http://localhost:3001/add-recipe", recipe, {withCredentials: true})
+      .post("http://localhost:3001/add-recipe", recipe, {
+        withCredentials: true,
+      })
       .then((recipe) => {
         console.log("New Recipe: ", recipe.data);
         // this.props.history.push("/user-profile");
@@ -194,6 +194,19 @@ class App extends Component {
       );
   };
 
+  // Get a random joke from the API
+  getRandomFoodTrivia = () => {
+    axios
+      .post("http://localhost:3001/random-trivia", { withCredentials: true })
+      .then((randomTrivia) => {
+        console.log("trivia: ", randomTrivia.data);
+        this.setState({
+          trivia: randomTrivia.data,
+        });
+      })
+      .catch((err) => console.log("Error while getting the recipes: ", err));
+  };
+
   render() {
     return (
       <AuthContext.Consumer>
@@ -228,7 +241,9 @@ class App extends Component {
                           recipeBooks={this.state.recipeBooks}
                           recipesFromDB={this.state.recipesFromDB}
                           favorites={this.state.favorites}
+                          trivia={this.state.trivia}
                           updateState={this.updateState}
+                          getRandomFoodTrivia={this.getRandomFoodTrivia}
                         />
                       )}
                     />

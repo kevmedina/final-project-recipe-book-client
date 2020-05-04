@@ -9,6 +9,7 @@ export default class UserProfile extends Component {
       return this.props.history.push("/signup-page");
     }
     this.props.updateState();
+    this.props.getRandomFoodTrivia();
   }
 
   render() {
@@ -17,11 +18,7 @@ export default class UserProfile extends Component {
       <AuthContext.Consumer>
         {(context) => {
           const { username } = context.state.currentUser;
-          const {
-            recipeBooks,
-            recipesFromDB,
-            favorites,
-          } = this.props;
+          const { recipeBooks, recipesFromDB, favorites, trivia } = this.props;
 
           return (
             <div className="user-profile">
@@ -68,7 +65,10 @@ export default class UserProfile extends Component {
 
                 {/* Favorites Section */}
                 <section className="favorites-section">
-                  <div>Hello</div>
+                  <div>
+                    <h3>Random Food Trivia</h3>
+                    <p>{trivia.text}</p>
+                  </div>
                   <div>
                     <header>
                       <h1>Favorite Recipes</h1>
