@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
+import { Link, withRouter } from "react-router-dom";
 import "./RecipeList.css";
 
 class RecipeList extends Component {
@@ -9,10 +9,13 @@ class RecipeList extends Component {
 
   handleSelectChange = (e) => {
     const { value } = e.target;
-
-    this.setState({
-      bookID: value,
-    });
+    if (value === "new") {
+      this.props.history.push("/new-recipebook");
+    } else {
+      this.setState({
+        bookID: value,
+      });
+    }
   };
 
   render() {
@@ -66,7 +69,7 @@ class RecipeList extends Component {
                           );
                         })
                       ) : (
-                        <option>Create New</option>
+                        <option value="new">Create New</option>
                       )}
                     </select>
                   </div>
@@ -86,4 +89,4 @@ class RecipeList extends Component {
   }
 }
 
-export default RecipeList;
+export default withRouter(RecipeList);

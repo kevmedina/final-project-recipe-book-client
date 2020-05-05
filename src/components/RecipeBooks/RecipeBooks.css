@@ -14,7 +14,7 @@
   width: 400px;
   height: 40px;
   border-radius: 10px;
-  background-color: var(--grey-color);
+  background-color: grey;
   display: flex;
   justify-content: center;
   align-items: center;

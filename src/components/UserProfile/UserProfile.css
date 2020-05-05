@@ -79,8 +79,24 @@
 
 /* Favorites Section */
 .favorites-section {
-  height: 60%;
+  height: auto;
   width: 100%;
+}
+
+.favorites-section h2 {
+  text-align: center;
+}
+
+.favorites-section > div:first-child {
+  font-size: 20px;
+}
+
+.favorites-section > div:first-child h2 {
+  margin-bottom: 40px;
+}
+
+.favorites-section > div:first-child p {
+  padding: 0 40px;
 }
 
 .favorites-section > div {
@@ -91,9 +107,18 @@
   overflow: scroll;
 }
 
+.favorites-section > div:nth-child(2) h2 {
+  margin-bottom: 40px;
+}
+
 .favorites img {
   width: 50px;
   height: 50px;
+}
+
+.favorites i {
+  font-size: 3em;
+  margin-top: 60px;
 }
 
 .link > div {

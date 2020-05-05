@@ -66,13 +66,12 @@ export default class UserProfile extends Component {
                 {/* Favorites Section */}
                 <section className="favorites-section">
                   <div>
-                    <h3>Random Food Trivia</h3>
+                    <h2>Random Food Trivia</h2>
+                    <h2>DID YOU KNOW?</h2>
                     <p>{trivia.text}</p>
                   </div>
                   <div>
-                    <header>
-                      <h1>Favorite Recipes</h1>
-                    </header>
+                    <h2>Favorite Recipes</h2>
                     <div className="favorites">
                       {favorites.length !== 0 ? (
                         favorites.map((recipe, index) => {
@@ -106,7 +105,10 @@ export default class UserProfile extends Component {
                         })
                       ) : (
                         <div>
-                          Click the star icon on a recipe to add a favorite
+                          <h4>
+                            Click the star icon on a recipe to add a favorite
+                          </h4>
+                          <i className="fas fa-star fa-fw"></i>
                         </div>
                       )}
                     </div>

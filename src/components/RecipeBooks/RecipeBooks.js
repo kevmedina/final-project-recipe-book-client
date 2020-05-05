@@ -32,7 +32,7 @@ class RecipeBooks extends Component {
             <input
               name="title"
               type="text"
-              placeholder="Name of Recipe Book"
+              placeholder="Create a new recipe book"
               onChange={this.handleInputChange}
               value={this.state.title}
             />
@@ -59,10 +59,10 @@ class RecipeBooks extends Component {
                     onClick={() => deleteRecipeBook(recipeBook._id)}
                     className="fas fa-trash fa-fw"
                   ></i>
-                  <i
+                  {/* <i
                     onClick={() => deleteRecipeBook(recipeBook._id)}
                     className="fas fa-edit fa-fw"
-                  ></i>
+                  ></i> */}
                 </div>
               </div>
             );

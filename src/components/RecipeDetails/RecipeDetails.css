@@ -40,3 +40,10 @@
   font-size: 1.8rem;
   margin-left: 20px;
 }
+
+@media screen and (max-width: 1024px) {
+  .recipe-details {
+    width: 100%;
+    height: auto;
+  }
+}
