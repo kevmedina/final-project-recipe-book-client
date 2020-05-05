@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Switch, Route } from "react-router-dom";
+import { Switch, Route, withRouter } from "react-router-dom";
 import { AuthContext } from "./context/index";
 import "./App.css";
 import Home from "./components/Home/Home";
@@ -92,7 +92,7 @@ class App extends Component {
       })
       .then((recipe) => {
         console.log("New Recipe: ", recipe.data);
-        // this.props.history.push("/user-profile");
+        this.props.history.push("/new-recipebook");
       })
       .catch((err) => console.log("Error while adding a new recipe: ", err));
   };
@@ -310,4 +310,4 @@ class App extends Component {
   }
 }
 
-export default App;
+export default withRouter(App);

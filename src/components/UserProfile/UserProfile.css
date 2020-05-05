@@ -74,7 +74,12 @@
 }
 
 .item h3 {
-  margin: 0;
+  margin: 10px 0;
+}
+
+.item span {
+  font-size: 20px;
+  font-weight: bold;
 }
 
 /* Favorites Section */
@@ -89,6 +94,7 @@
 
 .favorites-section > div:first-child {
   font-size: 20px;
+  text-align: justify;
 }
 
 .favorites-section > div:first-child h2 {
