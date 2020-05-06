@@ -14,7 +14,7 @@ const RECIPE_SERVICE = {
     return service.post("/add-recipebook", userData);
   },
   getRecipes(userData) {
-    return service.post("/searchExternalAPI", userData);
+    return service.post("/searchExternalAPI", userData, {withCredentials: true});
   },
   // addFavorite(userData) {
   //   return service.post("/api/add-recipe", userData);

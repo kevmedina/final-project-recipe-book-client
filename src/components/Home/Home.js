@@ -7,7 +7,7 @@ const Home = () => {
     <div className="home">
       <section className="hero">
         <div className="box">
-          <h1>Welcome to Dish-It-Out</h1>
+          <h1>Welcome to <span>Dish-It-Out</span></h1>
           <p>
             Sign up for free to search through more than 360,000 recipes from
             across the web. Create your profile to build your own personal recipe books.

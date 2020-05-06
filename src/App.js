@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Switch, Route, withRouter } from "react-router-dom";
 import { AuthContext } from "./context/index";
+// import RECIPE_SERVICE from "./services/RecipeService";
 import "./App.css";
 import Home from "./components/Home/Home";
 import Signup from "./components/Authentication/Signup/Signup";
@@ -52,6 +53,15 @@ class App extends Component {
     } catch (err) {
       console.log("Error while getting the recipes: ", { err: err.response });
     }
+    // RECIPE_SERVICE.getRecipes(param)
+    //   .then((recipeSearch) => {
+    //     this.setState({
+    //       recipes: recipeSearch.data,
+    //     });
+    //   })
+    //   .catch((err) =>
+    //     console.log("Error while getting the recipes: ", { err: err.response })
+    //   );
   };
 
   // Get all recipes from the DB
@@ -77,7 +87,7 @@ class App extends Component {
         withCredentials: true,
       })
       .then((recipe) => {
-        console.log("New Recipe: ", recipe.data);
+        // console.log("New Recipe: ", recipe.data);
       })
       .catch((err) => console.log("Error while adding a recipe: ", err));
   };

@@ -1,9 +1,31 @@
 import React, { Component } from "react";
 import "./RecipeDetails.css";
+import axios from "axios";
 
 class RecipeDetails extends Component {
+  state = {
+    ingredients: {},
+  };
+
+  componentDidMount() {
+    const {
+      recipe: { id },
+    } = this.props.location.state;
+    axios
+      .post(`http://localhost:3001/get-ingredients/${id}`)
+      .then((recipeIngredients) => {
+        this.setState({
+          ingredients: recipeIngredients.data,
+        });
+      })
+      .catch((err) =>
+        console.log("Error while getting the ingredients: ", err)
+      );
+  }
+
   render() {
     const { recipe } = this.props.location.state;
+    console.log(this.state.ingredients.ingredients);
     return (
       <div className="recipe-details">
         <div>
@@ -22,14 +44,29 @@ class RecipeDetails extends Component {
             />
           </div>
           <div className="recipe-info">
-            <h4>{recipe.title}</h4>
-            <p>{recipe.ingredients}</p>
-            <p>
+            <h4 className="title">{recipe.title}</h4>
+            <div>
+              <span>
+                <b>Ingredients:</b>
+              </span>
+              {this.state.ingredients.ingredients !== undefined
+                ? this.state.ingredients.ingredients.map(
+                    (ingredient, index) => {
+                      return (
+                        <span key={index}>
+                          <span> {ingredient.name}, </span>
+                        </span>
+                      );
+                    }
+                  )
+                : null}
+            </div>
+            <span>
               <b>Cook time:</b> {recipe.readyInMinutes} mins
-            </p>
-            <p>
+            </span>
+            <span>
               <b>Servings:</b> {recipe.servings}
-            </p>
+            </span>
           </div>
         </div>
       </div>
