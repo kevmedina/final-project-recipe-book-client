@@ -38,8 +38,8 @@
 }
 
 .add-button {
-  width: 30px;
-  height: 30px;
+  width: 35px;
+  height: 35px;
   border-radius: 50%;
   background-color: var(--green-color);
   display: flex;
@@ -49,4 +49,12 @@
 
 .fa-plus {
   color: #ffffff;
+}
+
+.fa-plus:hover {
+    transform: translateY(-2px);
+}
+
+.fa-plus:active {
+    transform: translateY(0px);
 }

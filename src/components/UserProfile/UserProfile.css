@@ -18,6 +18,11 @@
   font-weight: bold;
 }
 
+.create-btn:hover {
+  text-decoration: none !important;
+  color: var(--yellow-color);
+}
+
 .create-btn i {
   margin-right: 4px;
 }
@@ -118,8 +123,8 @@
 }
 
 .favorites img {
-  width: 50px;
-  height: 50px;
+  width: 60px;
+  height: 60px;
 }
 
 .favorites i {

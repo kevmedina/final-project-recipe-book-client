@@ -17,6 +17,7 @@
   width: 450px;
   height: 420px;
   padding-top: 20px;
+  border-radius: 5px;
 }
 
 .signup input {
@@ -25,6 +26,8 @@
   margin: 10px 0;
   padding: 4px 6px;
   font-size: 14px;
+  border-radius: 5px;
+  outline: none;
 }
 
 .signup button {
@@ -37,4 +40,10 @@
   background-color: var(--red-color);
   color: #ffffff;
   text-transform: uppercase;
+  border-radius: 5px;
+}
+
+.signup button:hover {
+  background-color: var(--green-color);
+  color: var(--yellow-color);
 }

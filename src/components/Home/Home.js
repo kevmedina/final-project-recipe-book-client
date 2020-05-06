@@ -7,9 +7,9 @@ const Home = () => {
     <div className="home">
       <section className="hero">
         <div className="box">
-          <h1>Welcome to Recipe Box.</h1>
+          <h1>Welcome to Dish-It-Out</h1>
           <p>
-            Sign up for free to search through more than 330,000 recipes from
+            Sign up for free to search through more than 360,000 recipes from
             across the web. Create your profile to build your own personal recipe books.
           </p>
           <div>
@@ -22,7 +22,7 @@ const Home = () => {
         <div>
           <div>
             <i className="fas fa-utensils"></i>
-            <p>More than 330,000 recipes</p>
+            <p>Over 360,000 recipes</p>
           </div>
           <div>
             <i className="fas fa-book"></i>

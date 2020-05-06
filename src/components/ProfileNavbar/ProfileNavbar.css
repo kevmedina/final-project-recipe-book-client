@@ -55,6 +55,10 @@
   cursor: pointer;
 }
 
+.side-navbar button:hover {
+  color: var(--yellow-color);
+}
+
 .side-navbar img {
   width: 100px;
   height: 100px;
@@ -65,6 +69,11 @@
 .navlink {
   text-decoration: none;
   color: var(--green-color);
+  text-decoration: none !important;
+}
+
+.navlink:hover {
+  color: var(--yellow-color);
 }
 
 .navlink i {

@@ -18,6 +18,7 @@
   width: 450px;
   height: 400px;
   z-index: 1000;
+  border-radius: 5px;
 }
 
 .login input {
@@ -26,6 +27,8 @@
   margin: 10px 0;
   padding: 4px 8px;
   font-size: 14px;
+  border-radius: 5px;
+  outline: none;
 }
 
 .login button {
@@ -38,4 +41,10 @@
   background-color: var(--red-color);
   color: #ffffff;
   text-transform: uppercase;
+  border-radius: 5px;
+}
+
+.login button:hover {
+  background-color: var(--green-color);
+  color: var(--yellow-color);
 }

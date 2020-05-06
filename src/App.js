@@ -199,7 +199,6 @@ class App extends Component {
     axios
       .post("http://localhost:3001/random-trivia", { withCredentials: true })
       .then((randomTrivia) => {
-        console.log("trivia: ", randomTrivia.data);
         this.setState({
           trivia: randomTrivia.data,
         });

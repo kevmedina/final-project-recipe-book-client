@@ -47,9 +47,13 @@
   font-weight: bold;
 }
 
+.box h1 {
+  font-size: 3em;
+}
+
 .box p {
   margin-top: 25px;
-  font-size: 1.8rem;
+  font-size: 2rem;
 }
 
 .box > div {
@@ -65,6 +69,11 @@
 
 .hero-link {
   color: #ffffff;
+}
+
+.hero-link:hover {
+  text-decoration: none !important;
+  color: var(--yellow-color);
 }
 
 @media screen and (max-width: 840px) {

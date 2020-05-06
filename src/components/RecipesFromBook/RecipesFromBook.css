@@ -35,3 +35,11 @@
 .fa-trash {
   color: var(--red-color);
 }
+
+.fa-star:hover, .fa-trash:hover {
+  transform: translateY(-2px);
+}
+
+.fa-star:active, .fa-trash:active {
+  transform: translateY(0px);
+}

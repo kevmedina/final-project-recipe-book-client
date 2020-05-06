@@ -19,10 +19,13 @@ class NewRecipe extends Component {
 
   handleSelectChange = (e) => {
     const { value } = e.target;
-
-    this.setState({
-      bookID: value,
-    });
+    if (value === "new") {
+      this.props.history.push("/new-recipebook");
+    } else {
+      this.setState({
+        bookID: value,
+      });
+    }
   };
 
   createRecipe = (e) => {
@@ -35,6 +38,7 @@ class NewRecipe extends Component {
     return (
       <div className="new-recipe">
         <form onSubmit={(e) => this.createRecipe(e)}>
+          <h1>Add New Recipe</h1>
           <div>
             <input
               name="title"
@@ -93,7 +97,7 @@ class NewRecipe extends Component {
                   );
                 })
               ) : (
-                <option>Create New</option>
+                <option value="new">Create New</option>
               )}
             </select>
           </div>

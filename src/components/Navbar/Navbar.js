@@ -5,6 +5,7 @@ import "./NavBar.css";
 function Navbar() {
   return (
     <div className="navbar">
+      <span>Dish-It-Out</span>
       <nav>
         <NavLink className="link" to="/">
           Home
