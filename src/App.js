@@ -81,7 +81,6 @@ class App extends Component {
     console.log("New Recipe: ", recipe);
     RECIPE_SERVICE.addRecipe(recipe)
       .then((recipe) => {
-        console.log("New Recipe: ", recipe.data);
         this.props.history.push("/new-recipebook");
       })
       .catch((err) => console.log("Error while adding a new recipe: ", err));

@@ -9,8 +9,6 @@ const service = axios.create({
 
 const AUTH_SERVICE = {
   signup(userData) {
-    // const { username, email, password } = req.body; <==> userData
-    console.log("User data in the service: ", userData);
     return service.post("/api/signup", userData);
   },
 

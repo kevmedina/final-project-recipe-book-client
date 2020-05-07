@@ -9,7 +9,7 @@ const service = axios.create({
 
 const RECIPE_BOOK_SERVICE = {
   createNewRecipeBook(title) {
-    return service.post("/add-recipebook", title, { withCredentials: true });
+    return service.post("/add-recipebook", {title}, { withCredentials: true });
   },
   getRecipeBooks() {
     return service.get("/recipe-books", { withCredentials: true });
