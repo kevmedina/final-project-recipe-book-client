@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
+import RECIPE_BOOK_SERVICE from "../../services/RecipeBookService";
+import RECIPE_SERVICE from "../../services/RecipeService";
 import "./RecipesFromBook.css";
-import axios from "axios";
 
 class RecipesFromBook extends Component {
   state = {
@@ -16,8 +17,7 @@ class RecipesFromBook extends Component {
 
   // Get all recipes for each book the user clicks on
   getRecipesFromBook = (recipeBookID) => {
-    axios
-      .get(`http://localhost:3001/recipe-books/${recipeBookID}`)
+    RECIPE_BOOK_SERVICE.getRecipesFromBook(recipeBookID)
       .then((response) => {
         this.setState({
           recipeBook: response.data,
@@ -36,14 +36,7 @@ class RecipesFromBook extends Component {
       "Click OK to permanently delete this recipe."
     );
     if (result) {
-      axios
-        .post(
-          "http://localhost:3001/recipe/delete",
-          { recipeID, recipeBookID },
-          {
-            withCredentials: true,
-          }
-        )
+      RECIPE_SERVICE.deleteRecipe(recipeID, recipeBookID)
         .then(() => {
           let updatedRecipes = this.state.recipes.filter(
             (recipe) => recipe._id !== recipeID

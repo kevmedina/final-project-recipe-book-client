@@ -1,6 +1,6 @@
 import React, { Component } from "react";
+import RECIPE_SERVICE from "../../services/RecipeService";
 import "./RecipeDetails.css";
-import axios from "axios";
 
 class RecipeDetails extends Component {
   state = {
@@ -11,8 +11,7 @@ class RecipeDetails extends Component {
     const {
       recipe: { id },
     } = this.props.location.state;
-    axios
-      .post(`http://localhost:3001/get-ingredients/${id}`)
+    RECIPE_SERVICE.getIngredients(id)
       .then((recipeIngredients) => {
         this.setState({
           ingredients: recipeIngredients.data,

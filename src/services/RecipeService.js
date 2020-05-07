@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const baseURL = "http://localhost:3001";
+const baseURL = process.env.REACT_APP_SERVER_POINT;
 
 const service = axios.create({
   baseURL,
@@ -8,17 +8,42 @@ const service = axios.create({
 });
 
 const RECIPE_SERVICE = {
-  addRecipe(userData) {
-    // const { username, email, password } = req.body; <==> userData
-    console.log("User data in the service: ", userData);
-    return service.post("/add-recipebook", userData);
+  searchRecipes(param) {
+    return service.post(
+      "/searchExternalAPI",
+      { param },
+      { withCredentials: true }
+    );
   },
-  getRecipes(userData) {
-    return service.post("/searchExternalAPI", userData, {withCredentials: true});
+  addRecipe(recipe) {
+    return service.post("/add-recipe", recipe, { withCredentials: true });
   },
-  // addFavorite(userData) {
-  //   return service.post("/api/add-recipe", userData);
-  // },
+  addFavorite(recipeID) {
+    return service.post(`/recipe/${recipeID}/update`, {
+      withCredentials: true,
+    });
+  },
+  getRecipes() {
+    return service.get("/recipes", { withCredentials: true });
+  },
+  getFavorites() {
+    return service.get("/favorite-recipes", { withCredentials: true });
+  },
+  getRandomFoodTrivia() {
+    return service.post("/random-trivia", { withCredentials: true });
+  },
+  getIngredients(id) {
+    return service.post(`/get-ingredients/${id}`, { withCredentials: true });
+  },
+  deleteRecipe(recipeID, recipeBookID) {
+    return service.post(
+      "recipe/delete",
+      { recipeID, recipeBookID },
+      {
+        withCredentials: true,
+      }
+    );
+  },
 };
 
 export default RECIPE_SERVICE;

@@ -8,17 +8,17 @@ const service = axios.create({
 });
 
 const RECIPE_BOOK_SERVICE = {
-  addRecipeBook(recipeBook) {
-    // const { username, email, password } = req.body; <==> userData
-    return service.post("/add-recipebook", recipeBook);
+  createNewRecipeBook(title) {
+    return service.post("/add-recipebook", title, { withCredentials: true });
   },
   getRecipeBooks() {
-    return service.post("/recipe-books");
+    return service.get("/recipe-books", { withCredentials: true });
   },
   deleteRecipeBook(recipeBookID) {
-    return service.post(
-      `/recipe-books/${recipeBookID}/delete`
-    );
+    return service.post(`/recipe-books/${recipeBookID}/delete`);
+  },
+  getRecipesFromBook(recipeBookID) {
+    return service.get(`/recipe-books/${recipeBookID}`);
   },
 };
 

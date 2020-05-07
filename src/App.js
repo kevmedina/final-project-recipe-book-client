@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 import { Switch, Route, withRouter } from "react-router-dom";
 import { AuthContext } from "./context/index";
-// import RECIPE_SERVICE from "./services/RecipeService";
+import RECIPE_SERVICE from "./services/RecipeService";
+import RECIPE_BOOK_SERVICE from "./services/RecipeBookService";
 import "./App.css";
 import Home from "./components/Home/Home";
 import Signup from "./components/Authentication/Signup/Signup";
@@ -12,7 +13,6 @@ import UserProfile from "./components/UserProfile/UserProfile";
 import ProfileNavbar from "./components/ProfileNavbar/ProfileNavbar";
 import NewRecipe from "./components/NewRecipe/NewRecipe";
 import Search from "./components/Search/Search";
-import axios from "axios";
 import RecipeBooks from "./components/RecipeBooks/RecipeBooks";
 import RecipeDetails from "./components/RecipeDetails/RecipeDetails";
 import RecipesFromBook from "./components/RecipesFromBook/RecipesFromBook";
@@ -40,34 +40,21 @@ class App extends Component {
   };
 
   // search for recipes from the API
-  searchRecipes = async (param) => {
-    try {
-      const recipeSearch = await axios.post(
-        `http://localhost:3001/searchExternalAPI`,
-        { param },
-        { withCredentials: true }
+  searchRecipes = (param) => {
+    RECIPE_SERVICE.searchRecipes(param)
+      .then((recipeSearch) => {
+        this.setState({
+          recipes: recipeSearch.data,
+        });
+      })
+      .catch((err) =>
+        console.log("Error while getting the recipes: ", { err: err.response })
       );
-      this.setState({
-        recipes: recipeSearch.data,
-      });
-    } catch (err) {
-      console.log("Error while getting the recipes: ", { err: err.response });
-    }
-    // RECIPE_SERVICE.getRecipes(param)
-    //   .then((recipeSearch) => {
-    //     this.setState({
-    //       recipes: recipeSearch.data,
-    //     });
-    //   })
-    //   .catch((err) =>
-    //     console.log("Error while getting the recipes: ", { err: err.response })
-    //   );
   };
 
   // Get all recipes from the DB
   getRecipes = () => {
-    axios
-      .get("http://localhost:3001/recipes", { withCredentials: true })
+    RECIPE_SERVICE.getRecipes()
       .then((recipes) => {
         this.setState({
           recipesFromDB: recipes.data,
@@ -82,12 +69,9 @@ class App extends Component {
       (recipe) => recipe.id === recipeID
     );
     newRecipe.bookID = recipeBookID;
-    axios
-      .post("http://localhost:3001/add-recipe", newRecipe, {
-        withCredentials: true,
-      })
+    RECIPE_SERVICE.addRecipe(newRecipe)
       .then((recipe) => {
-        // console.log("New Recipe: ", recipe.data);
+        console.log("New Recipe: ", recipe.data);
       })
       .catch((err) => console.log("Error while adding a recipe: ", err));
   };
@@ -95,11 +79,7 @@ class App extends Component {
   // Add a new recipe of your own
   addNewRecipe = (recipe) => {
     console.log("New Recipe: ", recipe);
-
-    axios
-      .post("http://localhost:3001/add-recipe", recipe, {
-        withCredentials: true,
-      })
+    RECIPE_SERVICE.addRecipe(recipe)
       .then((recipe) => {
         console.log("New Recipe: ", recipe.data);
         this.props.history.push("/new-recipebook");
@@ -109,8 +89,7 @@ class App extends Component {
 
   // Get all recipes for each book the user clicks on
   getRecipesFromBook = (recipeBookID) => {
-    axios
-      .get(`http://localhost:3001/recipe-books/${recipeBookID}`)
+    RECIPE_BOOK_SERVICE.getRecipesFromBook(recipeBookID)
       .then(async (response) => {
         await this.setState({
           currentRecipeBook: response.data,
@@ -124,12 +103,7 @@ class App extends Component {
 
   // Create a new recipe book
   createNewRecipeBook = (title) => {
-    axios
-      .post(
-        "http://localhost:3001/add-recipebook",
-        { title },
-        { withCredentials: true }
-      )
+    RECIPE_BOOK_SERVICE.createNewRecipeBook(title)
       .then((response) => {
         this.setState({
           recipeBooks: response.data,
@@ -144,8 +118,7 @@ class App extends Component {
 
   // Get all the recipe books from DB
   getRecipeBooks = () => {
-    axios
-      .get("http://localhost:3001/recipe-books", { withCredentials: true })
+    RECIPE_BOOK_SERVICE.getRecipeBooks()
       .then((allRecipeBooks) => {
         this.setState({
           recipeBooks: allRecipeBooks.data,
@@ -162,8 +135,7 @@ class App extends Component {
       "Click OK to permanently delete this recipe book."
     );
     if (result) {
-      axios
-        .post(`http://localhost:3001/recipe-books/${recipeBookID}/delete`)
+      RECIPE_BOOK_SERVICE.deleteRecipeBook(recipeBookID)
         .then(() => {
           let updatedRecipeBooks = this.state.recipeBooks.filter(
             (recipeBook) => recipeBook._id !== recipeBookID
@@ -178,10 +150,7 @@ class App extends Component {
 
   // Update a recipe to be a favorite
   addFavorite = (recipeID) => {
-    axios
-      .post(`http://localhost:3001/recipe/${recipeID}/update`, {
-        withCredentials: true,
-      })
+    RECIPE_SERVICE.addFavorite(recipeID)
       .then((updatedRecipe) => {
         console.log("Updated favorite for recipe: ", updatedRecipe);
       })
@@ -192,8 +161,7 @@ class App extends Component {
 
   // Get all favorite recipes from DB
   getFavorites = () => {
-    axios
-      .get("http://localhost:3001/favorite-recipes", { withCredentials: true })
+    RECIPE_SERVICE.getFavorites()
       .then((favoriteRecipes) => {
         this.setState({
           favorites: favoriteRecipes.data,
@@ -206,8 +174,7 @@ class App extends Component {
 
   // Get a random joke from the API
   getRandomFoodTrivia = () => {
-    axios
-      .post("http://localhost:3001/random-trivia", { withCredentials: true })
+    RECIPE_SERVICE.getRandomFoodTrivia()
       .then((randomTrivia) => {
         this.setState({
           trivia: randomTrivia.data,
