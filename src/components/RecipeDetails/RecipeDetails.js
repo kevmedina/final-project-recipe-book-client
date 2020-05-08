@@ -24,7 +24,6 @@ class RecipeDetails extends Component {
 
   render() {
     const { recipe } = this.props.location.state;
-    console.log(this.state.ingredients.ingredients);
     return (
       <div className="recipe-details">
         <div>

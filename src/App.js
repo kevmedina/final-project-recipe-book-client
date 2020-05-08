@@ -71,7 +71,7 @@ class App extends Component {
     newRecipe.bookID = recipeBookID;
     RECIPE_SERVICE.addRecipe(newRecipe)
       .then((recipe) => {
-        console.log("New Recipe: ", recipe.data);
+        // console.log("New Recipe: ", recipe.data);
       })
       .catch((err) => console.log("Error while adding a recipe: ", err));
   };
@@ -135,7 +135,8 @@ class App extends Component {
     );
     if (result) {
       RECIPE_BOOK_SERVICE.deleteRecipeBook(recipeBookID)
-        .then(() => {
+        .then((response) => {
+          console.log("Deleted Recipe Book: ", response.data);
           let updatedRecipeBooks = this.state.recipeBooks.filter(
             (recipeBook) => recipeBook._id !== recipeBookID
           );
