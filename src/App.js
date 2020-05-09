@@ -173,15 +173,15 @@ class App extends Component {
   };
 
   // Get a random joke from the API
-  // getRandomFoodTrivia = () => {
-  //   RECIPE_SERVICE.getRandomFoodTrivia()
-  //     .then((randomTrivia) => {
-  //       this.setState({
-  //         trivia: randomTrivia.data,
-  //       });
-  //     })
-  //     .catch((err) => console.log("Error while getting the recipes: ", err));
-  // };
+  getRandomFoodTrivia = () => {
+    RECIPE_SERVICE.getRandomFoodTrivia()
+      .then((randomTrivia) => {
+        this.setState({
+          trivia: randomTrivia.data,
+        });
+      })
+      .catch((err) => console.log("Error while getting the recipes: ", err));
+  };
 
   render() {
     return (
