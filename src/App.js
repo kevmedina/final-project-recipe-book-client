@@ -173,15 +173,15 @@ class App extends Component {
   };
 
   // Get a random joke from the API
-  getRandomFoodTrivia = () => {
-    RECIPE_SERVICE.getRandomFoodTrivia()
-      .then((randomTrivia) => {
-        this.setState({
-          trivia: randomTrivia.data,
-        });
-      })
-      .catch((err) => console.log("Error while getting the recipes: ", err));
-  };
+  // getRandomFoodTrivia = () => {
+  //   RECIPE_SERVICE.getRandomFoodTrivia()
+  //     .then((randomTrivia) => {
+  //       this.setState({
+  //         trivia: randomTrivia.data,
+  //       });
+  //     })
+  //     .catch((err) => console.log("Error while getting the recipes: ", err));
+  // };
 
   render() {
     return (
@@ -200,81 +200,88 @@ class App extends Component {
                 <div className={`${isLoggedIn ? "user-logged-in" : ""}`}>
                   {isLoggedIn ? <ProfileNavbar /> : <Navbar />}
                   <Switch>
-                    <Route exact path="/" component={Home} />
-                    <Route exact path="/signup-page" component={Signup} />
-                    <Route exact path="/login-page" component={Login} />
-                    <Route
-                      exact
-                      path="/update-profile"
-                      render={(props) => <UpdateProfile {...props} />}
-                    />
-                    <Route
-                      exact
-                      path="/user-profile"
-                      render={(props) => (
-                        <UserProfile
-                          {...props}
-                          recipeBooks={this.state.recipeBooks}
-                          recipesFromDB={this.state.recipesFromDB}
-                          favorites={this.state.favorites}
-                          trivia={this.state.trivia}
-                          updateState={this.updateState}
-                          getRandomFoodTrivia={this.getRandomFoodTrivia}
+                    {isLoggedIn === false ? (
+                      <>
+                        <Route exact path="/" component={Home} />
+                        <Route exact path="/signup-page" component={Signup} />
+                        <Route exact path="/login-page" component={Login} />
+                      </>
+                    ) : (
+                      <>
+                        <Route
+                          exact
+                          path="/update-profile"
+                          render={(props) => <UpdateProfile {...props} />}
                         />
-                      )}
-                    />
-                    <Route
-                      exact
-                      path="/new-recipe"
-                      render={(props) => (
-                        <NewRecipe
-                          {...props}
-                          recipeBooks={this.state.recipeBooks}
-                          addNewRecipe={this.addNewRecipe}
+                        <Route
+                          exact
+                          path="/user-profile"
+                          render={(props) => (
+                            <UserProfile
+                              {...props}
+                              recipeBooks={this.state.recipeBooks}
+                              recipesFromDB={this.state.recipesFromDB}
+                              favorites={this.state.favorites}
+                              trivia={this.state.trivia}
+                              updateState={this.updateState}
+                              getRandomFoodTrivia={this.getRandomFoodTrivia}
+                            />
+                          )}
                         />
-                      )}
-                    />
-                    <Route
-                      exact
-                      path="/search"
-                      render={(props) => (
-                        <Search
-                          {...props}
-                          recipes={this.state.recipes}
-                          recipeBooks={this.state.recipeBooks}
-                          searchRecipes={this.searchRecipes}
-                          addRecipe={this.addRecipe}
+                        <Route
+                          exact
+                          path="/new-recipe"
+                          render={(props) => (
+                            <NewRecipe
+                              {...props}
+                              recipeBooks={this.state.recipeBooks}
+                              addNewRecipe={this.addNewRecipe}
+                            />
+                          )}
                         />
-                      )}
-                    />
-                    <Route
-                      exact
-                      path="/new-recipebook"
-                      render={(props) => (
-                        <RecipeBooks
-                          {...props}
-                          recipeBooks={this.state.recipeBooks}
-                          createNewRecipeBook={this.createNewRecipeBook}
-                          deleteRecipeBook={this.deleteRecipeBook}
-                          getRecipesFromBook={this.getRecipesFromBook}
+                        <Route
+                          exact
+                          path="/search"
+                          render={(props) => (
+                            <Search
+                              {...props}
+                              recipes={this.state.recipes}
+                              recipeBooks={this.state.recipeBooks}
+                              searchRecipes={this.searchRecipes}
+                              addRecipe={this.addRecipe}
+                            />
+                          )}
                         />
-                      )}
-                    />
-                    <Route
-                      exact
-                      path="/recipe-details"
-                      render={(props) => <RecipeDetails {...props} />}
-                    />
-                    <Route
-                      exact
-                      path="/recipes-from-book/:recipeBookID"
-                      render={(props) => (
-                        <RecipesFromBook
-                          {...props}
-                          addFavorite={this.addFavorite}
+                        <Route
+                          exact
+                          path="/new-recipebook"
+                          render={(props) => (
+                            <RecipeBooks
+                              {...props}
+                              recipeBooks={this.state.recipeBooks}
+                              createNewRecipeBook={this.createNewRecipeBook}
+                              deleteRecipeBook={this.deleteRecipeBook}
+                              getRecipesFromBook={this.getRecipesFromBook}
+                            />
+                          )}
                         />
-                      )}
-                    />
+                        <Route
+                          exact
+                          path="/recipe-details"
+                          render={(props) => <RecipeDetails {...props} />}
+                        />
+                        <Route
+                          exact
+                          path="/recipes-from-book/:recipeBookID"
+                          render={(props) => (
+                            <RecipesFromBook
+                              {...props}
+                              addFavorite={this.addFavorite}
+                            />
+                          )}
+                        />
+                      </>
+                    )}
                   </Switch>
                 </div>
               )}

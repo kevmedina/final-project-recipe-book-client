@@ -45,19 +45,15 @@ class RecipeDetails extends Component {
             <h4 className="title">{recipe.title}</h4>
             <div>
               <span>
-                <b>Ingredients:</b>
+                <b>Ingredients: </b>
               </span>
-              {this.state.ingredients.ingredients !== undefined
+              {this.state.ingredients.ingredients !== undefined && recipe.ingredients === null
                 ? this.state.ingredients.ingredients.map(
                     (ingredient, index) => {
-                      return (
-                        <span key={index}>
-                          <span> {ingredient.name}, </span>
-                        </span>
-                      );
+                      return <span key={index}>{ingredient.name}, </span>;
                     }
                   )
-                : null}
+                : recipe.ingredients ? recipe.ingredients : "No ingredients listed!"}
             </div>
             <span>
               <b>Cook time:</b> {recipe.readyInMinutes} mins

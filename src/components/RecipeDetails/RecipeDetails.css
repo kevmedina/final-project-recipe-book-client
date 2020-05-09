@@ -10,38 +10,40 @@
 }
 
 .recipe-info-container {
-  width: 550px;
-  height: 525px;
+  width: 48vw;
+  min-width: 400px;
+  height: auto;
   margin-top: 20px;
   display: flex;
   flex-direction: column;
 }
 
 .recipe-info-container img {
-  width: 550px;
-  height: 275px;
+  width: 48vw;
+  min-width: 400px;
+  height: 45vh;
 }
 
 .recipe-info {
   background-color: #ffffff;
-  height: 250px;
+  height: auto;
   width: 100%;
   padding: 20px;
   text-align: justify;
   display: flex;
-  justify-content: center;
   flex-direction: column;
   flex-wrap: wrap;
 }
 
 .recipe-info span {
-  margin: 5px 0;
+  margin: 10px 0;
   font-size: 16px;
 }
 
 .title {
   text-align: center;
   font-weight: 600;
+  font-size: 18px;
 }
 
 .recipe-info img {

@@ -9,7 +9,6 @@ class Search extends Component {
 
   handleSubmit = (event) => {
     event.preventDefault();
-
     this.props.searchRecipes(this.state.search);
   };
 
@@ -32,7 +31,7 @@ class Search extends Component {
               <input
                 name="search"
                 type="text"
-                placeholder="Search for a recipe"
+                placeholder="Search for recipes"
                 onChange={this.handleSearch}
                 value={search}
               />

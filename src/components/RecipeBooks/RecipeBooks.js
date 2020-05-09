@@ -59,10 +59,6 @@ class RecipeBooks extends Component {
                     onClick={() => deleteRecipeBook(recipeBook._id)}
                     className="fas fa-trash fa-fw"
                   ></i>
-                  {/* <i
-                    onClick={() => deleteRecipeBook(recipeBook._id)}
-                    className="fas fa-edit fa-fw"
-                  ></i> */}
                 </div>
               </div>
             );
