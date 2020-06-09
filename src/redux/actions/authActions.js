@@ -9,14 +9,20 @@ export const getUser = () => (dispatch) => {
     .catch((err) => console.log("Error while getting the user: ", err));
 };
 
-export const signUpSubmit = () => (dispatch) => {
+export const handleSignupInput = (e) => (dispatch) => {
+  const {
+    target: { name, value },
+  } = e;
+  dispatch({ type: "SIGNUP_INPUT", name, value });
+};
+
+export const handleSignupSubmit = (e) => (dispatch) => {
   e.preventDefault();
-  AUTH_SERVICE.signup(this.state.formSignup)
+  AUTH_SERVICE.signup(state.formSignup)
     .then((responseFromServer) => {
       const {
         data: { user, message },
       } = responseFromServer;
-
       dispatch({ type: "SIGN_UP", user, message });
     })
     .catch((err) => {
@@ -26,9 +32,16 @@ export const signUpSubmit = () => (dispatch) => {
     });
 };
 
-export const loginSubmit = () => (dispatch) => {
+export const handleLoginInput = (e) => (dispatch) => {
+  const {
+    target: { name, value },
+  } = e;
+  dispatch({ type: "LOGIN_INPUT", name, value });
+};
+
+export const handleLoginSubmit = (e) => (dispatch) => {
   e.preventDefault();
-  AUTH_SERVICE.login(this.state.formLogin)
+  AUTH_SERVICE.login(state.formLogin)
     .then((responseFromServer) => {
       const {
         data: { user, message },
@@ -52,4 +65,21 @@ export const logout = () => (dispatch) => {
       this.props.history.push("/");
     })
     .catch((err) => alert("Error while logging out: ", err));
+};
+
+export const handleUpdateInput = () => (dispatch) => {
+  const {
+    target: { name, value },
+  } = e;
+  dispatch({ type: "UPDATE_INPUT", name, value });
+};
+
+export const updateProfile = () => (dispatch) => {
+  e.preventDefault();
+  AUTH_SERVICE.updateProfile(state.formUpdate)
+    .then((user) => {
+      dispatch({ type: "UPDATE_PROFILE", user });
+      this.props.history.push("/user-profile");
+    })
+    .catch((err) => console.log("Error while updating profile", err));
 };
