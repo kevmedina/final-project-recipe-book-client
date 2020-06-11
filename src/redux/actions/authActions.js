@@ -16,9 +16,9 @@ export const handleSignupInput = (e) => (dispatch) => {
   dispatch({ type: "SIGNUP_INPUT", name, value });
 };
 
-export const handleSignupSubmit = (e) => (dispatch) => {
+export const handleSignupSubmit = (e, formSignup) => (dispatch) => {
   e.preventDefault();
-  AUTH_SERVICE.signup(state.formSignup)
+  AUTH_SERVICE.signup(formSignup)
     .then((responseFromServer) => {
       const {
         data: { user, message },
@@ -39,9 +39,10 @@ export const handleLoginInput = (e) => (dispatch) => {
   dispatch({ type: "LOGIN_INPUT", name, value });
 };
 
-export const handleLoginSubmit = (e) => (dispatch) => {
+export const handleLoginSubmit = (e, formLogin) => (dispatch) => {
   e.preventDefault();
-  AUTH_SERVICE.login(state.formLogin)
+  console.log("Form login: ", formLogin);
+  AUTH_SERVICE.login(formLogin)
     .then((responseFromServer) => {
       const {
         data: { user, message },
@@ -67,16 +68,16 @@ export const logout = () => (dispatch) => {
     .catch((err) => alert("Error while logging out: ", err));
 };
 
-export const handleUpdateInput = () => (dispatch) => {
+export const handleUpdateInput = (e) => (dispatch) => {
   const {
     target: { name, value },
   } = e;
   dispatch({ type: "UPDATE_INPUT", name, value });
 };
 
-export const updateProfile = () => (dispatch) => {
+export const updateProfile = (e, formUpdate) => (dispatch) => {
   e.preventDefault();
-  AUTH_SERVICE.updateProfile(state.formUpdate)
+  AUTH_SERVICE.updateProfile(formUpdate)
     .then((user) => {
       dispatch({ type: "UPDATE_PROFILE", user });
       this.props.history.push("/user-profile");

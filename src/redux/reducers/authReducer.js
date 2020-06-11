@@ -23,12 +23,12 @@ export const authReducer = (state = initialState, action) => {
     case "GET_USER":
       return {
         ...state,
-        currentUser: user,
-        isLoggedIn: user ? true : false,
+        currentUser: action.user,
+        isLoggedIn: action.user ? true : false,
         loading: false,
         formUpdate: {
-          username: user.username,
-          email: user.email,
+          username: action.user.username,
+          email: action.user.email,
         },
       };
     case "SIGNUP_INPUT":
@@ -36,7 +36,7 @@ export const authReducer = (state = initialState, action) => {
         ...state,
         formSignup: {
           ...state.formSignup,
-          [name]: value,
+          [action.name]: action.value,
         },
       };
     case "SIGN_UP":
@@ -47,7 +47,7 @@ export const authReducer = (state = initialState, action) => {
           email: "",
           password: "",
         },
-        currentUser: user,
+        currentUser: action.user,
         isLoggedIn: true,
       };
     case "LOGIN_INPUT":
@@ -55,7 +55,7 @@ export const authReducer = (state = initialState, action) => {
         ...state,
         formLogin: {
           ...state.formLogin,
-          [name]: value,
+          [action.name]: action.value,
         },
       };
     case "LOGIN":
@@ -65,7 +65,7 @@ export const authReducer = (state = initialState, action) => {
           username: "",
           password: "",
         },
-        currentUser: user,
+        currentUser: action.user,
         isLoggedIn: true,
       };
     case "LOGOUT":
@@ -79,16 +79,16 @@ export const authReducer = (state = initialState, action) => {
         ...state,
         formUpdate: {
           ...state.formUpdate,
-          [name]: value,
+          [action.name]: action.value,
         },
       };
     case "UPDATE_PROFILE":
       return {
         ...state,
-        currentUser: user.data,
+        currentUser: action.user.data,
         formUpdate: {
-          username: user.username,
-          email: user.email,
+          username: action.user.username,
+          email: action.user.email,
         },
       };
     default:

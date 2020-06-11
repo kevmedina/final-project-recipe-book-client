@@ -7,7 +7,14 @@ import {
 } from "../../../redux/actions/authActions";
 import "./Login.css";
 
-const Login = ({ handleLoginInput, handleLoginSubmit }) => {
+const Login = ({
+  isLoggedIn,
+  username,
+  password,
+  message,
+  handleLoginInput,
+  handleLoginSubmit,
+}) => {
   return (
     <React.Fragment>
       <div>
@@ -56,16 +63,17 @@ const Login = ({ handleLoginInput, handleLoginSubmit }) => {
 
 const mapStateToProps = (state) => {
   return {
-    username: state.authReducer.username,
-    password: state.authReducer.password,
+    username: state.authReducer.formLogin.username,
+    password: state.authReducer.formLogin.password,
     isLoggedIn: state.authReducer.isLoggedIn,
     message: state.authReducer.message,
   };
 };
 
 const mapDispatchToProps = (dispatch) => ({
-  handleLoginInput: () => dispatch(handleLoginInput()),
-  handleLoginSubmit: () => dispatch(handleLoginSubmit()),
+  handleLoginInput: (e) => dispatch(handleLoginInput(e)),
+  handleLoginSubmit: (e, formLogin) =>
+    dispatch(handleLoginSubmit(e, formLogin)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Login);
