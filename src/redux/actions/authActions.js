@@ -41,7 +41,6 @@ export const handleLoginInput = (e) => (dispatch) => {
 
 export const handleLoginSubmit = (e, formLogin) => (dispatch) => {
   e.preventDefault();
-  console.log("Form login: ", formLogin);
   AUTH_SERVICE.login(formLogin)
     .then((responseFromServer) => {
       const {
@@ -75,7 +74,7 @@ export const handleUpdateInput = (e) => (dispatch) => {
   dispatch({ type: "UPDATE_INPUT", name, value });
 };
 
-export const updateProfile = (e, formUpdate) => (dispatch) => {
+export const handleProfileUpdate = (e, formUpdate) => (dispatch) => {
   e.preventDefault();
   AUTH_SERVICE.updateProfile(formUpdate)
     .then((user) => {

@@ -15,6 +15,7 @@ const Signup = ({
   message,
   handleSignupInput,
   handleSignupSubmit,
+  formSignup,
 }) => {
   return (
     <React.Fragment>
@@ -23,7 +24,7 @@ const Signup = ({
           <Redirect to="/" />
         ) : (
           <div className="signup">
-            <form onSubmit={handleSignupSubmit}>
+            <form onSubmit={(e) => handleSignupSubmit(e, formSignup)}>
               <h1>Join Now!</h1>
               <div className="inner-form-container">
                 <div>
@@ -82,6 +83,7 @@ const mapStateToProps = (state) => {
     email: state.authReducer.formSignup.email,
     isLoggedIn: state.authReducer.isLoggedIn,
     message: state.authReducer.message,
+    formSignup: state.authReducer.formSignup,
   };
 };
 

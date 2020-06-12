@@ -14,6 +14,7 @@ const Login = ({
   message,
   handleLoginInput,
   handleLoginSubmit,
+  formLogin,
 }) => {
   return (
     <React.Fragment>
@@ -22,7 +23,7 @@ const Login = ({
           <Redirect to="/user-profile" />
         ) : (
           <div className="login">
-            <form onSubmit={handleLoginSubmit}>
+            <form onSubmit={(e) => handleLoginSubmit(e, formLogin)}>
               <h2>Login</h2>
               <div>
                 {/* <label htmlFor="username">Username:</label> */}
@@ -67,6 +68,7 @@ const mapStateToProps = (state) => {
     password: state.authReducer.formLogin.password,
     isLoggedIn: state.authReducer.isLoggedIn,
     message: state.authReducer.message,
+    formLogin: state.authReducer.formLogin,
   };
 };
 

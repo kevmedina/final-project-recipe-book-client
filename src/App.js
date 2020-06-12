@@ -30,7 +30,7 @@ class App extends Component {
 
   // When the component mounts it calls the getRecipeBooks function to retrieve all the books
   componentDidMount() {
-    // this.updateState();
+    this.updateState();
     this.props.getUser();
   }
 
