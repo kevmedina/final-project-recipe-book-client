@@ -1,17 +1,16 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import { Provider } from "react-redux";
 import "./index.css";
 import App from "./App";
 import * as serviceWorker from "./serviceWorker";
 import { BrowserRouter } from "react-router-dom";
-import { store } from "./redux/store";
+import AuthProvider from "./context/index";
 
 ReactDOM.render(
   <BrowserRouter>
-    <Provider store={store}>
+    <AuthProvider>
       <App />
-    </Provider>
+    </AuthProvider>
   </BrowserRouter>,
   document.getElementById("root")
 );
