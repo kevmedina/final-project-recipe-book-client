@@ -50,20 +50,4 @@ class UpdateProfile extends Component {
   }
 }
 
-// const mapStateToProps = (state) => {
-//   return {
-//     username: state.authReducer.formUpdate.username,
-//     email: state.authReducer.formUpdate.email,
-//     formUpdate: state.authReducer.formUpdate,
-//   };
-// };
-
-// const mapDispatchToProps = (dispatch) => ({
-//   handleUpdateInput: (e) => dispatch(handleUpdateInput(e)),
-//   handleProfileUpdate: (e, formUpdate) =>
-//     dispatch(handleProfileUpdate(e, formUpdate)),
-// });
-
-// export default connect(mapStateToProps, mapDispatchToProps)(UpdateProfile);
-
 export default UpdateProfile;
