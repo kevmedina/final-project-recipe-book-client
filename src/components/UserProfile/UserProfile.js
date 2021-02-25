@@ -9,7 +9,7 @@ export default class UserProfile extends Component {
       return this.props.history.push("/signup-page");
     }
     this.props.updateState();
-    this.props.getRandomFoodTrivia();
+    // this.props.getRandomFoodTrivia();
   }
 
   render() {

@@ -34,13 +34,9 @@ class App extends Component {
 
   // // Update the state once the component loads
   updateState = () => {
-    if (this.state.recipeBooks.length > 0) {
-      this.getRecipeBooks();
-    } else if (this.state.recipes.length > 0) {
-      this.getRecipes();
-    } else if (this.state.favorites.length > 0) {
-      this.getFavorites();
-    }
+    this.getRecipeBooks();
+    this.getRecipes();
+    this.getFavorites();
   };
 
   // search for recipes from the API
