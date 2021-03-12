@@ -2,7 +2,7 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 import "./NavBar.css";
 
-function Navbar() {
+const Navbar = () => {
   return (
     <div className="navbar">
       <span>Dish-It-Out</span>
@@ -19,6 +19,6 @@ function Navbar() {
       </nav>
     </div>
   );
-}
+};
 
 export default Navbar;
