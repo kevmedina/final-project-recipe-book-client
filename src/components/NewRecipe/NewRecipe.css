@@ -1,6 +1,6 @@
 .new-recipe {
-  width: calc(100vw - 250px);
-  height: 100vh;
+  width: 100%;
+  height: calc(100vh - 70px);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -70,5 +70,13 @@
 @media screen and (max-width: 1024px) {
   .new-recipe {
     width: 100%;
+  }
+  .new-recipe form {
+    width: 80vw;
+  }
+  .new-recipe input,
+  .new-recipe select,
+  .new-recipe button {
+    width: 60vw;
   }
 }

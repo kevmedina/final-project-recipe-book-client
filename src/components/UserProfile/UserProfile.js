@@ -9,7 +9,7 @@ export default class UserProfile extends Component {
       return this.props.history.push("/signup-page");
     }
     this.props.updateState();
-    this.props.getRandomFoodTrivia();
+    // this.props.getRandomFoodTrivia();
   }
 
   render() {
@@ -23,7 +23,7 @@ export default class UserProfile extends Component {
           return (
             <div className="user-profile">
               <header>
-                <h1 className="greeting">Welcome {username}</h1>
+                <h1 className="greeting">{username}</h1>
                 <Link to="/new-recipe" className="create-btn">
                   <i className="fas fa-plus fa-fw"></i> New Recipe
                 </Link>

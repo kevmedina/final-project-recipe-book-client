@@ -10,7 +10,6 @@ import Login from "./components/Authentication/Login/Login";
 import UpdateProfile from "./components/UpdateProfile/UpdateProfile";
 import Navbar from "./components/Navbar/Navbar";
 import UserProfile from "./components/UserProfile/UserProfile";
-import ProfileNavbar from "./components/ProfileNavbar/ProfileNavbar";
 import NewRecipe from "./components/NewRecipe/NewRecipe";
 import Search from "./components/Search/Search";
 import RecipeBooks from "./components/RecipeBooks/RecipeBooks";
@@ -197,8 +196,8 @@ class App extends Component {
                   color="var(--green-color)"
                 />
               ) : (
-                <div className={`${isLoggedIn ? "user-logged-in" : ""}`}>
-                  {isLoggedIn ? <ProfileNavbar /> : <Navbar />}
+                <div>
+                  <Navbar />
                   <Switch>
                     {isLoggedIn === false ? (
                       <>

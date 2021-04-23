@@ -1,6 +1,6 @@
 .search {
-  width: calc(100vw - 250px);
-  height: 100vh;
+  width: 100%;
+  height: calc(100vh - 70px);
   display: flex;
   flex-direction: column;
   justify-content: center;
